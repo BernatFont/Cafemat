@@ -1,61 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
-</head>
-<style>
-    img{
-        height:50px;
-        width:auto;
-    }
-</style>
+<?php
 
-<body>
-    <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">IMG</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">PRECIO</th>
-            <th scope="col">CATEGORIA</th>
-            <th scope="col">DESCRIPCION</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-            include_once 'config/dataBase.php';    
+    include_once 'controller/productoController.php';
+    include_once 'config/parameters.php';
 
-            $conn = dataBase::connect();
-    
-            $sql = "SELECT * FROM producto";
-            $result = $conn->query($sql);
-    
-            while ($row = $result->fetch_assoc()) {?>
-    
-                 <tr>
-                    <td><?php echo $row["producto_id"]; ?></td>
-                    <td><img src="<?php echo $row["img"]; ?>" alt=""></td>
-                    <td><?php echo  $row["nombre"]; ?></td>
-                    <td><?php echo  $row["precio"]; ?></td>
-                    <td><?php echo  $row["categoria"]; ?></td>
-                    <td><?php echo  $row["descripcion"]; ?></td>
-                    <td><form action="<?php   ?>" method="post">
-                        <button>Editar</button>
-                    </form></td>
-                    <td><form action="<?php   ?>" method="post">
-                        <button>Eliminar</button>
-                    </form></td>
-                </tr> 
-                    
-            <?php } ?>
+
+
+        if (!isset($_GET['controller'])) {
+            //Si no se passa nada se mostrara la pagina principal de pedidos
+            header("Location:".url."?controller=producto");
+
+        }else{
+            $nombre_controller = $_GET['controller'].'Controller';
+
+            if(class_exists($nombre_controller)){
+
+                $controller = new $nombre_controller();
+
+                if (isset($_GET['action']) && method_exists($controller, $_GET['action'])) {
+                    $action = $_GET['action'];
+                }else{
+                    $action = action_default;
+                }
+
+            $controller->$action();
                 
-                
-    </tbody>
-    </table>
-</body>
-</html>
+            }else {
+            //Si no existe vamos al header
+            header('Location: '.url.'?controller=producto');
+        }
+
+        }
+
+?>
