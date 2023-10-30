@@ -1,6 +1,6 @@
 <?php
 
-include_once '../config/dataBase.php';
+include_once 'config/dataBase.php';
 
     class Producto{
 
@@ -50,6 +50,13 @@ include_once '../config/dataBase.php';
                 $conn->close();
         }
 
+        public static function createProducto($img,$nombre,$precio,$categoria,$descripcion){
+                $conn = dataBase::connect();
+
+                $sql = "INSERT INTO producto VALUES ('','$img','$nombre','$precio','$categoria','$descripcion')";
+                $conn->query($sql);
+                $conn->close();
+        }
 
     }
 

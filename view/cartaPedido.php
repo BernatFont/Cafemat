@@ -1,10 +1,3 @@
-<?php
-
-include_once '../config/dataBase.php';    
-include_once '../config/parameters.php';    
-include_once '../model/Producto.php';    
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,8 +30,6 @@ include_once '../model/Producto.php';
     <tbody>
         <?php
 
-            $productos = Producto::getProductos();
-
             foreach ($productos as $producto) {?>
     
                  <tr>
@@ -67,5 +58,8 @@ include_once '../model/Producto.php';
                 
     </tbody>
     </table>
+    <form action="<?= url."?controller=producto&action=crear"?>" method='post'>
+        <button class='btn btn-success'>Crear producto</button>
+    </form>
 </body>
 </html>

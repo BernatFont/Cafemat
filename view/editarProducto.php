@@ -1,8 +1,3 @@
-<?php 
-
-    include_once 'controller/productoController.php';
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +10,7 @@
     <div>
         <form action="<?= url.'?controller=producto&action=editProducto' ?>" method='post' class="form-group p-5">
             <label for="id">Producto_id</label>
-            <input type="text" name="id" value=<?= $producto->producto_id ?> class="form-control">
+            <input type="hidden" name="id" value=<?= $producto->producto_id ?> class="form-control">
             <label for="IMG">IMG</label>
             <input type="text" name="img" value=<?= $producto->img ?> class="form-control">
             <label for="nombre">Nombre</label>
