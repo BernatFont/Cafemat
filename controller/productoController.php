@@ -31,9 +31,8 @@
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             $categoria = $_POST['categoria'];
-            $descripcion = $_POST['descripcion'];
 
-            Producto::createProducto($img,$nombre,$precio,$categoria,$descripcion);
+            Producto::createProducto($img,$nombre,$precio,$categoria);
 
             header('Location:'.url.'?controller=producto&action=carta');
         }
@@ -63,9 +62,8 @@
             $nombre = $_POST['nombre'];
             $precio = $_POST['precio'];
             $categoria = $_POST['categoria'];
-            $descripcion = $_POST['descripcion'];
     
-            Producto::updateProducto($id, $img, $nombre, $precio, $categoria, $descripcion);
+            Producto::updateProducto($id, $img, $nombre, $precio, $categoria);
 
             header('Location:'.url.'?controller=producto&action=carta');
         }

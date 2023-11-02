@@ -16,11 +16,9 @@
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" value=<?= $producto->nombre ?> class="form-control"> 
             <label for="precio">Precio</label>
-            <input type="text" pattern="[0-9,]*" name="precio" value=<?= $producto->precio ?> class="form-control">
+            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" value=<?= $producto->precio ?> class="form-control">
             <label for="categoria">Categoria</label>
             <input type="text" name="categoria" value=<?= $producto->categoria ?> class="form-control">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" name="descripcion" value=<?= $producto->descripcion ?> class="form-control">
             <button class="btn btn-primary mt-3">Enviar</button>
         </div>
 </body>

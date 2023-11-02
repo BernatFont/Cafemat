@@ -41,19 +41,19 @@ include_once 'config/dataBase.php';
                 $conn->close();
         }       
 
-        public static function updateProducto($id, $img, $nombre, $precio, $categoria, $descripcion){
+        public static function updateProducto($id, $img, $nombre, $precio, $categoria){
                 $conn = dataBase::connect();
 
                 //Preparamos consulta
-                $sql = "UPDATE producto SET producto_id='$id', img='$img', nombre='$nombre', precio='$precio', categoria='$categoria', descripcion='$descripcion' WHERE producto_id=$id";
+                $sql = "UPDATE producto SET producto_id='$id', img='$img', nombre='$nombre', precio='$precio', categoria='$categoria' WHERE producto_id=$id";
                 $result = $conn->query($sql);
                 $conn->close();
         }
 
-        public static function createProducto($img,$nombre,$precio,$categoria,$descripcion){
+        public static function createProducto($img,$nombre,$precio,$categoria){
                 $conn = dataBase::connect();
 
-                $sql = "INSERT INTO producto VALUES ('','$img','$nombre','$precio','$categoria','$descripcion')";
+                $sql = "INSERT INTO producto VALUES ('','$img','$nombre','$precio','$categoria')";
                 $conn->query($sql);
                 $conn->close();
         }

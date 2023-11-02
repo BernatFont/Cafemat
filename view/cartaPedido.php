@@ -15,51 +15,56 @@
 </style>
 
 <body>
-    <table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">IMG</th>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">PRECIO</th>
-            <th scope="col">CATEGORIA</th>
-            <th scope="col">DESCRIPCION</th>
-            <th scope="col"></th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php
-
-            foreach ($productos as $producto) {?>
-    
-                 <tr>
-                    <td><?= $producto->producto_id; ?></td>
-                    <td><img src="<?= $producto->img; ?>" alt=""></td>
-                    <td><?=  $producto->nombre; ?></td>
-                    <td><?=  $producto->precio; ?></td>
-                    <td><?=  $producto->categoria; ?></td>
-                    <td><?=  $producto->descripcion; ?></td>
-                    <td>
-                        <form action="<?= url."?controller=producto&action=modificar" ?>" method="post">
-                            <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
-                            <button class="btn btn-warning">Editar</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="<?= url."?controller=producto&action=eliminar"?>" method="post">
-                            <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
-                            <button class="btn btn-danger">Eliminar</button>
-                        </form>
-                    </td>
-                </tr> 
-                    
-            <?php } ?>
-                
-                
-    </tbody>
-    </table>
-    <form action="<?= url."?controller=producto&action=crear"?>" method='post'>
-        <button class='btn btn-success'>Crear producto</button>
-    </form>
+    <section class="container">
+        <section class="row">
+            <table class="table table-striped col-8">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">IMG</th>
+                    <th scope="col">NOMBRE</th>
+                    <th scope="col">PRECIO</th>
+                    <th scope="col">CATEGORIA</th>
+                    <th scope="col">EDIT</th>
+                    <th scope="col">DELETE</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+        
+                    foreach ($productos as $producto) {?>
+            
+                         <tr>
+                            <td><?= $producto->producto_id; ?></td>
+                            <td><img src="<?= $producto->img; ?>" alt=""></td>
+                            <td><?=  $producto->nombre; ?></td>
+                            <td><?=  $producto->precio; ?></td>
+                            <td><?=  $producto->categoria; ?></td>
+                            <td>
+                                <form action="<?= url."?controller=producto&action=modificar" ?>" method="post">
+                                    <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
+                                    <button class="btn btn-warning">Editar</button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="<?= url."?controller=producto&action=eliminar"?>" method="post">
+                                    <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
+                                    <button class="btn btn-danger">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr> 
+                            
+                    <?php } ?>
+                        
+                        
+            </tbody>
+            </table>
+        </section>
+        <section class="row">
+            <form action="<?= url."?controller=producto&action=crear"?>" method='post'>
+                <button class='btn btn-success'>Crear producto</button>
+            </form>
+        </section>
+    </section>
 </body>
 </html>

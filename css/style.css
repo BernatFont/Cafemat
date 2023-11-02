@@ -1,0 +1,142 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+@font-face {
+    font-family: 'ObjetBold';
+    src: url('../fonts/ObjetBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTRegular';
+    src: url('../fonts/TTCommonsRegular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTLight';
+    src: url('../fonts/TTCommonsLight.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTBold';
+    src: url('../fonts/TTCommonsBold.otf') format('opentype');
+}
+
+:root{
+    --primary:#ff671f;
+    --secondary:#120949;
+}
+
+.banner1{
+    height: 220px;
+    background-color: var(--primary);
+}
+
+.slogan{
+    font-size: 50px;
+    color: white;
+    font-family: 'ObjetBold', sans-serif;
+    width: 600px;
+}
+
+.bt_frase_preparar{
+    border: none;
+    background-color: #ffffff00;
+}
+
+.right_row{
+    height: 36px;
+}
+
+.frase_preparar{
+    color:var(--secondary);
+    font-size: 30px;
+    font-family: 'ObjetBold', sans-serif;
+}
+
+.banner2{
+    background-image: url(../img/img_banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* section 1 */
+
+.sec1_bt_icon{
+    height: 77px;
+}
+
+.sec_1{
+    border-bottom: 1px solid #b3b3b3;
+}
+ .sec_1_bt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-family: 'TTRegular';
+    border: none;
+    background-color: #ffffff00;
+ }
+
+
+ /* section 2 */
+
+ .sec_2 h2{
+    font-size: 34px;
+    font-family: 'TTLight',sans-serif;
+    margin: 40px 0 40px 0;
+ }
+
+ .categorias{
+    padding-bottom: 60px;
+    border-bottom: 1px solid #b3b3b3;
+ }
+
+ .cat1,.cat2{
+    display: flex;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+ }
+
+ .cat1 section:first-of-type{
+    background-color: var(--primary);
+    border-radius: 4px 0 0 4px;
+ }
+
+ .cat2 section:first-of-type{
+    background-color: var(--secondary);
+    border-radius: 4px 0 0 4px;
+ }
+
+ .cat2 section:nth-of-type(2),
+ .cat1 section:nth-of-type(2){
+    display: flex;
+    align-items: center;
+ }
+
+ .cat1 section,.cat2 section{
+    width: 150px;
+    height: 180px;
+ }
+
+ .bt_sec_2{
+    border: none;
+    background-color: #ffffff00;
+    color: white;
+    font-size: 19.2px;
+    font-family: 'TTBold',sans-serif;
+    margin: 5px 0 0 10px
+ }
+
+ .bt_sec_2:hover{
+    text-decoration: underline;
+ }
+
+ .img_sec_2{
+    height: 180px;
+    align-self: center
+ }
+ .img_sec_2 img{
+    width: 150px;
+ }

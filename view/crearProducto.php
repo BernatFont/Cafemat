@@ -10,15 +10,13 @@
     <div>
         <form action="<?= url.'?controller=producto&action=crearProducto' ?>" method='post' class="form-group p-5">
             <label for="IMG">URL de la IMG</label>
-            <input type="text" name="img" class="form-control">
+            <input type="text" name="img" class="form-control" placeholder="img/bocadillo1.png">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" class="form-control"> 
+            <input type="text" name="nombre" class="form-control" placeholder="Bocadillo de lomo"> 
             <label for="precio">Precio</label>
-            <input type="text" pattern="[0-9,]*" name="precio" class="form-control">
+            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" class="form-control" placeholder="5.50">
             <label for="categoria">Categoria</label>
-            <input type="text" name="categoria" class="form-control">
-            <label for="descripcion">Descripcion</label>
-            <input type="text" name="descripcion" class="form-control">
+            <input type="text" name="categoria" class="form-control" placeholder="Para comer">
             <button class="btn btn-primary mt-3">Enviar</button>
         </div>
 </body>
