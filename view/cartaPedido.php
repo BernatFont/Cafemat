@@ -16,7 +16,7 @@
 
 <body>
     <section class="container">
-        <section class="row">
+        <section class="row" style="max-height: 80vh; overflow:auto">
             <table class="table table-striped col-8">
             <thead>
                 <tr>
@@ -38,7 +38,7 @@
                             <td><?= $producto->producto_id; ?></td>
                             <td><img src="<?= $producto->img; ?>" alt=""></td>
                             <td><?=  $producto->nombre; ?></td>
-                            <td><?=  $producto->precio; ?></td>
+                            <td><?=  $producto->precio.'€'; ?></td>
                             <td><?=  $producto->categoria; ?></td>
                             <td>
                                 <form action="<?= url."?controller=producto&action=modificar" ?>" method="post">

@@ -58,6 +58,30 @@ include_once 'config/dataBase.php';
                 $conn->close();
         }
 
+
+        public static function countProductByCategoria($categoria){
+                $conn = dataBase::connect();
+
+                $sql = "SELECT COUNT(*) FROM producto WHERE categoria = '$categoria'";
+                $result = $conn->query($sql);
+                $conn->close();
+                return $result->fetch_array()[0];
+        }
+
+        public static function getProductByCategoria($categoria){
+                $conn = dataBase::connect();
+
+                $sql = "SELECT * FROM producto WHERE categoria = '$categoria'";
+                $result = $conn->query($sql);
+                $conn->close();
+                //Almaceno el resultado en una array
+                $listaProductos = [];
+                while($producto = $result->fetch_object()){
+                        $listaProductos[] = $producto;
+                }
+                return $listaProductos;
+        }
+
     }
 
 ?>

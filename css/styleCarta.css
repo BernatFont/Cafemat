@@ -1,0 +1,152 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+@font-face {
+    font-family: 'TTRegular';
+    src: url('../fonts/TTCommonsRegular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTBold';
+    src: url('../fonts/TTCommonsBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'ObjetBold';
+    src: url('../fonts/ObjetBold.otf') format('opentype');
+}
+
+:root{
+    --primary:#ff671f;
+    --secondary:#120949;
+}
+
+.no_margin{
+    --bs-gutter-x: 0;
+    --bs-gutter-y: 0;
+}
+
+#titulo{
+    width: 100%;
+    border-bottom: 1px solid var(--primary);
+}
+
+.TTBold_32{
+    font-size: 32px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.TTRegular_14{
+    font-size: 14px;
+    font-family: 'TTRegular',sans-serif;
+}
+
+.ObjetBold_50{
+    font-size: 50px;
+    font-family: 'ObjetBold',sans-serif;
+    color: white;
+}
+
+.titulo_seccion{
+    background-color: var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.descripcion_seccion{
+    width: 100%;
+    border-bottom: 1px solid var(--primary);
+}
+
+.producto{
+    width: 500px;
+    height: 210px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    position: relative;
+}
+
+.imagen_producto{
+    height: 135px;
+}
+
+.nombre_producto{
+    font-size: 14px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.entero{
+    font-size: 25px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.decimal{
+    font-size: 16.8px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.entero_sinIVA{
+    font-size: 20px;
+    font-family: 'TTBold',sans-serif;
+    color: #707070;
+}
+
+.decimal_sinIVA{
+    font-size: 14.4px;
+    font-family: 'TTBold',sans-serif;
+    color: #707070;
+}
+
+.bt_compra{
+    position: relative;
+    background-color: #120949;
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    width: 40px;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.5);
+}
+
+.bt_pedido{
+    position: absolute;
+    left: 88%;
+    top: 75%;
+}
+
+.bt_compra::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.bt_compra:hover::before {
+    opacity: 0.2;
+}
+
+.bt_compra span{
+    position: absolute;
+    color: white;
+    bottom:20px;
+    left: 30px;
+    font-family: 'TTRegular',sans-serif;
+}
+
+.icono_compra{
+    height: 26px;
+    position: absolute;
+    bottom:5px;
+    right: 10px;
+}
+
+@media (max-width: 768px){
+    .titulo_seccion{
+        padding: 80px 0 70px 0;
+    }
+}

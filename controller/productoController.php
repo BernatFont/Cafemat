@@ -18,8 +18,23 @@
         public function carta(){
             //echo 'Pagina carta';
             $productos = Producto::getProductos();
+            $numAlmuerzos = Producto::countProductByCategoria('Almuerzo');
+            $numPara_comer = Producto::countProductByCategoria('Para comer');
+            $numBebida = Producto::countProductByCategoria('Bebida');
+            $numPostre = Producto::countProductByCategoria('Postre');
 
-            include_once 'view/cartaPedido.php';
+            $productosAlmuerzo = Producto::getProductByCategoria('Almuerzo');
+            $productosPara_comer = Producto::getProductByCategoria('Para comer');
+            $productosBebida = Producto::getProductByCategoria('Bebida');
+            $productosPostre = Producto::getProductByCategoria('Postre');
+
+            $admin = 0;
+            if($admin){
+                include_once 'view/cartaPedido.php';
+            }else{
+                include_once 'view/cartaPrincipal.php';
+            }
+
         }
 
         public function crear(){
