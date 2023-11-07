@@ -245,7 +245,7 @@
         font-family: 'TTDemiBold',sans-serif;
     }
 
-@media (max-width: 1340px){
+@media (max-width: 1400px){
 
     .slogan{
         font-size: 40px;
@@ -253,10 +253,17 @@
     
 }
 
-@media (max-width: 1030px){
+@media (max-width: 1022px){
 
     .slogan{
-        font-size: 35px;
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 992px){
+
+    .slogan{
+        font-size: 28px;
     }
 
     .right_row{
@@ -267,4 +274,18 @@
         font-size: 20px;
     }
     
+}
+
+@media (max-width: 768px){
+
+    .banner1{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .slogan{
+        width: 240px;
+        font-size: 23px;
+    }
 }

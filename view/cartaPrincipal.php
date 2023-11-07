@@ -12,7 +12,7 @@
 
     </header>
 
-    <main class="container">
+    <main class="container-fluid px-4">
         <section id="titulo">
             <h2 class="TTBold_32">CARTA</h2>
         </section>
@@ -20,8 +20,8 @@
         <section class="mt-5" id="almuerzo">
             <section>
                 <section class="row no_margin">
-                    <img src="img/almuerzo_top.png" alt="" class="col-sm-12 col-md-3">
-                    <div class="titulo_seccion col-sm-12 col-md-9"><p class="ObjetBold_50">Almuerzo</p></div>
+                    <img src="img/almuerzo_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Almuerzo</p></div>
                 </section>
                 <section>
                     <p class="TTBold_32 mt-2">ALMUERZO<br>(<?=$numAlmuerzos?>)</p>
@@ -71,8 +71,8 @@
         <section class="mt-5" id="para_comer">
             <section>
                 <section class="row no_margin">
-                    <img src="img/para_comer_top.png" alt="" class="col-sm-12 col-md-3">
-                    <div class="titulo_seccion col-sm-12 col-md-9"><p class="ObjetBold_50">Para comer</p></div>
+                    <img src="img/para_comer_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Para comer</p></div>
                 </section>
                 <section>
                     <p class="TTBold_32 mt-2">PARA COMER<br>(<?=$numPara_comer?>)</p>
@@ -122,8 +122,8 @@
         <section class="mt-5" id="bebida">
             <section>
                 <section class="row no_margin">
-                    <img src="img/bebida_top.png" alt="" class="col-sm-12 col-md-3">
-                    <div class="titulo_seccion col-sm-12 col-md-9"><p class="ObjetBold_50">Bebida</p></div>
+                    <img src="img/bebida_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Bebida</p></div>
                 </section>
                 <section>
                     <p class="TTBold_32 mt-2">BEBIDA<br>(<?=$numBebida?>)</p>
@@ -173,8 +173,8 @@
         <section class="mt-5" id="postre">
             <section>
                 <section class="row no_margin">
-                    <img src="img/postre_top.png" alt="" class="col-sm-12 col-md-3">
-                    <div class="titulo_seccion col-sm-12 col-md-9"><p class="ObjetBold_50">Postre</p></div>
+                    <img src="img/postre_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Postre</p></div>
                 </section>
                 <section>
                     <p class="TTBold_32 mt-2">POSTRE<br>(<?=$numPostre?>)</p>

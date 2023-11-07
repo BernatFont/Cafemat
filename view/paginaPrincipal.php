@@ -15,15 +15,15 @@
     <main class="container-fluid">
 
         <section class="banner row">
-            <section class="banner1 d-flex col-md-8 col-sm-12">
+            <section class="banner1 d-flex col-6 col-sm-6 col-md-8 ">
                 <p class="slogan m-3">Sabores que construyen momentos inolvidables</p>
-                <form action="<?= url."?controller=producto&action=pedido"?>" class="align-self-end">
+                <a href="<?= url."?controller=producto&action=pedido"?>" class="align-self-end">
                     <button class="bt_frase_preparar">
                         <p class="frase_preparar"><img src="icon/right-arrow.png" alt="" class="right_row"> Prepara tu pedido</p>
                     </button>
-                </form>
+                </a>
             </section>
-            <section class="banner2 col-md-4 col-sm-12"></section>
+            <section class="banner2 col-6 col-sm-6 col-md-4"></section>
         </section>
 
         <section class="row sec_1 mx-3">
@@ -48,7 +48,7 @@
             <section class="container-fluid d-flex justify-content-evenly flex-wrap categorias">
                 <section class="cat1">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=producto&action=carta#almuerzo">ALMUERZO</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#almuerzo"?>">ALMUERZO</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/almuerzo.jpg" alt="">
@@ -56,7 +56,7 @@
                 </section>
                 <section class="cat2">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=producto&action=carta#para_comer">PARA COMER</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#para_comer"?>">PARA COMER</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/combi1.jpg" alt="">
@@ -64,7 +64,7 @@
                 </section>
                 <section class="cat1">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=producto&action=carta#bebida">BEBIDA</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#bebida"?>">BEBIDA</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/bebida.webp" alt="">
@@ -72,7 +72,7 @@
                 </section>
                 <section class="cat2">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=producto&action=carta#postre">POSTRE</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#postre"?>">POSTRE</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/postre.jpg" alt="">
