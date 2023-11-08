@@ -72,8 +72,25 @@
 
     /* section 1 */
 
-    .sec1_bt_icon{
+    .sec1_bt_icon,.sec1_bt_icon2,.sec1_bt_icon2_1,.sec1_bt_icon2_2{
         height: 77px;
+    }
+
+    .sec1_bt_icon2,
+    .sec1_bt_icon2_2 {
+        display: none;  /* si no hago hover en el icono, la imagen 2 no aparece */
+    }
+
+    .sec_1_bt:hover .sec1_bt_icon,
+    .sec_1_bt:hover .sec1_bt_icon2_1 {
+        display: none;  /* si hago hover en el icono la imagen uno desaparece */
+    }
+
+    .sec_1_bt:hover .sec1_bt_icon2,
+    .sec_1_bt:hover .sec1_bt_icon2_2,
+    .sec_1_bt:hover p {
+        display: block; /* si hago hover en el icono aparece la imagen 2 */
+        color: #ff9101;
     }
 
     .sec_1{
@@ -163,6 +180,28 @@
         margin: 0 20px 20px 0;
     }
 
+    .entero{
+        font-size: 25px;
+        font-family: 'TTBold',sans-serif;
+    }
+    
+    .decimal{
+        font-size: 16.8px;
+        font-family: 'TTBold',sans-serif;
+    }
+    
+    .entero_sinIVA{
+        font-size: 20px;
+        font-family: 'TTBold',sans-serif;
+        color: #707070;
+    }
+    
+    .decimal_sinIVA{
+        font-size: 14.4px;
+        font-family: 'TTBold',sans-serif;
+        color: #707070;
+    }
+
     .producto_destacado section:first-of-type{
         height: 100px;
         width: 260px;
@@ -181,16 +220,6 @@
     .producto_destacado_bottom p{
         font-size: 14px;
         font-family: 'TTDemiBold',sans-serif;
-    }
-
-    .producto_destacado_bottom span span{
-        font-size: 25px;
-        font-family: 'TTBold',sans-serif;
-    }
-
-    .producto_destacado_bottom span{
-        font-size: 16.8px;
-        font-family: 'TTBold',sans-serif;
     }
 
     .bt_compra{

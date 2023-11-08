@@ -4,15 +4,16 @@ include_once 'config/dataBase.php';
 
     class Producto{
 
+        /* FUNCION QUE RETORNA UN ARRAY DE TODOS LOS PRODUCTOS */
         public static function getProductos(){
 
                 $conn = dataBase::connect();
-                //Preparamos consulta
+                //Consulta para obtener todos los productos
                 $sql = 'SELECT * FROM producto';
                 $result = $conn->query($sql);
                 $conn->close();
 
-                //Almaceno el resultado en una array
+                //Almaceno el resultado de la consulta en una array
                 $listaProductos = [];
                 while($producto = $result->fetch_object()){
                         $listaProductos[] = $producto;
@@ -21,6 +22,7 @@ include_once 'config/dataBase.php';
 
         }
 
+        /* FUNCION QUE RETORNA UN PRODUCTO SEGÚN LA ID PASADA POR PARAMETRO */
         public static function getProductoById($id){
                 $conn = dataBase::connect();
                 //Preparamos consulta
@@ -32,15 +34,17 @@ include_once 'config/dataBase.php';
                 return $producto;
         }
 
+        /* FUNCION QUE ELIMINA UN PRODUCTO SEGÚN LA ID PASADA POR PARAMETRO */
         public static function deleteProducto($id){
                 $conn = dataBase::connect();
 
-                //Preparamos consulta
+                //Consulta
                 $sql = "DELETE FROM producto WHERE producto_id = '$id'";
                 $result = $conn->query($sql);
                 $conn->close();
         }       
 
+        /* FUNCION QUE MODIFICA UN PRODUCTO PASANDOLE TODAS SUS PROPIEDADES POR PARAMETRO */
         public static function updateProducto($id, $img, $nombre, $precio, $categoria){
                 $conn = dataBase::connect();
 
@@ -50,6 +54,7 @@ include_once 'config/dataBase.php';
                 $conn->close();
         }
 
+        /* FUNCION QUE CREA UN PRODUCTO PASANDOLE TODOS LOS DATOS POR PARAMETRO */
         public static function createProducto($img,$nombre,$precio,$categoria){
                 $conn = dataBase::connect();
 
@@ -58,7 +63,7 @@ include_once 'config/dataBase.php';
                 $conn->close();
         }
 
-
+        /* FUNCION QUE RETORNA EL NUMERO DE PRODUCTOS QUE HAY EN LA BD SEGÚN SU CATEGORIA, PASADA POR PARAMETRO */
         public static function countProductByCategoria($categoria){
                 $conn = dataBase::connect();
 
@@ -68,6 +73,7 @@ include_once 'config/dataBase.php';
                 return $result->fetch_array()[0];
         }
 
+        /* FUNCION QUE RETORNA UN ARRAY DE TODOS LOS PRODUCTOS EXISTENTES EN LA BD DE UNA CATEGORIA CONCRETA, PASADA POR PARAMETRO */
         public static function getProductByCategoria($categoria){
                 $conn = dataBase::connect();
 

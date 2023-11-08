@@ -6,17 +6,28 @@
 
     class productoController{
 
+        /* PAGINA HOME */
         public function index(){
-            //echo 'Pagina principal pedidos';
+            
+            $p1 = Producto::getProductoById(2);
+            $p2 = Producto::getProductoById(17);
+            $p3 = Producto::getProductoById(8);
+            $p4 = Producto::getProductoById(28);
+
+            $productos = [$p1,$p2,$p3,$p4];
+
             include_once 'view/paginaPrincipal.php';
         }
 
-        public function action(){
-            echo 'Pagina compra pedidos';
+        /* PAGINA DEL CARRITO */
+        public function pedido(){
+
+            include_once 'view/paginaPedido.php';
         }
 
+        /* PAGINA DE LA CARTA */
         public function carta(){
-            //echo 'Pagina carta';
+
             $productos = Producto::getProductos();
             $numAlmuerzos = Producto::countProductByCategoria('Almuerzo');
             $numPara_comer = Producto::countProductByCategoria('Para comer');
@@ -30,17 +41,18 @@
 
             $admin = 0;
             if($admin){
-                include_once 'view/cartaPedido.php';
+                include_once 'view/cartaAdmin.php';
             }else{
                 include_once 'view/cartaPrincipal.php';
             }
-
         }
 
+        /* PAGINA PARA CREAR PRODUCTO (ADMIN) */
         public function crear(){
             include_once 'view/crearProducto.php';
         }
 
+        /* FUNCION QUE CREA EL PRODUCTO Y TE REDIRIJE A LA cartaAdmin */
         public function crearProducto(){
             $img = $_POST['img'];
             $nombre = $_POST['nombre'];
@@ -52,6 +64,7 @@
             header('Location:'.url.'?controller=producto&action=carta');
         }
 
+        /* FUNCION PARA ELIMINAR UN PRODUCTO (ADMIN), TE REDIRIJE A LA cartaAdmin */
         public function eliminar(){
             echo 'ELIMINAR PRODUCTO';
             $id = $_POST['id'];
@@ -60,16 +73,17 @@
             header('Location:'.url.'view/cartaPedido.php');
         }
 
+        /* FUNCION PARA MODIFICAR UN PRODUCTO, EN LA VIEW DE editarProducto */
         public function modificar(){
             $id = $_POST['id'];
 
             $producto = Producto::getProductoById($id);
 
             include_once 'view/editarProducto.php';
-            //header('Location:'.url.'view/editarProducto.php');
-
         }
 
+        /* FUNCION PARA EDITAR EL PRODUCTO CON LOS DATOS ENVIADOS DE LA VISTA editarProducto */
+        /* TE REDIRIJE A LA cartaAdmin */
         public function editProducto(){
     
             $id = $_POST['id'];

@@ -20,7 +20,7 @@
         <section class="mt-5" id="almuerzo">
             <section>
                 <section class="row no_margin">
-                    <img src="img/almuerzo_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <img src="img/almuerzo_top.png" alt="Un café con un croisant" class="col-6 col-md-6 col-lg-3">
                     <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Almuerzo</p></div>
                 </section>
                 <section>
@@ -37,7 +37,7 @@
 
                     <section class="producto d-flex justify-content-between p-2 m-4">
                         <section>
-                            <img src="<?= $producto->img; ?>" alt="" class="imagen_producto">
+                            <img src="<?= $producto->img; ?>" alt="imagen del producto" class="imagen_producto">
                         </section>
                         <section class="d-flex flex-column align-items-end">
                             <p class="nombre_producto"><?= strtoupper($producto->nombre); ?></p>
@@ -59,7 +59,7 @@
                         <form action="" class="bt_pedido">
                             <button class="bt_compra">
                                 <span>+</span>
-                                <img src="icon/paper-bag-white.png" alt="" class="icono_compra">
+                                <img src="icon/paper-bag-white.png" alt="icono de una bolsa de pedidos" class="icono_compra">
                             </button>
                         </form>
                     </section>
@@ -71,7 +71,7 @@
         <section class="mt-5" id="para_comer">
             <section>
                 <section class="row no_margin">
-                    <img src="img/para_comer_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <img src="img/para_comer_top.png" alt="butifarra con alubias" class="col-6 col-md-6 col-lg-3">
                     <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Para comer</p></div>
                 </section>
                 <section>
@@ -88,7 +88,7 @@
 
                     <section class="producto d-flex justify-content-between p-2 m-4">
                         <section>
-                            <img src="<?= $producto->img; ?>" alt="" class="imagen_producto">
+                            <img src="<?= $producto->img; ?>" alt="imagen del producto" class="imagen_producto">
                         </section>
                         <section class="d-flex flex-column align-items-end">
                             <p class="nombre_producto"><?= strtoupper($producto->nombre); ?></p>
@@ -110,7 +110,7 @@
                         <form action="" class="bt_pedido">
                             <button class="bt_compra">
                                 <span>+</span>
-                                <img src="icon/paper-bag-white.png" alt="" class="icono_compra">
+                                <img src="icon/paper-bag-white.png" alt="icono de una bolsa de pedidos" class="icono_compra">
                             </button>
                         </form>
                     </section>
@@ -122,7 +122,7 @@
         <section class="mt-5" id="bebida">
             <section>
                 <section class="row no_margin">
-                    <img src="img/bebida_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <img src="img/bebida_top.png" alt="refrescos" class="col-6 col-md-6 col-lg-3">
                     <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Bebida</p></div>
                 </section>
                 <section>
@@ -139,7 +139,7 @@
 
                     <section class="producto d-flex justify-content-between p-2 m-4">
                         <section>
-                            <img src="<?= $producto->img; ?>" alt="" class="imagen_producto">
+                            <img src="<?= $producto->img; ?>" alt="imagen del producto" class="imagen_producto">
                         </section>
                         <section class="d-flex flex-column align-items-end">
                             <p class="nombre_producto"><?= strtoupper($producto->nombre); ?></p>
@@ -161,7 +161,7 @@
                         <form action="" class="bt_pedido">
                             <button class="bt_compra">
                                 <span>+</span>
-                                <img src="icon/paper-bag-white.png" alt="" class="icono_compra">
+                                <img src="icon/paper-bag-white.png" alt="icono de una bolsa de pedidos" class="icono_compra">
                             </button>
                         </form>
                     </section>
@@ -173,7 +173,7 @@
         <section class="mt-5" id="postre">
             <section>
                 <section class="row no_margin">
-                    <img src="img/postre_top.png" alt="" class="col-6 col-md-6 col-lg-3">
+                    <img src="img/postre_top.png" alt="crema catalana y en segundo palano, 2 neulas, 2 limones y tarro de azucar" class="col-6 col-md-6 col-lg-3">
                     <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50">Postre</p></div>
                 </section>
                 <section>
@@ -190,7 +190,7 @@
 
                     <section class="producto d-flex justify-content-between p-2 m-4">
                         <section>
-                            <img src="<?= $producto->img; ?>" alt="" class="imagen_producto">
+                            <img src="<?= $producto->img; ?>" alt="imagen del producto" class="imagen_producto">
                         </section>
                         <section class="d-flex flex-column align-items-end">
                             <p class="nombre_producto"><?= strtoupper($producto->nombre); ?></p>
@@ -212,7 +212,7 @@
                         <form action="" class="bt_pedido">
                             <button class="bt_compra">
                                 <span>+</span>
-                                <img src="icon/paper-bag-white.png" alt="" class="icono_compra">
+                                <img src="icon/paper-bag-white.png" alt="icono de una bolsa de pedidos" class="icono_compra">
                             </button>
                         </form>
                     </section>
