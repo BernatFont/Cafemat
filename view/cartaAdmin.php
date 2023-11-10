@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Carta Admin</title>
 </head>
 <style>
     img{
         height:50px;
         width:auto;
     }
-
 </style>
 
 <body>
+    <header>
+
+    </header>
+
     <section class="container">
         <section class="row" style="max-height: 80vh; overflow:auto">
             <table class="table table-striped col-8">
@@ -55,8 +58,6 @@
                         </tr> 
                             
                     <?php } ?>
-                        
-                        
             </tbody>
             </table>
         </section>
@@ -66,5 +67,9 @@
             </form>
         </section>
     </section>
+
+    <footer>
+
+    </footer>
 </body>
 </html>

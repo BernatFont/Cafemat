@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'TTRegular';
+    src: url('../fonts/TTCommonsRegular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTBold';
+    src: url('../fonts/TTCommonsBold.otf') format('opentype');
+}
+
+:root{
+    --primary:#ff671f;
+    --secondary:#120949;
+}
+
+main{
+    width: 100%;
+}
+
+h2{
+    font-size: 32px;
+    font-family: 'TTBold',sans-serif;
+    padding: 0 20px 0 20px;
+    border-bottom: 1px solid var(--primary);
+}
+
+.form_login{
+    border-top: 1px solid #000;
+}
+
+label{
+    font-family: 'TTRegular',sans-serif;
+    padding: 5px 0 5px 0;
+    font-size: 14px;
+}
+
+input{
+    padding: 6px 12px 6px 12px;
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+}
+
+.bt{
+    width: 100%;
+    padding: 6px 12px 6px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: var(--primary);
+    color: white;
+    font-family: 'TTRegular',sans-serif;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px, rgba(0, 0, 0, 0.14) 0px 2px 2px, rgba(0, 0, 0, 0.12) 0px 3px 1px -2px;
+}
+
+.ir_registro{
+    border-top: 1px solid #000;
+}
+
+h3{
+    font-size: 19.2px;
+    color: var(--primary);
+    font-family: 'TTRegular',sans-serif;
+}
+
+.form_register{
+    border: 1px solid #bebebe;
+    border-radius: 4px;
+    padding: 16px 8px 16px 8px;
+}
+
+.register_container{
+    width: 500px;
+}
+
+a{
+    text-decoration: none;
+    color:#707070;
+    font-family: 'TTRegular',sans-serif;
+}
+
+span{
+    text-decoration: underline;
+}

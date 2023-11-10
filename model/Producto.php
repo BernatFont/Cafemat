@@ -18,6 +18,7 @@ include_once 'config/dataBase.php';
                 while($producto = $result->fetch_object()){
                         $listaProductos[] = $producto;
                 }
+                //Retorno todos los productos en un array
                 return $listaProductos;
 
         }
@@ -31,6 +32,7 @@ include_once 'config/dataBase.php';
                 $conn->close();
 
                 $producto = $result->fetch_object();
+                //Retornamos el producto pedido por id
                 return $producto;
         }
 

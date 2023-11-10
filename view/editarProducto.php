@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=div, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Editar Producto</title>
 </head>
 <body>
-    <div>
+    <header>
+
+    </header>
+
+    <section>
         <form action="<?= url.'?controller=producto&action=editProducto' ?>" method='post' class="form-group p-5">
             <label for="id">Producto_id</label>
             <input type="hidden" name="id" value=<?= $producto->producto_id ?> class="form-control">
@@ -20,6 +24,11 @@
             <label for="categoria">Categoria</label>
             <input type="text" name="categoria" value=<?= $producto->categoria ?> class="form-control">
             <button class="btn btn-primary mt-3">Enviar</button>
-        </div>
+        </form>
+    </section>
+
+    <footer>
+
+    </footer>
 </body>
 </html>

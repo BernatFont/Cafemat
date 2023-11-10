@@ -6,6 +6,12 @@
 
     class productoController{
 
+        /* PAGINA INICIO SESION */
+        public function inicioSesion(){
+
+            include_once 'view/iniciarSesion.php';
+        }
+
         /* PAGINA HOME */
         public function index(){
             
