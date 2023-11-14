@@ -8,7 +8,7 @@
 
         if (!isset($_GET['controller'])) {
             //Si no se passa nada se mostrara la pagina principal de pedidos
-            header("Location:".url."?controller=producto");
+            header("Location:".url."?controller=usuario");
 
         }else{
             $nombre_controller = $_GET['controller'].'Controller';

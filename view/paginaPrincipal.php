@@ -8,10 +8,6 @@
     <title>Cafemat</title>
 </head>
 <body>
-    <header>
-
-    </header>
-
     <main class="container-fluid">
 
         <section class="banner row">
@@ -29,6 +25,7 @@
         <section class="row sec_1 mx-3">
             <section class="d-flex justify-content-evenly p-5 mt-3  ">
                 <form action="<?= url."?controller=producto&action=carta"?>" method='post'>
+                    <input type="hidden" value='<?= $usuario?>' name='usuario'>
                     <button class="sec_1_bt" id="boton_sec1">
                         <img src="icon/fork.png" alt="icono de un tenedor y una cuchara cruzados" class="sec1_bt_icon">
                         <img src="icon/fork_orange.png" alt="icono de un tenedor y una cuchara cruzados" class="sec1_bt_icon2">
@@ -36,6 +33,7 @@
                     </button>
                 </form>
                 <form action="<?= url."?controller=producto&action=pedido"?>" method='post'>
+                    <input type="hidden" value='<?= $usuario?>' name='usuario'>
                     <button class="sec_1_bt" id="boton2_sec1">
                         <img src="icon/cart.png" alt="icono de una bolsa de pedidos" class="sec1_bt_icon2_1">
                         <img src="icon/paper-bag-orange.png" alt="icono de una bolsa de pedidos" class="sec1_bt_icon2_2">

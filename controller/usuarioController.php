@@ -6,6 +6,7 @@
     class usuarioController{
 
         public function inicioSesion(){
+            include_once 'view/header.php';
 
             include_once 'view/iniciarSesion.php';
         }
@@ -16,7 +17,7 @@
 
             if(Usuario::usuarioExiste($usuario)){
                 if(Usuario::contraCorrecta($usuario,$password)){
-                    header('Location:'.url.'?controller=producto&action=index');
+                    header('Location:'.url.'?controller=producto&action=index&usuario='.$usuario.'');
                 }else{
                     echo 'contraseña incorrecta';
                 }
@@ -27,6 +28,7 @@
 
         /* PAGINA REGISTRO */
         public function registro(){
+            include_once 'view/header.php';
 
             include_once 'view/registroSesion.php';
         }

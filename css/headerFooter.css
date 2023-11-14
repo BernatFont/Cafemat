@@ -1,0 +1,82 @@
+@font-face {
+    font-family: 'TTRegular';
+    src: url('../fonts/TTCommonsRegular.otf') format('opentype');
+}
+
+:root{
+    --primary:#ff671f;
+    --secondary:#120949;
+}
+
+.nav_2{
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+}
+
+.nav_1 div{
+    background-color: var(--primary);
+    height: 52px;
+}
+
+.logo{
+    height: 36px;
+}
+
+.buscador{
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 8px rgba(0,0,0,.2), 0 3px 4px rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
+}
+
+.buscador input{
+    width: 20rem;
+    height: 40px;
+    border: none;
+    font-size: 14px;
+    font-family: 'TTRegular',sans-serif;
+    border-radius: 4px;
+}
+
+.buscador input:focus{
+    outline: none;
+}
+
+.navegador li a{
+    color: var(--secondary);
+    font-family: 'TTRegular',sans-serif;
+}
+
+.icon_p{
+    font-size: 14px;
+    font-family: 'TTRegular',sans-serif;
+    color: #fff;
+}
+
+.icon{
+    background-color: #ffffff00;
+    margin: 0 8px 0 8px;
+    border: none;
+}
+
+.carrito img{
+    height: 27px;
+}
+
+.navbar-tog{
+    padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+    margin: 9px 0 9px 0;
+    font-size: var(--bs-navbar-toggler-font-size);
+    line-height: 1;
+    color: var(--bs-navbar-color);
+    background-color: transparent;
+    border:none;
+}
+
+
+@media (max-width: 670px){
+    .buscador input{
+        width: 18rem;
+    }
+    form p{
+        display: none;
+    }
+}

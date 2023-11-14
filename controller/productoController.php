@@ -2,19 +2,18 @@
 
     include_once 'config/dataBase.php';
     include_once 'model/Producto.php';
+    include_once 'model/Pedido.php';
 
 
     class productoController{
 
-        /* PAGINA INICIO SESION */
-        public function inicioSesion(){
-
-            include_once 'view/iniciarSesion.php';
-        }
-
         /* PAGINA HOME */
         public function index(){
-            
+
+            if(isset($_GET['usuario'])){
+                $usuario = $_GET['usuario'];
+            }
+
             $p1 = Producto::getProductoById(2);
             $p2 = Producto::getProductoById(17);
             $p3 = Producto::getProductoById(8);
@@ -22,13 +21,26 @@
 
             $productos = [$p1,$p2,$p3,$p4];
 
+            include_once 'view/header.php';
+
             include_once 'view/paginaPrincipal.php';
         }
 
         /* PAGINA DEL CARRITO */
         public function pedido(){
+            session_start();
+
+            include_once 'view/header.php';
 
             include_once 'view/paginaPedido.php';
+
+        }
+
+        public function borrarPedido(){
+            session_start();
+
+            session_unset();
+            header('Location:'.url.'?controller=producto&action=pedido');
         }
 
         /* PAGINA DE LA CARTA */
@@ -45,16 +57,22 @@
             $productosBebida = Producto::getProductByCategoria('Bebida');
             $productosPostre = Producto::getProductByCategoria('Postre');
 
+            include_once 'view/header.php';
+            
             $admin = 0;
+
             if($admin){
                 include_once 'view/cartaAdmin.php';
             }else{
                 include_once 'view/cartaPrincipal.php';
             }
+
         }
 
         /* PAGINA PARA CREAR PRODUCTO (ADMIN) */
         public function crear(){
+            include_once 'view/header.php';
+
             include_once 'view/crearProducto.php';
         }
 
@@ -84,6 +102,8 @@
             $id = $_POST['id'];
 
             $producto = Producto::getProductoById($id);
+
+            include_once 'view/header.php';
 
             include_once 'view/editarProducto.php';
         }

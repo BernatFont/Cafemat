@@ -8,11 +8,7 @@
     <title>Carta</title>
 </head>
 <body>
-    <header>
-
-    </header>
-
-    <main class="container-fluid px-4">
+    <main class="container-fluid px-4 mt-3">
         <section id="titulo">
             <h2 class="TTBold_32">CARTA</h2>
         </section>
@@ -56,7 +52,9 @@
                                 <span class="entero_sinIVA"><?= $array_sin_IVA[0]; ?><span class="decimal_sinIVA">.<?= $array_sin_IVA[1]; ?> € sin IVA</span></span>
                             </p>
                         </section>
-                        <form action="" class="bt_pedido">
+                        <form action="<?= url."?controller=producto&action=carta" ?>" class="bt_pedido" method="post">
+                            <input type="hidden" name=producto_id value="<?= $producto->producto_id; ?>">
+                            <input type="hidden" name=usuario value="<?= $usuario; ?>">
                             <button class="bt_compra">
                                 <span>+</span>
                                 <img src="icon/paper-bag-white.png" alt="icono de una bolsa de pedidos" class="icono_compra">
