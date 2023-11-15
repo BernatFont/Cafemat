@@ -16,7 +16,7 @@
                 <img src="icon/lupa.svg" alt="" class="mx-2">
                 <input placeholder="¿Que necesitas hoy?">
             </form>
-            <form class="d-flex align-items-center ms-auto">
+            <form action="<?= url."?controller=usuario&action=inicioSesion" ?>" class="d-flex align-items-center ms-auto" method="post">
                 <button class="icon"><img src="icon/user_icon.svg" alt=""></button>
                 <p class="m-0 icon_p">Mi cuenta</p>
             </form>
@@ -48,10 +48,10 @@
                     <a class="nav-link disabled" disabled href="#">Asesoramiento</a>
                 </li>
                 <li class="nav-item py-1">
-                    <a class="nav-link active campo" href="#">Cafemat</a>
+                    <a class="nav-link active campo" href="<?= url."?controller=producto&action=index"?>">Cafemat</a>
                 </li>
                 <li class="nav-item py-1">
-                    <a class="nav-link active campo" href="#">Carta</a>
+                    <a class="nav-link active campo" href="<?= url."?controller=producto&action=carta"?>">Carta</a>
                 </li>
             </ul>
         </div>

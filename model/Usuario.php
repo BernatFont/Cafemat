@@ -40,6 +40,18 @@ include_once 'config/dataBase.php';
             }
         }
 
+        public static function getUsuarioByUsername($username){
+            $conn = dataBase::connect();
+            //Preparamos consulta
+            $sql = "SELECT * FROM usuario WHERE nombre_usuario = '$username'";
+            $result = $conn->query($sql);
+            $conn->close();
+
+            $usuario = $result->fetch_object();
+            //Retornamos el producto pedido por id
+            return $usuario;
+        }
+
     }
 
 ?>

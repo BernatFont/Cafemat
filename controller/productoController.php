@@ -9,9 +9,11 @@
 
         /* PAGINA HOME */
         public function index(){
-
+            session_start();
             if(isset($_GET['usuario'])){
                 $usuario = $_GET['usuario'];
+
+                $_SESSION['usuario'] = $usuario;
             }
 
             $p1 = Producto::getProductoById(2);
@@ -34,6 +36,24 @@
 
             include_once 'view/paginaPedido.php';
 
+        }
+
+        public function agregarAlPedido(){
+            session_start();
+            //$carrito = 'carrito'.$usuario_id;
+            if(!isset($_SESSION['carrito'])){
+                $_SESSION['carrito'] = array();
+                if(isset($_POST['producto_id'])){
+                    $pedido = new Pedido(Producto::getProductoById($_POST['producto_id']));
+                    $_SESSION['carrito'][0] = $pedido;
+                }
+            }else{
+                if(isset($_POST['producto_id'])){
+                    $pedido = new Pedido(Producto::getProductoById($_POST['producto_id']));
+                }
+                array_push($_SESSION['carrito'],$pedido);
+            }
+            header('Location:'.url.'?controller=producto&action=carta');
         }
 
         public function borrarPedido(){

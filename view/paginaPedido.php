@@ -18,9 +18,10 @@
     
     <?php
 
-        if($_SESSION["usuario"] >= 1 ){
+        if(!isset($_SESSION["carrito"])){
 
-            foreach ($_SESSION["usuario"] as $pedido) {?>
+        }else{
+            foreach ($_SESSION["carrito"] as $pedido) {?>
                 <tr>
                     <td><?= $pedido->producto->producto_id ?></td>
                     <td><?= $pedido->producto->nombre ?></td>
@@ -28,18 +29,17 @@
                     <td><?= $pedido->cantidad ?></td>
                 </tr>
             
-
+    
             <?php
             }
-        } 
+        }
+
     ?>
     </table>
 
     <form action="<?= url."?controller=producto&action=borrarPedido" ?>" method="post">
         <button class="btn btn-danger">Borrar todo el pedido</button>
     </form>
-
-        <?php var_dump($_SESSION['usuario'])?>
 
 </body>
 </html>

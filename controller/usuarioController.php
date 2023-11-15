@@ -8,7 +8,16 @@
         public function inicioSesion(){
             include_once 'view/header.php';
 
-            include_once 'view/iniciarSesion.php';
+            session_start();
+
+            if(empty($_SESSION['usuario'])){
+                include_once 'view/iniciarSesion.php';
+            }else{
+                var_dump($_SESSION['usuario']);
+
+                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
+            }
+
         }
 
         public function validarSesion(){
