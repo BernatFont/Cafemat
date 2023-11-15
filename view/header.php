@@ -17,13 +17,15 @@
                 <input placeholder="¿Que necesitas hoy?">
             </form>
             <form action="<?= url."?controller=usuario&action=inicioSesion" ?>" class="d-flex align-items-center ms-auto" method="post">
-                <button class="icon"><img src="icon/user_icon.svg" alt=""></button>
-                <p class="m-0 icon_p">Mi cuenta</p>
+                <button class="icon d-flex align-items-center"><img src="icon/user_icon.svg" alt="">
+                <p class="m-0 ms-2 icon_p">Mi cuenta</p>
+            </button>
             </form>
             <form action="<?= url."?controller=producto&action=pedido" ?>"  class="d-flex carrito align-items-center mx-3" method="post">
-                <button class="icon">
-                    <img src="icon/paper-bag-white.png" alt=""></button>
-                <p class="m-0 icon_p">Pedido</p>
+                <button class="icon d-flex align-items-center">
+                    <img src="icon/paper-bag-white.png" alt="">
+                    <p class="m-0 ms-2 icon_p">Pedido</p>
+                </button>
             </form>
         </div>
         </nav>
@@ -47,11 +49,11 @@
                 <li class="nav-item py-1">
                     <a class="nav-link disabled" disabled href="#">Asesoramiento</a>
                 </li>
-                <li class="nav-item py-1">
-                    <a class="nav-link active campo" href="<?= url."?controller=producto&action=index"?>">Cafemat</a>
+                <li class="nav-item py-1 campo">
+                    <a class="nav-link active" href="<?= url."?controller=producto&action=index"?>">Cafemat</a>
                 </li>
-                <li class="nav-item py-1">
-                    <a class="nav-link active campo" href="<?= url."?controller=producto&action=carta"?>">Carta</a>
+                <li class="nav-item py-1 campo">
+                    <a class="nav-link active" href="<?= url."?controller=producto&action=carta"?>">Carta</a>
                 </li>
             </ul>
         </div>

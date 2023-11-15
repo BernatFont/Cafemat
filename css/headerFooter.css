@@ -61,6 +61,14 @@
     height: 27px;
 }
 
+.campo a{
+    color:#120949 !important;
+}
+
+.campo:hover{
+    background-color: #EAE9EE;
+}
+
 .navbar-tog{
     padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
     margin: 9px 0 9px 0;
@@ -72,7 +80,7 @@
 }
 
 
-@media (max-width: 670px){
+@media (max-width: 680px){
     .buscador input{
         width: 18rem;
     }
