@@ -7,7 +7,7 @@
     <title>Carta Admin</title>
 </head>
 <style>
-    img{
+    .product_img{
         height:50px;
         width:auto;
     }
@@ -28,6 +28,7 @@
                     <th scope="col">NOMBRE</th>
                     <th scope="col">PRECIO</th>
                     <th scope="col">CATEGORIA</th>
+                    <th scope="col">CATEGORIA_ID</th>
                     <th scope="col">EDIT</th>
                     <th scope="col">DELETE</th>
                 </tr>
@@ -39,10 +40,11 @@
             
                          <tr>
                             <td><?= $producto->producto_id; ?></td>
-                            <td><img src="<?= $producto->img; ?>" alt=""></td>
+                            <td><img src="<?= $producto->img; ?>" alt="" class="product_img"></td>
                             <td><?=  $producto->nombre; ?></td>
                             <td><?=  $producto->precio.'€'; ?></td>
                             <td><?=  $producto->categoria; ?></td>
+                            <td><?=  $producto->categoria_id; ?></td>
                             <td>
                                 <form action="<?= url."?controller=producto&action=modificar" ?>" method="post">
                                     <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >

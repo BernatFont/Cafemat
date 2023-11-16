@@ -26,6 +26,8 @@
             include_once 'view/header.php';
 
             include_once 'view/paginaPrincipal.php';
+
+            include_once 'view/footer.php';
         }
 
         /* PAGINA DEL CARRITO */
@@ -33,9 +35,10 @@
             session_start();
 
             include_once 'view/header.php';
-
+            
             include_once 'view/paginaPedido.php';
-
+            
+            include_once 'view/footer.php';
         }
 
         public function agregarAlPedido(){
@@ -78,8 +81,8 @@
             $productosPostre = Producto::getProductByCategoria('Postre');
 
             include_once 'view/header.php';
-            
-            $admin = 0;
+
+            $admin = 1;
 
             if($admin){
                 include_once 'view/cartaAdmin.php';
