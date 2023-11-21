@@ -1,0 +1,45 @@
+@font-face {
+    font-family: 'TTRegular';
+    src: url('../fonts/TTCommonsRegular.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTBold';
+    src: url('../fonts/TTCommonsBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTMedium';
+    src: url('../fonts/TTCommonsMedium.otf') format('opentype');
+}
+
+:root{
+    --primary:#ff671f;
+    --secondary:#120949;
+}
+
+.titulo{
+    width: 100%;
+    border-bottom: 1px solid var(--primary);
+}
+
+.titulo h2{
+    font-size: 32px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.acount_logo{
+    height: 100px;
+    width: 100px;
+}
+
+.datos form{
+    width: 420px;
+}
+
+.datos form input{
+    font-family: 'TTRegular',sans-serif;
+}
+
+.datos form label{
+    font-family: 'TTMedium',sans-serif;
+}
+

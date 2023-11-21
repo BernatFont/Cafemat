@@ -13,11 +13,12 @@
             if(empty($_SESSION['usuario'])){
                 include_once 'view/iniciarSesion.php';
             }else{
-                var_dump($_SESSION['usuario']);
-
                 $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
+
+                include_once 'view/paginaUsuario.php';
             }
 
+            include_once 'view/footer.php';
         }
 
         public function validarSesion(){
@@ -40,6 +41,8 @@
             include_once 'view/header.php';
 
             include_once 'view/registroSesion.php';
+
+            include_once 'view/footer.php';
         }
 
         public function crearUsuario(){
@@ -60,6 +63,16 @@
                 /* redirigimos a la pagina de iniciar sesion */
                 header('Location:'.url.'?controller=usuario&action=inicioSesion');
             }
+        }
+
+        public function cerrarCuenta(){
+            session_start();
+
+            session_unset();
+
+            session_destroy();
+
+            header('Location:'.url.'?controller=producto&action=index');
         }
 
     }

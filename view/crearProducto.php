@@ -20,7 +20,14 @@
             <label for="precio">Precio</label>
             <input type="text" pattern="^\d+(\.\d+)?$" name="precio" class="form-control" placeholder="5.50">
             <label for="categoria">Categoria</label>
-            <input type="text" name="categoria" class="form-control" placeholder="Para comer">
+            <select name="categoria" class="form-select">
+                <?php
+                    foreach($categorias as $categoria){?>
+
+                        <option value="<?= $categoria->categoria_id ?>"><?= $categoria->nombre ?></option>
+
+                <?php } ?>
+            </select>
             <button class="btn btn-primary mt-3">Enviar</button>
         </form>
     </section>

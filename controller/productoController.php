@@ -11,8 +11,12 @@
         public function index(){
             session_start();
             if(isset($_GET['usuario'])){
+                
+                if(isset($_SESSION['carrito'])){
+                    session_unset();
+                }
+                
                 $usuario = $_GET['usuario'];
-
                 $_SESSION['usuario'] = $usuario;
             }
 
@@ -33,6 +37,27 @@
         /* PAGINA DEL CARRITO */
         public function pedido(){
             session_start();
+
+            if(isset($_POST['borrar'])){
+                unset($_SESSION["carrito"][$_POST['borrar']]);
+                //Reindexamos el array por que sino causa conflicto
+                $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
+
+            }elseif(isset($_POST['add'])){
+                $prod = $_SESSION["carrito"][$_POST['add']];
+                $prod->setCantidad($prod->getCantidad()+1);
+
+            }elseif(isset($_POST['remove'])){
+                $prod = $_SESSION["carrito"][$_POST['remove']];
+
+                if($prod->getCantidad() == 1){
+                    unset($_SESSION["carrito"][$_POST['remove']]);
+                    $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
+
+                }else{
+                    $prod->setCantidad($prod->getCantidad()-1);
+                }
+            }
 
             include_once 'view/header.php';
             
@@ -70,33 +95,43 @@
         public function carta(){
 
             $productos = Producto::getProductos();
-            $numAlmuerzos = Producto::countProductByCategoria('Almuerzo');
-            $numPara_comer = Producto::countProductByCategoria('Para comer');
-            $numBebida = Producto::countProductByCategoria('Bebida');
-            $numPostre = Producto::countProductByCategoria('Postre');
+            $numAlmuerzos = Producto::countProductByCategoria(1);
+            $numPara_comer = Producto::countProductByCategoria(2);
+            $numBebida = Producto::countProductByCategoria(3);
+            $numPostre = Producto::countProductByCategoria(4);
 
-            $productosAlmuerzo = Producto::getProductByCategoria('Almuerzo');
-            $productosPara_comer = Producto::getProductByCategoria('Para comer');
-            $productosBebida = Producto::getProductByCategoria('Bebida');
-            $productosPostre = Producto::getProductByCategoria('Postre');
+            $productosAlmuerzo = Producto::getProductByCategoria(1);
+            $productosPara_comer = Producto::getProductByCategoria(2);
+            $productosBebida = Producto::getProductByCategoria(3);
+            $productosPostre = Producto::getProductByCategoria(4);
 
             include_once 'view/header.php';
 
-            $admin = 1;
+            include_once 'view/cartaPrincipal.php';
 
-            if($admin){
-                include_once 'view/cartaAdmin.php';
-            }else{
-                include_once 'view/cartaPrincipal.php';
-            }
+            include_once 'view/footer.php';
+        }
 
+        public function panelControlAdmin(){
+            $productos = Producto::getProductos();
+
+            include_once 'view/header.php';
+
+            include_once 'view/cartaAdmin.php';
+
+            include_once 'view/footer.php';
         }
 
         /* PAGINA PARA CREAR PRODUCTO (ADMIN) */
         public function crear(){
+
+            $categorias = Producto::getCategorias();
+
             include_once 'view/header.php';
 
             include_once 'view/crearProducto.php';
+
+            include_once 'view/footer.php';
         }
 
         /* FUNCION QUE CREA EL PRODUCTO Y TE REDIRIJE A LA cartaAdmin */
@@ -125,10 +160,13 @@
             $id = $_POST['id'];
 
             $producto = Producto::getProductoById($id);
+            $categorias = Producto::getCategorias();
 
             include_once 'view/header.php';
 
             include_once 'view/editarProducto.php';
+
+            include_once 'view/footer.php';
         }
 
         /* FUNCION PARA EDITAR EL PRODUCTO CON LOS DATOS ENVIADOS DE LA VISTA editarProducto */

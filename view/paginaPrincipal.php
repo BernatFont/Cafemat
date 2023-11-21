@@ -44,7 +44,7 @@
         </section>
 
         <section class="sec_2 d-flex flex-column align-items-center mx-3">
-            <h2>Categorías</h2>
+            <h2 class="my-4">Categorías</h2>
             <section class="container-fluid d-flex justify-content-evenly flex-wrap categorias">
                 <section class="cat1">
                     <section class="pt-1 ps-2">
@@ -82,7 +82,7 @@
         </section>
 
         <section class="d-flex flex-column align-items-center mx-5">
-            <h2>Productos destacados</h2>
+            <h2 class="mt-4">Productos destacados</h2>
             <section class="container-fluid d-flex justify-content-evenly flex-wrap destacados">
                 
                 <?php
@@ -91,7 +91,7 @@
                             <section class="d-flex justify-content-center">
                                 <img src="<?= $producto->img ?>" alt="">
                             </section>
-                            <section class="producto_destacado_bottom d-flex flex-column">
+                            <section class="mb-4 producto_destacado_bottom d-flex flex-column">
                                 <p class="my-3"><?= strtoupper($producto->nombre) ?></p>
                                 
                                 <?php 

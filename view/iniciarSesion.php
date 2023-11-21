@@ -12,7 +12,7 @@
 
     </header>
 
-    <main class="mt-4 d-flex justify-content-center">
+    <main class="mt-4 mb-5 d-flex justify-content-center">
         <section class="d-flex flex-column">
             <section>
                 <h2 class="mb-5">¿Tienes ya una cuenta CAFEMAT?</h2>

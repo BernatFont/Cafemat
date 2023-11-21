@@ -57,7 +57,7 @@
                 <a href="#"><img src="icon/youtube.svg" alt="" class="me-4"></a>
             </section>
         </secton>
-        <secton class="row mt-5 pb-3">
+        <secton class="row mt-5 pb-2">
             <section class="avisos_footer d-flex col-12 justify-content-center flex-wrap">
                 <a href="">Aviso legal</a>
                 <a href="">Política de privacidad</a>

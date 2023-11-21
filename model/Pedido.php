@@ -48,6 +48,10 @@
 
                 return $this;
         }
+
+        public function precioTotalProducto($precio){
+                return number_format(($precio * $this->cantidad), 2);
+        }
     }
 
 ?>

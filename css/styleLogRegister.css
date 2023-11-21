@@ -71,12 +71,12 @@ h3{
     width: 500px;
 }
 
-a{
-    text-decoration: none;
-    color:#707070;
+.redirigir_inicio{
     font-family: 'TTRegular',sans-serif;
+    color: #707070;
+    text-decoration: none;
 }
 
-span{
+.redirigir_inicio span{
     text-decoration: underline;
 }

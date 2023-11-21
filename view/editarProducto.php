@@ -22,7 +22,14 @@
             <label for="precio">Precio</label>
             <input type="text" pattern="^\d+(\.\d+)?$" name="precio" value=<?= $producto->precio ?> class="form-control">
             <label for="categoria">Categoria</label>
-            <input type="text" name="categoria" value=<?= $producto->categoria ?> class="form-control">
+            <select name="categoria" class="form-select">
+                <?php
+                    foreach($categorias as $categoria){?>
+
+                        <option value="<?= $categoria->categoria_id ?>"><?= $categoria->nombre ?></option>
+
+                <?php } ?>
+            </select>
             <button class="btn btn-primary mt-3">Enviar</button>
         </form>
     </section>

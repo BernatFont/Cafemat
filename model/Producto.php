@@ -9,7 +9,12 @@ include_once 'config/dataBase.php';
 
                 $conn = dataBase::connect();
                 //Consulta para obtener todos los productos
-                $sql = 'SELECT * FROM producto';
+
+                $sql = 'SELECT producto.producto_id, producto.img, producto.nombre, producto.precio, categoria.nombre AS categoria_nombre
+                FROM producto
+                INNER JOIN categoria ON producto.categoria_id = categoria.categoria_id'; 
+
+                /* $sql = 'SELECT * FROM producto'; */
                 $result = $conn->query($sql);
                 $conn->close();
 
@@ -51,7 +56,7 @@ include_once 'config/dataBase.php';
                 $conn = dataBase::connect();
 
                 //Preparamos consulta
-                $sql = "UPDATE producto SET producto_id='$id', img='$img', nombre='$nombre', precio='$precio', categoria='$categoria' WHERE producto_id=$id";
+                $sql = "UPDATE producto SET producto_id='$id', img='$img', nombre='$nombre', precio='$precio', categoria_id='$categoria' WHERE producto_id=$id";
                 $result = $conn->query($sql);
                 $conn->close();
         }
@@ -65,11 +70,23 @@ include_once 'config/dataBase.php';
                 $conn->close();
         }
 
+        public static function getCategorias(){
+                $conn = dataBase::connect();
+
+                $sql = 'SELECT * FROM categoria';
+                $result = $conn->query($sql);
+                $listaCategorias = [];
+                while($categoria = $result->fetch_object()){
+                        $listaCategorias[] = $categoria;
+                }
+                return $listaCategorias;
+        }
+
         /* FUNCION QUE RETORNA EL NUMERO DE PRODUCTOS QUE HAY EN LA BD SEGÚN SU CATEGORIA, PASADA POR PARAMETRO */
         public static function countProductByCategoria($categoria){
                 $conn = dataBase::connect();
 
-                $sql = "SELECT COUNT(*) FROM producto WHERE categoria = '$categoria'";
+                $sql = "SELECT COUNT(*) FROM producto WHERE categoria_id = '$categoria'";
                 $result = $conn->query($sql);
                 $conn->close();
                 return $result->fetch_array()[0];
@@ -79,7 +96,7 @@ include_once 'config/dataBase.php';
         public static function getProductByCategoria($categoria){
                 $conn = dataBase::connect();
 
-                $sql = "SELECT * FROM producto WHERE categoria = '$categoria'";
+                $sql = "SELECT * FROM producto WHERE categoria_id = '$categoria'";
                 $result = $conn->query($sql);
                 $conn->close();
                 //Almaceno el resultado en una array

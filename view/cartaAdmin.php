@@ -14,13 +14,9 @@
 </style>
 
 <body>
-    <header>
-
-    </header>
-
-    <section class="container">
-        <section class="row" style="max-height: 80vh; overflow:auto">
-            <table class="table table-striped col-8">
+    <section class="container mt-4">
+        <section class="row" style="max-height: 70vh; overflow:auto">
+            <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -28,7 +24,6 @@
                     <th scope="col">NOMBRE</th>
                     <th scope="col">PRECIO</th>
                     <th scope="col">CATEGORIA</th>
-                    <th scope="col">CATEGORIA_ID</th>
                     <th scope="col">EDIT</th>
                     <th scope="col">DELETE</th>
                 </tr>
@@ -43,8 +38,7 @@
                             <td><img src="<?= $producto->img; ?>" alt="" class="product_img"></td>
                             <td><?=  $producto->nombre; ?></td>
                             <td><?=  $producto->precio.'€'; ?></td>
-                            <td><?=  $producto->categoria; ?></td>
-                            <td><?=  $producto->categoria_id; ?></td>
+                            <td><?=  $producto->categoria_nombre; ?></td>
                             <td>
                                 <form action="<?= url."?controller=producto&action=modificar" ?>" method="post">
                                     <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
@@ -63,15 +57,11 @@
             </tbody>
             </table>
         </section>
-        <section class="row">
+        <section class="row mb-5 mt-4">
             <form action="<?= url."?controller=producto&action=crear"?>" method='post'>
                 <button class='btn btn-success'>Crear producto</button>
             </form>
         </section>
     </section>
-
-    <footer>
-
-    </footer>
 </body>
 </html>
