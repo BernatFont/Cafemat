@@ -143,7 +143,7 @@
 
             Producto::createProducto($img,$nombre,$precio,$categoria);
 
-            header('Location:'.url.'?controller=producto&action=carta');
+            header('Location:'.url.'?controller=producto&action=panelControlAdmin');
         }
 
         /* FUNCION PARA ELIMINAR UN PRODUCTO (ADMIN), TE REDIRIJE A LA cartaAdmin */
@@ -152,7 +152,7 @@
             $id = $_POST['id'];
 
             Producto::deleteProducto($id);
-            header('Location:'.url.'view/cartaPedido.php');
+            header('Location:'.url.'view/cartaAdmin.php');
         }
 
         /* FUNCION PARA MODIFICAR UN PRODUCTO, EN LA VIEW DE editarProducto */
@@ -181,7 +181,7 @@
     
             Producto::updateProducto($id, $img, $nombre, $precio, $categoria);
 
-            header('Location:'.url.'?controller=producto&action=carta');
+            header('Location:'.url.'?controller=producto&action=panelControlAdmin');
         }
         
     }

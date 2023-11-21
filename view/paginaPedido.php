@@ -36,9 +36,9 @@
             foreach ($_SESSION["carrito"] as $pedido) {?>
                 
                 <tr>
-                    <td><?= $pedido->producto->producto_id ?></td>
-                    <td><?= $pedido->producto->nombre ?></td>
-                    <td><?= $pedido->producto->precio.'€'?></td>
+                    <td><?= $pedido->getProducto()->producto_id ?></td>
+                    <td><?= $pedido->getProducto()->nombre ?></td>
+                    <td><?= $pedido->getProducto()->precio.'€'?></td>
                     <td>
                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post" class="cantidad">
                             <button name="add" value="<?= $pos ?>"><img src="icon/plus.png" alt=""></button>
@@ -46,7 +46,7 @@
                             <button name="remove" value="<?= $pos ?>"><img src="icon/minus.png" alt=""></button>
                         </form>
                     </td>
-                    <td><?= $pedido->precioTotalProducto($pedido->producto->precio).'€'?></td>
+                    <td><?= $pedido->precioTotalProducto($pedido->getProducto()->precio).'€'?></td>
                     <td>
                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post">
                             <input type="hidden" name="borrar" value="<?= $pos ?>">

@@ -29,10 +29,18 @@
                 if(Usuario::contraCorrecta($usuario,$password)){
                     header('Location:'.url.'?controller=producto&action=index&usuario='.$usuario.'');
                 }else{
-                    echo 'contraseña incorrecta';
+                    $mensaje = 'Contraseña incorrecta.';
+
+                    include_once 'view/header.php';
+                    include_once 'view/iniciarSesion.php';
+                    include_once 'view/footer.php';
                 }
             }else{
-                echo 'usuario incorrecto';
+                $mensaje = 'Usuario inexistente.';
+                
+                include_once 'view/header.php';
+                include_once 'view/iniciarSesion.php';
+                include_once 'view/footer.php';
             }
         }
 
@@ -51,7 +59,11 @@
             /* si el usuario existe entra en el if */
             /* se comprueba en la funcion usuarioExiste de la clase Usuario pasandole el usuario recivido por post */
             if(Usuario::usuarioExiste($usuario)){
-                echo 'el usuario existe, pon otro nombre de usuario';
+                $mensaje = 'Usuario existente, prueba con otro.';
+                
+                include_once 'view/header.php';
+                include_once 'view/registroSesion.php';
+                include_once 'view/footer.php';
             }else{
                 $nombre = $_POST['nombre'];
                 $apellido = $_POST['apellido'];

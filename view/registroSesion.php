@@ -15,6 +15,9 @@
     <main class="mt-4 d-flex justify-content-center">
         <section class="register_container d-flex flex-column">
             <h2 class="mb-5 text-center">Crea tu cuenta</h2>
+            <?php if(isset($mensaje)){?>
+                <div class="alert alert-danger"><?= $mensaje ?></div>
+            <?php } ?>
             <form action="<?= url.'?controller=usuario&action=crearUsuario'?>" method="post" class="form_register d-flex flex-column">
                 <label for="nombre">Nombre</label>
                 <input type="text" name="nombre" class="mb-3">

@@ -2,8 +2,8 @@
 
     class Pedido{
 
-        public $producto;
-        public $cantidad = 1;
+        private $producto;
+        private $cantidad = 1;
 
         public function __construct($producto){
             $this->producto = $producto;

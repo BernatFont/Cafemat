@@ -16,6 +16,9 @@
         <section class="d-flex flex-column">
             <section>
                 <h2 class="mb-5">¿Tienes ya una cuenta CAFEMAT?</h2>
+                <?php if(isset($mensaje)){?>
+                    <div class="alert alert-danger"><?= $mensaje ?></div>
+                <?php } ?>
                 <form action="<?= url.'?controller=usuario&action=validarSesion'?>" method='post' class="form_login d-flex flex-column">
                     <label for="usuario">*Usuario</label>
                     <input type="text" name="usuario" requiered class="mb-3">
