@@ -3,6 +3,7 @@
     include_once 'config/dataBase.php';
     include_once 'model/Producto.php';
     include_once 'model/Pedido.php';
+    include_once 'utils/CalculadoraPrecios.php';
 
 
     class productoController{

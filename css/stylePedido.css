@@ -2,10 +2,24 @@
     font-family: 'TTRegular';
     src: url('../fonts/TTCommonsRegular.otf') format('opentype');
 }
+@font-face {
+    font-family: 'TTBold';
+    src: url('../fonts/TTCommonsBold.otf') format('opentype');
+}
+@font-face {
+    font-family: 'TTMedium';
+    src: url('../fonts/TTCommonsMedium.otf') format('opentype');
+}
+
 
 :root{
     --primary:#ff671f;
     --secondary:#120949;
+}
+
+.titulo{
+    width: 100%;
+    border-bottom: 1px solid var(--primary);
 }
 
 .nada_seleccionado h2{
@@ -23,6 +37,47 @@
 .nada_seleccionado p a{
     text-decoration: none;
     color: var(--primary);
+}
+
+.titulo h2{
+    font-size: 32px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.titulo section img{
+    height: 24px;
+}
+
+.paper_been{
+    background-color: #ffffff00;
+    border: none;
+}
+
+.table tr th{
+    font-size: 18px;
+    font-family: 'TTMedium',sans-serif;
+    color: var(--primary);
+}
+
+table tr td{
+    font-size: 14px;
+    font-family: 'TTRegular',sans-serif;
+}
+
+.cantidad{
+    width: 152px;
+}
+
+.imagen_producto{
+    height: 100px;
+    width: 110px;
+}
+
+.nombre_producto{
+    font-size: 20px;
+    font-family: 'TTRegular',sans-serif;
+    height: 80px;
+    border-left: 1px solid rgba(0,0,0,.12);
 }
 
 .bt_eliminarProducto{
@@ -45,4 +100,34 @@
     border-radius: 4px;
     border:1px solid rgba(0,0,0,.24);
     text-align: right;
+}
+
+.metodo_pago{
+    box-shadow: 0 1px 5px rgba(0,0,0,.2), 0 2px 2px rgba(0,0,0,.14), 0 3px 1px -2px rgba(0,0,0,.12);
+    border-radius: 4px;
+}
+
+.metodo_pago h3{
+    border-bottom: 1px solid rgba(0,0,0,.12);
+}
+
+.metodo_pago label img, .metodo_pago label input{
+    height: 24px;
+    width: 24px;
+}
+
+@media (max-width: 792px){
+    .imagen_producto{
+        display: none;
+    }
+
+    .nombre_producto{
+        border-left: none;
+    }
+}
+
+@media (max-width: 600px){
+    .nombre_producto{
+        font-size: 16px;
+    }
 }
