@@ -20,7 +20,7 @@
                 <p class="m-0 ms-2 icon_p">Mi cuenta</p>
             </button>
             </form>
-            <form action="<?= url."?controller=producto&action=pedido" ?>"  class="d-flex carrito align-items-center mx-3" method="post">
+            <form action="<?= url."?controller=producto&action=pedido" ?>"  class="d-flex carrito align-items-center" method="post">
                 <button class="icon d-flex align-items-center">
                     <img src="icon/paper-bag-white.png" alt="">
                     <p class="m-0 ms-2 icon_p">Pedido</p>

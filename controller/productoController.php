@@ -78,9 +78,14 @@
                 }
             }else{
                 if(isset($_POST['producto_id'])){
-                    $pedido = new Pedido(Producto::getProductoById($_POST['producto_id']));
+                    if(Pedido::productoExisteEnPedido($_SESSION['carrito'],$_POST['producto_id'])){
+                        /*en la misma funcion donde se comprueba si existe el producto en el carrito,
+                        si retorna true (entra en el if), se le suma 1 directamente*/
+                    }else{
+                        $pedido = new Pedido(Producto::getProductoById($_POST['producto_id']));
+                        array_push($_SESSION['carrito'],$pedido);
+                    }
                 }
-                array_push($_SESSION['carrito'],$pedido);
             }
             header('Location:'.url.'?controller=producto&action=carta');
         }

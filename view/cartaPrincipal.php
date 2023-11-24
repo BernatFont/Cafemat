@@ -28,7 +28,6 @@
             </section>
             <section class="seccion_productos d-flex justify-content-center flex-wrap mt-5">
             <?php
-        
                 foreach ($productosAlmuerzo as $producto) {?>
 
                     <section class="producto d-flex justify-content-between p-2 m-4">
