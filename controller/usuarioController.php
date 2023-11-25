@@ -14,6 +14,7 @@
                 include_once 'view/iniciarSesion.php';
             }else{
                 $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
+                $pedidos_usuario = Usuario::getPedidosUsuario($_SESSION['usuario']);
 
                 include_once 'view/paginaUsuario.php';
             }

@@ -15,7 +15,7 @@
 
             <section class="d-flex flex-column align-items-center my-5 nada_seleccionado">
                 <h2>No has seleccionado ningún producto</h2>
-                <p>Si quieres segir comprando, por favor haz clic <a href="<?= url."?controller=producto&action=carta"?>">aqui</a>.</p>
+                <p>Si quieres realizar un pedido, por favor haz clic <a href="<?= url."?controller=producto&action=carta"?>">aqui</a>.</p>
             </section>
 
         <?php }else{ ?>
@@ -41,6 +41,9 @@
                         </tr>
 
                         <?php 
+                        if(isset($mensaje)){?>
+                            <div class="alert alert-warning"><?= $mensaje ?></div>
+                        <?php } 
                         $pos = 0;
                         foreach ($_SESSION["carrito"] as $pedido) {?>
                                 <tr>

@@ -19,7 +19,12 @@ include_once 'utils/CalculadoraPrecios.php';
     
                 header('Location:'.url.'?controller=producto&action=index');
             }else{
-                echo "inicia sesion tt";
+                $mensaje = "Para validar el pedido, inicia sesión.";
+                include_once 'view/header.php';
+            
+                include_once 'view/paginaPedido.php';
+            
+                include_once 'view/footer.php';
             }
         }
     }

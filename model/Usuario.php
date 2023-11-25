@@ -52,6 +52,27 @@ include_once 'config/dataBase.php';
             return $usuario;
         }
 
+        public static function getPedidosUsuario($username){
+            $conn = dataBase::connect();
+
+            $sql_user_id = "SELECT usuario_id FROM usuario WHERE nombre_usuario = '$username'";
+            $result = $conn->query($sql_user_id);
+            $usuario_id = $result->fetch_object();
+            $usuario_id = $usuario_id->usuario_id;
+            $sql = "SELECT * FROM pedido WHERE usuario_id = '$usuario_id'";
+            $result = $conn->query($sql);
+
+            //Almaceno el resultado de la consulta en una array
+            $listaPedidos = [];
+            while($producto = $result->fetch_object()){
+                    $listaPedidos[] = $producto;
+            }
+            /*Retorno todos los pedidos realizados por el
+            usuario pasado por parametroen un array*/
+            return $listaPedidos;
+
+        }
+
     }
 
 ?>

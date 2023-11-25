@@ -43,6 +43,10 @@
     color: var(--primary);
 }
 
+.nada_seleccionado p a:hover{
+    text-decoration: underline;
+}
+
 .titulo h2{
     font-size: 32px;
     font-family: 'TTBold',sans-serif;

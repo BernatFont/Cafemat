@@ -43,3 +43,22 @@
     font-family: 'TTMedium',sans-serif;
 }
 
+.aqui{
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.aqui:hover{
+    text-decoration: underline;
+}
+
+th{
+    font-size: 20px;
+    font-family: 'TTMedium',sans-serif;
+    color: var(--primary);
+}
+
+tD{
+    font-family: 'TTRegular',sans-serif;
+}
+
