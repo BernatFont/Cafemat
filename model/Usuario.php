@@ -73,6 +73,13 @@ include_once 'config/dataBase.php';
 
         }
 
+        public static function modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra){
+            $conn = dataBase::connect();
+
+            $sql = "UPDATE usuario SET nombre = '$nombre', apellido = '$apellido', correo = '$correo', nombre_usuario = '$usuario', contraseña = '$contra' WHERE usuario_id = '$id'";
+            $conn->query($sql);
+        }
+
     }
 
 ?>

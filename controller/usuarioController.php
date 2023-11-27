@@ -13,6 +13,20 @@
             if(empty($_SESSION['usuario'])){
                 include_once 'view/iniciarSesion.php';
             }else{
+                /* si en el panel de usuario le damos al boton de 'modificar usuario',
+                entra en el if */
+                if(isset($_POST['modificar_usuario'])){
+                    $id = $_POST['id'];
+                    $nombre = $_POST['nombre'];
+                    $apellido = $_POST['apellido'];
+                    $correo = $_POST['correo'];
+                    $usuario = $_POST['usuario'];
+                    $contra = $_POST['contra'];
+
+                    Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra);
+                    $usuario_modificado = 'Usuario modificado correctamente';
+                }
+                
                 $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
                 $pedidos_usuario = Usuario::getPedidosUsuario($_SESSION['usuario']);
 

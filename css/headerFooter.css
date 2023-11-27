@@ -127,7 +127,7 @@
     .buscador input{
         width: 18rem;
     }
-    form p{
+    .icon_p{
         display: none;
     }
 }
