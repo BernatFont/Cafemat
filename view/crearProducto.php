@@ -12,7 +12,7 @@
     </header>
 
     <section>
-        <form action="<?= url.'?controller=producto&action=crearProducto' ?>" method='post' class="form-group p-5">
+        <form action="<?= url.'?controller=producto&action=panelControlAdmin' ?>" method='post' class="form-group p-5">
             <label for="IMG">URL de la IMG</label>
             <input type="text" name="img" class="form-control" placeholder="img/bocadillo1.png">
             <label for="nombre">Nombre</label>
@@ -28,7 +28,7 @@
 
                 <?php } ?>
             </select>
-            <button class="btn btn-primary mt-3">Enviar</button>
+            <button class="btn btn-primary mt-3" name="crear_producto">Enviar</button>
         </form>
     </section>
 

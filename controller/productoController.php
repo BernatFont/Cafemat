@@ -101,15 +101,22 @@
         public function carta(){
 
             $productos = Producto::getProductos();
-            $numAlmuerzos = Producto::countProductByCategoria(1);
-            $numPara_comer = Producto::countProductByCategoria(2);
-            $numBebida = Producto::countProductByCategoria(3);
-            $numPostre = Producto::countProductByCategoria(4);
+            $num_categorias = Producto::getNumCategorias();
+            $num_productos = [];
+            $categorias = [];
+            $contenido_categoria = [];
 
-            $productosAlmuerzo = Producto::getProductByCategoria(1);
-            $productosPara_comer = Producto::getProductByCategoria(2);
-            $productosBebida = Producto::getProductByCategoria(3);
-            $productosPostre = Producto::getProductByCategoria(4);
+            for ($i=1; $i <= $num_categorias; $i++) { 
+                $numProdCat = Producto::countProductByCategoria($i);
+                array_push($num_productos,$numProdCat);
+
+                $productosCat = Producto::getProductByCategoria($i);
+                array_push($categorias,$productosCat);
+                
+                $contenidoCat = Producto::getContenidoCategoria($i);
+                array_push($contenido_categoria,$contenidoCat);
+
+            }
 
             include_once 'view/header.php';
 
@@ -119,6 +126,35 @@
         }
 
         public function panelControlAdmin(){
+
+            /* FUNCION PARA EDITAR EL PRODUCTO CON LOS DATOS ENVIADOS DE LA VISTA editarProducto */
+            if(isset($_POST['editar_producto'])){
+                $id = $_POST['id'];
+                $img = $_POST['img'];
+                $nombre = $_POST['nombre'];
+                $precio = number_format($_POST['precio'],2);
+                $categoria = $_POST['categoria'];
+        
+                Producto::updateProducto($id, $img, $nombre, $precio, $categoria);
+            }
+
+            /* FUNCION QUE CREA EL PRODUCTO */
+            if(isset($_POST['crear_producto'])){
+                $img = $_POST['img'];
+                $nombre = $_POST['nombre'];
+                $precio = number_format($_POST['precio'],2);
+                $categoria = $_POST['categoria'];
+
+            Producto::createProducto($img,$nombre,$precio,$categoria);
+            }
+
+            /*SI LE DAMOS AL BOTON DE ELIMINAR UN PRODUCTO, SE RECIVE
+            POR POST Y SE ELIMINA DENTRO DE ESTE IF */
+            if(isset($_POST['eliminar_producto'])){
+                $id = $_POST['id'];
+
+                Producto::deleteProducto($id);
+            }
             $productos = Producto::getProductos();
 
             include_once 'view/header.php';
@@ -140,27 +176,6 @@
             include_once 'view/footer.php';
         }
 
-        /* FUNCION QUE CREA EL PRODUCTO Y TE REDIRIJE A LA cartaAdmin */
-        public function crearProducto(){
-            $img = $_POST['img'];
-            $nombre = $_POST['nombre'];
-            $precio = $_POST['precio'];
-            $categoria = $_POST['categoria'];
-
-            Producto::createProducto($img,$nombre,$precio,$categoria);
-
-            header('Location:'.url.'?controller=producto&action=panelControlAdmin');
-        }
-
-        /* FUNCION PARA ELIMINAR UN PRODUCTO (ADMIN), TE REDIRIJE A LA cartaAdmin */
-        public function eliminar(){
-            echo 'ELIMINAR PRODUCTO';
-            $id = $_POST['id'];
-
-            Producto::deleteProducto($id);
-            header('Location:'.url.'view/cartaAdmin.php');
-        }
-
         /* FUNCION PARA MODIFICAR UN PRODUCTO, EN LA VIEW DE editarProducto */
         public function modificar(){
             $id = $_POST['id'];
@@ -173,21 +188,6 @@
             include_once 'view/editarProducto.php';
 
             include_once 'view/footer.php';
-        }
-
-        /* FUNCION PARA EDITAR EL PRODUCTO CON LOS DATOS ENVIADOS DE LA VISTA editarProducto */
-        /* TE REDIRIJE A LA cartaAdmin */
-        public function editProducto(){
-    
-            $id = $_POST['id'];
-            $img = $_POST['img'];
-            $nombre = $_POST['nombre'];
-            $precio = $_POST['precio'];
-            $categoria = $_POST['categoria'];
-    
-            Producto::updateProducto($id, $img, $nombre, $precio, $categoria);
-
-            header('Location:'.url.'?controller=producto&action=panelControlAdmin');
         }
         
     }

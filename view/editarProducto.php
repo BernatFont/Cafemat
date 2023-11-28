@@ -12,7 +12,7 @@
     </header>
 
     <section>
-        <form action="<?= url.'?controller=producto&action=editProducto' ?>" method='post' class="form-group p-5">
+        <form action="<?= url.'?controller=producto&action=panelControlAdmin' ?>" method='post' class="form-group p-5">
             <label for="id">Producto_id</label>
             <input type="hidden" name="id" value=<?= $producto->producto_id ?> class="form-control">
             <label for="IMG">IMG</label>
@@ -20,7 +20,7 @@
             <label for="nombre">Nombre</label>
             <input type="text" name="nombre" value=<?= $producto->nombre ?> class="form-control"> 
             <label for="precio">Precio</label>
-            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" value=<?= $producto->precio ?> class="form-control">
+            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" value=<?= number_format($producto->precio,2) ?> class="form-control">
             <label for="categoria">Categoria</label>
             <select name="categoria" class="form-select">
                 <?php
@@ -30,7 +30,7 @@
 
                 <?php } ?>
             </select>
-            <button class="btn btn-primary mt-3">Enviar</button>
+            <button class="btn btn-primary mt-3" name="editar_producto">Enviar</button>
         </form>
     </section>
 

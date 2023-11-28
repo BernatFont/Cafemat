@@ -107,6 +107,30 @@ include_once 'config/dataBase.php';
                 return $listaProductos;
         }
 
+        public static function getNumCategorias(){
+                $conn = dataBase::connect();
+
+                $sql = "SELECT * FROM categoria";
+                $result = $conn->query($sql);
+                $conn->close();
+                //Almaceno el resultado en una variable
+                $num_categoria = $result->num_rows;
+                return $num_categoria;
+        }
+
+        
+
+        public static function getContenidoCategoria($categoria){
+                $conn = dataBase::connect();
+
+                $sql = "SELECT * FROM categoria WHERE categoria_id = '$categoria'";
+                $result = $conn->query($sql);
+                $conn->close();
+                //Almaceno el resultado en una variable
+                $categoria = $result->fetch_object();
+                return $categoria;
+        }
+
     }
 
 ?>

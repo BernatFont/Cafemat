@@ -48,7 +48,7 @@
             <section class="container-fluid d-flex justify-content-evenly flex-wrap categorias">
                 <section class="cat1">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#almuerzo"?>">ALMUERZO</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Almuerzo"?>">ALMUERZO</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/almuerzo.jpg" alt="un café con cruisant">
@@ -56,7 +56,7 @@
                 </section>
                 <section class="cat2">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#para_comer"?>">PARA COMER</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Para comer"?>">PARA COMER</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/combi1.jpg" alt="plato con un huevo, ensalada, patatas fritas y lomo">
@@ -64,7 +64,7 @@
                 </section>
                 <section class="cat1">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#bebida"?>">BEBIDA</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Bebida"?>">BEBIDA</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/bebida.webp" alt="refrescos">
@@ -72,7 +72,7 @@
                 </section>
                 <section class="cat2">
                     <section class="pt-1 ps-2">
-                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#postre"?>">POSTRE</a>
+                        <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Postre"?>">POSTRE</a>
                     </section>
                     <section class="img_sec_2">
                         <img src="img/postre.jpg" alt="tarta de queso">

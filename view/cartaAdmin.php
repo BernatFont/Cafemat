@@ -41,9 +41,9 @@
                                 </form>
                             </td>
                             <td>
-                                <form action="<?= url."?controller=producto&action=eliminar"?>" method="post">
+                                <form action="<?= url."?controller=producto&action=panelControlAdmin"?>" method="post">
                                     <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
-                                    <button class="bt bt_eliminar py-1 px-2">Eliminar</button>
+                                    <button class="bt bt_eliminar py-1 px-2" name="eliminar_producto">Eliminar</button>
                                 </form>
                             </td>
                         </tr> 
