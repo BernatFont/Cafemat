@@ -8,10 +8,6 @@
     <title>Crea una nueva cuenta de cliente | Cafemat</title>
 </head>
 <body>
-    <header>
-
-    </header>
-
     <main class="mt-4 d-flex justify-content-center">
         <section class="register_container d-flex flex-column">
             <h2 class="mb-5 text-center">Crea tu cuenta</h2>
@@ -34,9 +30,5 @@
             <a href="<?= url."?controller=usuario&action=inicioSesion"?>" class="align-self-center mt-5 mb-5 redirigir_inicio">¿Ya estas registrado/a? <span>Iniciar sesión</span></a>
         </section>
     </main>
-
-    <footer>
-
-    </footer>
 </body>
 </html>

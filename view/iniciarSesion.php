@@ -8,13 +8,9 @@
     <title>Login del cliente | Cafemat</title>
 </head>
 <body>
-    <header>
-
-    </header>
-
     <main class="mt-4 mb-5 d-flex justify-content-center">
         <section class="d-flex flex-column">
-            <section>
+            <div>
                 <h2 class="mb-5">¿Tienes ya una cuenta CAFEMAT?</h2>
                 <?php if(isset($mensaje)){?>
                     <div class="alert alert-danger"><?= $mensaje ?></div>
@@ -26,17 +22,12 @@
                     <input type="password" name="password" requiered class="mb-5">
                     <input type="submit" value="Iniciar sesión" name="iniciar_sesion" class="bt">
                 </form>
-            </section>
-            <section class="mt-5 pt-4 d-flex flex-column align-items-center text-center ir_registro">
+            </div>
+            <div class="mt-5 pt-4 d-flex flex-column align-items-center text-center ir_registro">
                 <h3 class="pb-2 ">¿Aún no tienes una Cuenta?</h3>
                 <a href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=usuario&action=registro" class="bt">Crea tu cuenta</a>
-            </section>
+            </div>
         </section>
-
     </main>
-
-    <footer>
-
-    </footer>
 </body>
 </html>

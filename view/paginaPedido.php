@@ -46,7 +46,7 @@
                         <?php } 
                         $pos = 0;
                         foreach ($_SESSION["carrito"] as $pedido) {?>
-                                <tr>
+                                <tr class="fila_producto">
                                     <td class="col_1">
                                         <div class="imagen_producto"><img src="<?= $pedido->getProducto()->img ?>" alt="Imagen del producto" class="producto_imagen"></div>
                                     </td>
@@ -89,17 +89,17 @@
                             </label>
                         </section>
                         <section class="precio_total p-3 mb-3 d-flex flex-column">
-                            <span class="underline px-3 py-2 d-flex justify-content-between">
+                            <span class="underline px-3 py-3 d-flex justify-content-between">
                                 <span>Total sin IVA</span>
-                                <span><?= CalculadoraPrecios::calcularPrecioSinIVA($_SESSION["carrito"])[0] ?> €</span>
+                                <span><?= number_format(CalculadoraPrecios::calcularPrecioSinIVA($_SESSION["carrito"])[0],2) ?> €</span>
                             </span>
-                            <span class="underline px-3 py-2 d-flex justify-content-between">
+                            <span class="underline px-3 py-3 d-flex justify-content-between">
                                 <span>IVA</span>
-                                <span><?= CalculadoraPrecios::calcularPrecioSinIVA($_SESSION["carrito"])[1] ?> €</span>
+                                <span><?= number_format(CalculadoraPrecios::calcularPrecioSinIVA($_SESSION["carrito"])[1],2) ?> €</span>
                             </span>
                             <span class="px-3 py-2 d-flex justify-content-between">
                                 <span>Total</span>
-                                <span><?= CalculadoraPrecios::calcularTotalPedido($_SESSION["carrito"]) ?> €</span>
+                                <span><?= number_format(CalculadoraPrecios::calcularTotalPedido($_SESSION["carrito"]),2) ?> €</span>
                             </span>
                         </section>
                         <button class="validar_pedido py-2 mb-4">Validar pedido</button>

@@ -31,29 +31,29 @@
                     <input type="text" name="contra" value="<?= $usuario->contraseña ?>" class="form-control mb-3">
                     <button class="mt-3 py-2 bt" name='modificar_usuario'>Modificar usuario</button>
                 </form>
-                <section class="d-flex flex-column">
+                <div class="d-flex flex-column">
                     <?php if($usuario->nombre == user_admin){?>
                         <a href="<?= url."?controller=producto&action=panelControlAdmin"?>" class="bt mt-3 py-2">Panel control</a>
                     <?php } ?>
                     <form action="<?= url."?controller=usuario&action=cerrarCuenta"?>" method="post">
                         <button class="bt bt_cerrar py-2 my-3">Cerrar cuenta</button>
                     </form>
-                </section>
+                </div>
             </section>
             <section class="col-12 col-lg-8">
                 
                 <?php
                     if(empty($pedidos_usuario)){?>
-                        <section class="d-flex flex-column align-items-center my-3">
+                        <div class="d-flex flex-column align-items-center my-3">
                             <h2>No has realizado ningún pedido.</h2>
                             <p>Si quieres realizar uno, por favor haz clic <a href="<?= url."?controller=producto&action=carta"?>" class="aqui">aqui</a>.</p>
-                        </section>
+                        </div>
                     <?php
                     }elseif(!empty($pedidos_usuario)){?>
-                        <section class="titulo mb-3">
+                        <div class="titulo mb-3">
                             <h2>Pedidos realizados</h2>
-                        </section>
-                        <section style="max-height: 60vh; overflow:auto">
+                        </div>
+                        <div style="max-height: 60vh; overflow:auto">
                             <table class="table table-striped">
                                 <tr>
                                     <th>Fecha</th>
@@ -73,7 +73,7 @@
                                         </tr>
                                 <?php } ?>
                             </table>
-                        </section>
+                        </div>
                     <?php } ?>
 
             </section>

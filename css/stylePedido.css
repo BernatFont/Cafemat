@@ -148,15 +148,18 @@ table tr td{
 
 .metodo_pago h3{
     border-bottom: 1px solid rgba(0,0,0,.12);
+    font-size: 20px;
+    font-family: 'TTRegular';
 }
 
 .metodo_pago label img, .metodo_pago label input{
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
 }
 
-.metodo_pago label input:checked{
-    color: var(--primary);
+.metodo_pago label span{
+    font-size: 14px;
+    font-family: 'TTRegular',sans-serif;
 }
 
 .precio_total{
@@ -167,7 +170,7 @@ table tr td{
 .precio_total span span:first-child, .precio_total span span:nth-child(2){
     color: #fff;
     font-size: 14px;
-    font-family: 'TTDemiBold',sans-serif;
+    font-family: 'TTMedium',sans-serif;
 }
 
 .underline{

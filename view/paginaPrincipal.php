@@ -11,19 +11,19 @@
     <main class="container-fluid">
 
         <section class="banner row">
-            <section class="banner1 d-flex col-6 col-sm-6 col-md-8 ">
+            <div class="banner1 d-flex col-6 col-sm-6 col-md-8 ">
                 <p class="slogan m-3">Sabores que construyen momentos inolvidables</p>
                 <a href="<?= url."?controller=producto&action=carta"?>" class="align-self-end">
                     <button class="bt_frase_preparar">
                         <p class="frase_preparar"><img src="icon/right-arrow.png" alt="" class="right_row"> Prepara tu pedido</p>
                     </button>
                 </a>
-            </section>
-            <section class="banner2 col-6 col-sm-6 col-md-4"></section>
+            </div>
+            <div class="banner2 col-6 col-sm-6 col-md-4"></div>
         </section>
 
         <section class="row sec_1 mx-3">
-            <section class="d-flex justify-content-evenly p-5 mt-3  ">
+            <div class="d-flex justify-content-evenly p-5 mt-3  ">
                 <form action="<?= url."?controller=producto&action=carta"?>" method='post'>
                     <input type="hidden" value='<?= $usuario?>' name='usuario'>
                     <button class="sec_1_bt" id="boton_sec1">
@@ -40,58 +40,58 @@
                         <p>Pedido</p>
                     </button>
                 </form>
-            </section>
+            </div>
         </section>
 
         <section class="sec_2 d-flex flex-column align-items-center mx-3">
             <h2 class="my-4">Categorías</h2>
-            <section class="container-fluid d-flex justify-content-evenly flex-wrap categorias">
-                <section class="cat1">
-                    <section class="pt-1 ps-2">
+            <div class="container-fluid d-flex justify-content-evenly flex-wrap categorias">
+                <div class="cat1">
+                    <div class="pt-1 ps-2 cat1_1">
                         <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Almuerzo"?>">ALMUERZO</a>
-                    </section>
-                    <section class="img_sec_2">
+                    </div>
+                    <div class="img_sec_2 px-3 py-2">
                         <img src="img/almuerzo.jpg" alt="un café con cruisant">
-                    </section>
-                </section>
-                <section class="cat2">
-                    <section class="pt-1 ps-2">
+                    </div>
+                </div>
+                <div class="cat2">
+                    <div class="pt-1 ps-2">
                         <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Para comer"?>">PARA COMER</a>
-                    </section>
-                    <section class="img_sec_2">
+                    </div>
+                    <div class="img_sec_2 px-3 py-2">
                         <img src="img/combi1.jpg" alt="plato con un huevo, ensalada, patatas fritas y lomo">
-                    </section>
-                </section>
-                <section class="cat1">
-                    <section class="pt-1 ps-2">
+                    </div>
+                </div>
+                <div class="cat1">
+                    <div class="pt-1 ps-2">
                         <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Bebida"?>">BEBIDA</a>
-                    </section>
-                    <section class="img_sec_2">
+                    </div>
+                    <div class="img_sec_2 px-3 py-2">
                         <img src="img/bebida.webp" alt="refrescos">
-                    </section>
-                </section>
-                <section class="cat2">
-                    <section class="pt-1 ps-2">
+                    </div>
+                </div>
+                <div class="cat2">
+                    <div class="pt-1 ps-2">
                         <a class="bt_sec_2" href="<?= url."?controller=producto&action=carta#Postre"?>">POSTRE</a>
-                    </section>
-                    <section class="img_sec_2">
+                    </div>
+                    <div class="img_sec_2 px-3 py-2">
                         <img src="img/postre.jpg" alt="tarta de queso">
-                    </section>
-                </section>
-            </section>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section class="d-flex flex-column align-items-center mx-5">
-            <h2 class="mt-4">Productos destacados</h2>
-            <section class="container-fluid d-flex justify-content-evenly flex-wrap destacados">
+            <h2 class="my-4">Productos destacados</h2>
+            <div class="container-fluid d-flex justify-content-evenly flex-wrap destacados">
                 
                 <?php
                     foreach($productos as $producto){?>
-                        <section class="producto_destacado">
-                            <section class="d-flex justify-content-center">
+                        <div class="producto_destacado">
+                            <div class="d-flex justify-content-center">
                                 <img src="<?= $producto->img ?>" alt="">
-                            </section>
-                            <section class="mb-4 producto_destacado_bottom d-flex flex-column">
+                            </div>
+                            <div class="mb-4 producto_destacado_bottom d-flex flex-column">
                                 <p class="my-3"><?= strtoupper($producto->nombre) ?></p>
                                 
                                 <?php 
@@ -114,28 +114,24 @@
                                         <img src="icon/paper-bag-white.png" alt="" class="icono_compra">
                                     </button>
                                 </a>
-                            </section>
-                        </section>
+                            </div>
+                    </div>
                     <?php } ?>
 
-            </section>
+            </div>
         </section>
         
 
         <section class="compromisos row">
             <h3 class="mt-4 text-center">Nuestros compromisos</h3>
-            <section class="d-flex justify-content-evenly my-4">
+            <div class="d-flex justify-content-evenly my-4">
                 <img src="icon/los_mejores_precios.png" alt="">
                 <img src="icon/maxima_rapidez.png" alt="">
                 <img src="icon/calidad_profesional.png" alt="">
-            </section>
+            </div>
 
         </section>
 
     </main>
-    <footer>
-
-    </footer>
-
 </body>
 </html>

@@ -7,10 +7,6 @@
     <title>Editar Producto</title>
 </head>
 <body>
-    <header>
-
-    </header>
-
     <section>
         <form action="<?= url.'?controller=producto&action=panelControlAdmin' ?>" method='post' class="form-group p-5">
             <label for="id">Producto_id</label>
@@ -33,9 +29,5 @@
             <button class="btn btn-primary mt-3" name="editar_producto">Enviar</button>
         </form>
     </section>
-
-    <footer>
-
-    </footer>
 </body>
 </html>

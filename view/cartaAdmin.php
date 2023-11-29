@@ -10,7 +10,7 @@
 
 <body>
     <section class="container mt-4">
-        <section class="row" style="max-height: 70vh; overflow:auto">
+        <div class="row" style="max-height: 70vh; overflow:auto">
             <table class="table table-striped">
             <thead>
                 <tr>
@@ -51,12 +51,12 @@
                     <?php } ?>
             </tbody>
             </table>
-        </section>
-        <section class="row mb-5 mt-4">
+        </div>
+        <div class="row mb-5 mt-4">
             <form action="<?= url."?controller=producto&action=crear"?>" method='post'>
                 <button class='bt bt_crear py-2 px-2'>Crear producto</button>
             </form>
-        </section>
+        </div>
     </section>
 </body>
 </html>

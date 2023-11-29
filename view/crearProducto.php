@@ -7,10 +7,6 @@
     <title>Crear Producto</title>
 </head>
 <body>
-    <header>
-
-    </header>
-
     <section>
         <form action="<?= url.'?controller=producto&action=panelControlAdmin' ?>" method='post' class="form-group p-5">
             <label for="IMG">URL de la IMG</label>
@@ -31,9 +27,5 @@
             <button class="btn btn-primary mt-3" name="crear_producto">Enviar</button>
         </form>
     </section>
-
-    <footer>
-
-    </footer>
 </body>
 </html>
