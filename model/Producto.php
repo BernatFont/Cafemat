@@ -1,136 +1,117 @@
 <?php
 
-include_once 'config/dataBase.php';
-
     class Producto{
 
-        /* FUNCION QUE RETORNA UN ARRAY DE TODOS LOS PRODUCTOS */
-        public static function getProductos(){
+        private $producto_id;
+        private $img;
+        private $nombre;
+        private $precio;
+        private $categoria;
 
-                $conn = dataBase::connect();
-                //Consulta para obtener todos los productos
 
-                $sql = 'SELECT producto.producto_id, producto.img, producto.nombre, producto.precio, categoria.nombre AS categoria_nombre
-                FROM producto
-                INNER JOIN categoria ON producto.categoria_id = categoria.categoria_id'; 
-
-                /* $sql = 'SELECT * FROM producto'; */
-                $result = $conn->query($sql);
-                $conn->close();
-
-                //Almaceno el resultado de la consulta en una array
-                $listaProductos = [];
-                while($producto = $result->fetch_object()){
-                        $listaProductos[] = $producto;
-                }
-                //Retorno todos los productos en un array
-                return $listaProductos;
+        public function __construct(){
 
         }
 
-        /* FUNCION QUE RETORNA UN PRODUCTO SEGÚN LA ID PASADA POR PARAMETRO */
-        public static function getProductoById($id){
-                $conn = dataBase::connect();
-                //Preparamos consulta
-                $sql = "SELECT * FROM producto WHERE producto_id = $id";
-                $result = $conn->query($sql);
-                $conn->close();
-
-                $producto = $result->fetch_object();
-                //Retornamos el producto pedido por id
-                return $producto;
+        /**
+         * Get the value of img
+         */ 
+        public function getImg()
+        {
+                return $this->img;
         }
 
-        /* FUNCION QUE ELIMINA UN PRODUCTO SEGÚN LA ID PASADA POR PARAMETRO */
-        public static function deleteProducto($id){
-                $conn = dataBase::connect();
+        /**
+         * Set the value of img
+         *
+         * @return  self
+         */ 
+        public function setImg($img)
+        {
+                $this->img = $img;
 
-                //Consulta
-                $sql = "DELETE FROM producto WHERE producto_id = '$id'";
-                $result = $conn->query($sql);
-                $conn->close();
-        }       
-
-        /* FUNCION QUE MODIFICA UN PRODUCTO PASANDOLE TODAS SUS PROPIEDADES POR PARAMETRO */
-        public static function updateProducto($id, $img, $nombre, $precio, $categoria){
-                $conn = dataBase::connect();
-
-                //Preparamos consulta
-                $sql = "UPDATE producto SET producto_id='$id', img='$img', nombre='$nombre', precio='$precio', categoria_id='$categoria' WHERE producto_id=$id";
-                $result = $conn->query($sql);
-                $conn->close();
+                return $this;
         }
 
-        /* FUNCION QUE CREA UN PRODUCTO PASANDOLE TODOS LOS DATOS POR PARAMETRO */
-        public static function createProducto($img,$nombre,$precio,$categoria){
-                $conn = dataBase::connect();
-
-                $sql = "INSERT INTO producto VALUES ('','$img','$nombre','$precio','$categoria')";
-                $conn->query($sql);
-                $conn->close();
+        /**
+         * Get the value of producto_id
+         */ 
+        public function getProducto_id()
+        {
+                return $this->producto_id;
         }
 
-        public static function getCategorias(){
-                $conn = dataBase::connect();
+        /**
+         * Set the value of producto_id
+         *
+         * @return  self
+         */ 
+        public function setProducto_id($producto_id)
+        {
+                $this->producto_id = $producto_id;
 
-                $sql = 'SELECT * FROM categoria';
-                $result = $conn->query($sql);
-                $listaCategorias = [];
-                while($categoria = $result->fetch_object()){
-                        $listaCategorias[] = $categoria;
-                }
-                return $listaCategorias;
+                return $this;
         }
 
-        /* FUNCION QUE RETORNA EL NUMERO DE PRODUCTOS QUE HAY EN LA BD SEGÚN SU CATEGORIA, PASADA POR PARAMETRO */
-        public static function countProductByCategoria($categoria){
-                $conn = dataBase::connect();
-
-                $sql = "SELECT COUNT(*) FROM producto WHERE categoria_id = '$categoria'";
-                $result = $conn->query($sql);
-                $conn->close();
-                return $result->fetch_array()[0];
+        /**
+         * Get the value of nombre
+         */ 
+        public function getNombre()
+        {
+                return $this->nombre;
         }
 
-        /* FUNCION QUE RETORNA UN ARRAY DE TODOS LOS PRODUCTOS EXISTENTES EN LA BD DE UNA CATEGORIA CONCRETA, PASADA POR PARAMETRO */
-        public static function getProductByCategoria($categoria){
-                $conn = dataBase::connect();
+        /**
+         * Set the value of nombre
+         *
+         * @return  self
+         */ 
+        public function setNombre($nombre)
+        {
+                $this->nombre = $nombre;
 
-                $sql = "SELECT * FROM producto WHERE categoria_id = '$categoria'";
-                $result = $conn->query($sql);
-                $conn->close();
-                //Almaceno el resultado en una array
-                $listaProductos = [];
-                while($producto = $result->fetch_object()){
-                        $listaProductos[] = $producto;
-                }
-                return $listaProductos;
+                return $this;
         }
 
-        public static function getNumCategorias(){
-                $conn = dataBase::connect();
-
-                $sql = "SELECT * FROM categoria";
-                $result = $conn->query($sql);
-                $conn->close();
-                //Almaceno el resultado en una variable
-                $num_categoria = $result->num_rows;
-                return $num_categoria;
+        /**
+         * Get the value of precio
+         */ 
+        public function getPrecio()
+        {
+                return $this->precio;
         }
 
-        
+        /**
+         * Set the value of precio
+         *
+         * @return  self
+         */ 
+        public function setPrecio($precio)
+        {
+                $this->precio = $precio;
 
-        public static function getContenidoCategoria($categoria){
-                $conn = dataBase::connect();
-
-                $sql = "SELECT * FROM categoria WHERE categoria_id = '$categoria'";
-                $result = $conn->query($sql);
-                $conn->close();
-                //Almaceno el resultado en una variable
-                $categoria = $result->fetch_object();
-                return $categoria;
+                return $this;
         }
 
+        /**
+         * Get the value of categoria
+         */ 
+        public function getCategoria()
+        {
+                return $this->categoria;
+        }
+
+        /**
+         * Set the value of categoria
+         *
+         * @return  self
+         */ 
+        public function setCategoria($categoria)
+        {
+                $this->categoria = $categoria;
+
+                return $this;
+        }
     }
 
-?>
+    ?>

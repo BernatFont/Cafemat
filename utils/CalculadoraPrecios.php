@@ -5,7 +5,7 @@
             $total = 0;
 
             foreach($pedido as $producto){
-                $total += $producto->precioTotalProducto($producto->getProducto()->precio);
+                $total += $producto->precioTotalProducto($producto->getProducto()->getPrecio());
             }
             return number_format($total,2);
         }
@@ -14,7 +14,7 @@
             $total = 0;
 
             foreach($pedido as $producto){
-                $total += $producto->precioTotalProducto($producto->getProducto()->precio);
+                $total += $producto->precioTotalProducto($producto->getProducto()->getPrecio());
             }
             
             $iva = ($total * 10)/100;

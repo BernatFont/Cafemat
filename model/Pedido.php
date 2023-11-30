@@ -60,7 +60,7 @@ include_once 'config/dataBase.php';
         public static function productoExisteEnPedido($carrito,$id_producto){
                 $existe = false;
                 foreach($carrito as $producto){
-                        if($producto->getProducto()->producto_id == $id_producto){
+                        if($producto->getProducto()->getProducto_id() == $id_producto){
                                 $existe = true;
                                 $producto->setCantidad($producto->getCantidad()+1);
                         }

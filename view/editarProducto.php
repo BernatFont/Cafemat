@@ -10,19 +10,19 @@
     <section>
         <form action="<?= url.'?controller=producto&action=panelControlAdmin' ?>" method='post' class="form-group p-5">
             <label for="id">Producto_id</label>
-            <input type="hidden" name="id" value=<?= $producto->producto_id ?> class="form-control">
+            <input type="hidden" name="id" value=<?= $producto->getProducto_id() ?> class="form-control">
             <label for="IMG">IMG</label>
-            <input type="text" name="img" value=<?= $producto->img ?> class="form-control">
+            <input type="text" name="img" value=<?= $producto->getImg() ?> class="form-control">
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" value=<?= $producto->nombre ?> class="form-control"> 
+            <input type="text" name="nombre" value=<?= $producto->getNombre() ?> class="form-control"> 
             <label for="precio">Precio</label>
-            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" value=<?= number_format($producto->precio,2) ?> class="form-control">
+            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" value=<?= number_format($producto->getPrecio(),2) ?> class="form-control">
             <label for="categoria">Categoria</label>
             <select name="categoria" class="form-select">
                 <?php
                     foreach($categorias as $categoria){?>
 
-                        <option value="<?= $categoria->categoria_id ?>"><?= $categoria->nombre ?></option>
+                        <option value="<?= $categoria->getCategoria_id() ?>"><?= $categoria->getNombre() ?></option>
 
                 <?php } ?>
             </select>

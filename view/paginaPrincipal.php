@@ -89,13 +89,13 @@
                     foreach($productos as $producto){?>
                         <div class="producto_destacado">
                             <div class="d-flex justify-content-center">
-                                <img src="<?= $producto->img ?>" alt="">
+                                <img src="<?= $producto->getImg() ?>" alt="">
                             </div>
                             <div class="mb-4 producto_destacado_bottom d-flex flex-column">
-                                <p class="my-3"><?= strtoupper($producto->nombre) ?></p>
+                                <p class="my-3"><?= strtoupper($producto->getNombre()) ?></p>
                                 
                                 <?php 
-                                    $precio = $producto->precio;
+                                    $precio = $producto->getPrecio();
                                     $array_precio = explode(".", $precio);
                                 ?>
 

@@ -29,20 +29,20 @@
                     foreach ($productos as $producto) {?>
             
                          <tr>
-                            <td class="del"><?= $producto->producto_id; ?></td>
-                            <td class="del"><img src="<?= $producto->img; ?>" alt="" class="product_img"></td>
-                            <td><?=  $producto->nombre; ?></td>
-                            <td><?=  $producto->precio.'€'; ?></td>
-                            <td><?=  $producto->categoria_nombre; ?></td>
+                            <td class="del"><?= $producto->getProducto_id(); ?></td>
+                            <td class="del"><img src="<?= $producto->getImg(); ?>" alt="" class="product_img"></td>
+                            <td><?=  $producto->getNombre(); ?></td>
+                            <td><?=  $producto->getPrecio().'€'; ?></td>
+                            <td><?=  $producto->getCategoria(); ?></td>
                             <td>
                                 <form action="<?= url."?controller=producto&action=modificar" ?>" method="post">
-                                    <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
+                                    <input type='hidden' name='id' value="<?= $producto->getProducto_id(); ?>" >
                                     <button class="bt bt_editar py-1 px-2">Editar</button>
                                 </form>
                             </td>
                             <td>
                                 <form action="<?= url."?controller=producto&action=panelControlAdmin"?>" method="post">
-                                    <input type='hidden' name='id' value="<?= $producto->producto_id; ?>" >
+                                    <input type='hidden' name='id' value="<?= $producto->getProducto_id(); ?>" >
                                     <button class="bt bt_eliminar py-1 px-2" name="eliminar_producto">Eliminar</button>
                                 </form>
                             </td>

@@ -48,13 +48,13 @@
                         foreach ($_SESSION["carrito"] as $pedido) {?>
                                 <tr class="fila_producto">
                                     <td class="col_1">
-                                        <div class="imagen_producto"><img src="<?= $pedido->getProducto()->img ?>" alt="Imagen del producto" class="producto_imagen"></div>
+                                        <div class="imagen_producto"><img src="<?= $pedido->getProducto()->getImg() ?>" alt="Imagen del producto" class="producto_imagen"></div>
                                     </td>
                                     <td>
-                                        <div class="nombre_producto d-flex align-items-center"><span><?= strtoupper($pedido->getProducto()->nombre) ?></span></div>
+                                        <div class="nombre_producto d-flex align-items-center"><span><?= strtoupper($pedido->getProducto()->getNombre()) ?></span></div>
                                     </td>
                                     <td class="text-end align-middle">
-                                        <?= $pedido->getProducto()->precio.'€'?>
+                                        <?= $pedido->getProducto()->getPrecio().'€'?>
                                     </td>
                                     <td class="text-center align-middle">
                                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post" class="cantidad">
@@ -63,7 +63,7 @@
                                             <button name="remove" value="<?= $pos ?>"><img src="icon/minus.png" alt=""></button>
                                         </form>
                                     </td>
-                                    <td class="text-end align-middle"><?= $pedido->precioTotalProducto($pedido->getProducto()->precio).'€'?></td>
+                                    <td class="text-end align-middle"><?= $pedido->precioTotalProducto($pedido->getProducto()->getPrecio()).'€'?></td>
                                     <td class="text-center align-middle">
                                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post">
                                             <input type="hidden" name="borrar" value="<?= $pos ?>">

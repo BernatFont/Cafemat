@@ -20,7 +20,7 @@
                 <?php
                     foreach($categorias as $categoria){?>
 
-                        <option value="<?= $categoria->categoria_id ?>"><?= $categoria->nombre ?></option>
+                        <option value="<?= $categoria->getCategoria_id() ?>"><?= $categoria->getNombre() ?></option>
 
                 <?php } ?>
             </select>
