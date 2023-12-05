@@ -20,7 +20,7 @@
                     <input type="text" name="usuario" requiered class="mb-3">
                     <label for="password">*Contraseña</label>
                     <input type="password" name="password" requiered class="mb-5">
-                    <input type="submit" value="Iniciar sesión" name="iniciar_sesion" class="bt">
+                    <button type="submit" name="iniciar_sesion" class="bt">Iniciar sesión</button>
                 </form>
             </div>
             <div class="mt-5 pt-4 d-flex flex-column align-items-center text-center ir_registro">

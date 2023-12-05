@@ -22,8 +22,8 @@
             <section class="titulo d-flex align-items-center justify-content-between mb-4">
                 <h2>Mi pedido</h2>
                 <section>
-                    <form action="<?= url."?controller=producto&action=borrarPedido" ?>" method="post">
-                        <div class="div_bin d-flex align-items-center justify-content-center"><button class="paper_bin"><img src="icon/paper-been.svg" alt=""></button></div>
+                    <form action="<?= url."?controller=producto&action=pedido"?>" method="post">
+                        <div class="div_bin d-flex align-items-center justify-content-center"><button class="paper_bin" name="eliminar_pedido"><img src="icon/paper-been.svg" alt=""></button></div>
                     </form>
                 </section>
             </section>
@@ -81,10 +81,10 @@
                     <form action="<?= url."?controller=pedido&action=validarPedido" ?>" method="post" class="d-flex flex-column">
                         <section class="metodo_pago d-flex flex-column px-3 mb-3">
                             <h3 class="my-3 pb-3">Método de pago</h3>
-                            <label for="pago_targeta" class="p-3 mx-3 d-flex align-items-center">
+                            <label for="pago_targeta" class="p-3 d-flex align-items-center">
                                 <input type="radio" name='pago_targeta'><span class="mx-3">Targeta</span><img src="icon/information.png" alt="icono de informacion" class="ms-auto">
                             </label>
-                            <label for="pago_efectivo" class="p-3 mx-3 mb-4 d-flex align-items-center">
+                            <label for="pago_efectivo" class="p-3 mb-4 d-flex align-items-center">
                                 <input type="radio" name='pago_evectivo'><span class="mx-3">Efectivo</span><img src="icon/information.png" alt="icono de informacion" class="ms-auto">
                             </label>
                         </section>

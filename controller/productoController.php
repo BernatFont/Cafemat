@@ -60,6 +60,8 @@
                 }else{
                     $prod->setCantidad($prod->getCantidad()-1);
                 }
+            }elseif(isset($_POST['eliminar_pedido'])){
+                unset($_SESSION['carrito']);
             }
 
             include_once 'view/header.php';
@@ -90,13 +92,6 @@
                 }
             }
             header('Location:'.url.'?controller=producto&action=carta');
-        }
-
-        public function borrarPedido(){
-            session_start();
-
-            session_unset();
-            header('Location:'.url.'?controller=producto&action=pedido');
         }
 
         /* PAGINA DE LA CARTA */

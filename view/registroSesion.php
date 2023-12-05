@@ -25,7 +25,7 @@
                 <input type="text" name="usuario" class="mb-3" required>
                 <label for="contra">*Contraseña</label>
                 <input type="password" name="contra" required>
-                <input type="submit" value="Crear cuenta" name="registrado" class="bt mt-5">
+                <button type="submit" name="registrado" class="bt mt-5">Crear cuenta</button>
             </form>
             <a href="<?= url."?controller=usuario&action=inicioSesion"?>" class="align-self-center mt-5 mb-5 redirigir_inicio">¿Ya estas registrado/a? <span>Iniciar sesión</span></a>
         </section>
