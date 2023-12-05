@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleCarta.css">
     <title>Carta</title>
 </head>
@@ -56,7 +57,7 @@
                         <form action="<?= url."?controller=producto&action=agregarAlPedido" ?>" class="bt_pedido" method="post">
                             <input type="hidden" name=producto_id value="<?= $producto->getProducto_id(); ?>">
                             <input type="hidden" name=usuario value="<?= $usuario; ?>">
-                            <button class="bt_compra">
+                            <button class="bt bt_compra">
                                 <span>+</span>
                                 <img src="icon/paper-bag-white.png" alt="icono de una bolsa de pedidos" class="icono_compra">
                             </button>
