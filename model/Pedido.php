@@ -83,7 +83,38 @@ include_once 'config/dataBase.php';
 
                 $sql = "INSERT INTO pedido VALUES ('','$usuario->usuario_id','$fecha','$hora','$cantidad_bultos','$coste','$estado')";
                 $conn->query($sql);
+
+                $sql_pedido_id = "SELECT pedido_id FROM pedido WHERE 
+                        usuario_id = '$usuario->usuario_id' AND
+                        fecha = '$fecha' AND
+                        hora = '$hora' AND
+                        cantidad_bultos = '$cantidad_bultos' AND
+                        coste = '$coste' AND
+                        estado = '$estado'";
+                $pedido_id = $conn->query($sql_pedido_id);
+
+                $pedido_id = $pedido_id->fetch_object();
+                return $pedido_id->pedido_id;
+        }
+
+        public static function crearPedidoProducto($pedido,$usuario,$pedido_id){
+                $conn = dataBase::connect();
+
+                $usuario = Usuario::getUsuarioByUsername($usuario);
+
+                foreach($pedido as $producto){
+                        $usuario_id = $usuario->usuario_id;
+                        $producto_id = $producto->getProducto()->getProducto_id(); 
+                        $cantidad = $producto->getCantidad();
+                        $precio_unidad = number_format($producto->getProducto()->getPrecio(),2);
+                        $precio_total = number_format(($producto->getCantidad()*$producto->getProducto()->getPrecio()),2);
+
+                        $sql = "INSERT INTO pedido_producto VALUES ('$pedido_id','$usuario_id','$cantidad','$precio_unidad','$precio_total')";
+                        $conn->query($sql);
+                }
+
                 $conn->close();
+
         }
     }
 

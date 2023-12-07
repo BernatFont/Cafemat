@@ -13,7 +13,11 @@ include_once 'utils/CalculadoraPrecios.php';
                 $pedido = $_SESSION['carrito'];
                 $usuario = $_SESSION['usuario'];
     
-                Pedido::crearPedido($pedido,$usuario);
+                /* CREA EL PEDIDO Y RETORNA SU ID PARA USARLO EN LA SIGUIENTE FUNCION */
+                $pedido_id = Pedido::crearPedido($pedido,$usuario);
+                /* USAMOS EL ID ANTERIOR PARA AÑADIR TODOS LOS PRODUCTOS SELECCIONADOS EN EL PEDIDO */
+                /* SE AÑADEN EN LA TABLA 'Pedido_Producto' DE MySQL */
+                Pedido::crearPedidoProducto($pedido,$usuario,$pedido_id);
 
                 unset($_SESSION['carrito']);
     
