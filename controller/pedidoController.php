@@ -31,6 +31,29 @@ include_once 'utils/CalculadoraPrecios.php';
                 include_once 'view/footer.php';
             }
         }
+
+        public function verProductosPedido(){
+            session_start();
+
+            if(isset($_POST['pedido_id'])){
+                $pedido_id = $_POST['pedido_id'];
+                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
+                $usuario_id = $usuario->usuario_id;
+    
+                $productos = Pedido::getProductosByPedio($pedido_id);
+    
+                include_once 'view/header.php';
+                
+                include_once 'view/paginaProductosPedido.php';
+                
+                include_once 'view/footer.php';
+            }else{
+                header('Location:'.url.'?controller=usuario&action=inicioSesion');
+            }
+        }
+
+
+        
     }
 
 

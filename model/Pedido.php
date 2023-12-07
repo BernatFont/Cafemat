@@ -109,12 +109,35 @@ include_once 'config/dataBase.php';
                         $precio_unidad = number_format($producto->getProducto()->getPrecio(),2);
                         $precio_total = number_format(($producto->getCantidad()*$producto->getProducto()->getPrecio()),2);
 
-                        $sql = "INSERT INTO pedido_producto VALUES ('$pedido_id','$usuario_id','$cantidad','$precio_unidad','$precio_total')";
+                        $sql = "INSERT INTO pedido_producto VALUES ('$pedido_id','$producto_id','$usuario_id','$cantidad','$precio_unidad','$precio_total')";
                         $conn->query($sql);
                 }
 
                 $conn->close();
+        }
 
+        public static function getProductosByPedio($pedido_id){
+                $conn = dataBase::connect();
+
+                $sql = "SELECT pedido_producto.*, producto.nombre AS nombre_producto, producto.img AS img_producto
+                        FROM pedido_producto 
+                        INNER JOIN producto ON pedido_producto.producto_id = producto.producto_id
+                        WHERE pedido_producto.pedido_id = '$pedido_id'";
+
+                // $sql = "SELECT pedido_producto.*, producto.nombre AS nombre_producto, producto.img AS img_producto
+                // FROM pedido_producto 
+                // INNER JOIN producto ON pedido_producto.producto_id = producto.producto_id
+                // WHERE pedido_producto.pedido_id = '$pedido_id'";
+                $result = $conn->query($sql);
+
+                $conn->close();
+
+                //Almaceno el resultado en una array
+                $listaProductos = [];
+                while($producto = $result->fetch_object()){
+                        $listaProductos[] = $producto;
+                }
+                return $listaProductos;
         }
     }
 

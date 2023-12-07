@@ -210,16 +210,12 @@ input[type='radio']:checked{
 }
 
 @media (max-width: 800px){
-    .col_1{
+    .col_1,.imagen_producto{
         display: none;
     }
 
     .col_2{
         visibility: visible;
-    }
-
-    .imagen_producto{
-        display: none;
     }
 
     .nombre_producto{
@@ -233,5 +229,44 @@ input[type='radio']:checked{
 @media (max-width: 600px){
     .nombre_producto{
         font-size: 14px;
+    }
+}
+
+/* DETALLES DEL PEDIDO */
+#titulo{
+    width: 100%;
+    border-bottom: 1px solid var(--primary);
+}
+
+.TTBold_32{
+    font-size: 32px;
+    font-family: 'TTBold',sans-serif;
+}
+
+.col_2_detall{
+    visibility: hidden;
+}
+
+.nombre_detalles{
+    font-size: 20px;
+    padding-left: 16px;
+    font-family: 'TTRegular',sans-serif;
+}
+
+.img_detalles{
+    width: 200px;
+}
+
+.img_detalles img{
+    height: 100px;
+}
+
+@media (max-width: 992px){
+    .col_1_detalles,.imagen_detalles{
+        display: none;
+    }
+
+    .col_2_detall{
+        visibility: visible;
     }
 }

@@ -62,6 +62,7 @@
                                     <th>Bultos</th>
                                     <th>Coste</th>
                                     <th>Estado</th>
+                                    <th></th>
                                 </tr>
                                 <?php 
                                     foreach($pedidos_usuario as $pedido){?>
@@ -71,6 +72,12 @@
                                             <td><?= $pedido->cantidad_bultos ?></td>
                                             <td><?= number_format($pedido->coste,2).'€' ?></td>
                                             <td><?= $pedido->estado ?></td>
+                                            <td>
+                                                <form action="<?= url."?controller=pedido&action=verProductosPedido"?>" method="post">
+                                                    <input type="hidden" value="<?= $pedido->pedido_id ?>" name="pedido_id">
+                                                    <button name="ver_productos" class="bt">Detalles</button>
+                                                </form>
+                                            </td>
                                         </tr>
                                 <?php } ?>
                             </table>
