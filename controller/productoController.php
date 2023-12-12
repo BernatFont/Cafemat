@@ -5,6 +5,7 @@
     include_once 'model/ProductoDAO.php';
     include_once 'model/Pedido.php';
     include_once 'model/Categoria.php';
+    include_once 'model/Bebida.php';
     include_once 'utils/CalculadoraPrecios.php';
 
 

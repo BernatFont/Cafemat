@@ -261,6 +261,10 @@ input[type='radio']:checked{
     height: 100px;
 }
 
+.recuperar_pedido button{
+    width: 100%;
+}
+
 @media (max-width: 992px){
     .col_1_detalles,.imagen_detalles{
         display: none;

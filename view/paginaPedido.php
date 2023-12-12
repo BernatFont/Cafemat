@@ -18,6 +18,18 @@
                 <h2>No has seleccionado ningún producto</h2>
                 <p>Si quieres realizar un pedido, por favor haz clic <a href="<?= url."?controller=producto&action=carta"?>">aqui</a>.</p>
             </section>
+            <section class="d-flex flex-column align-items-center">
+                <?php
+                if(isset($mensaje)){?>
+                    <div class="alert alert-warning"><?= $mensaje ?></div>
+                <?php } ?>
+                <?php
+                    if(isset($_SESSION['usuario'])){?>
+                        <form action="<?= url."?controller=pedido&action=recuperarPedido" ?>" method="post" class="d-flex recuperar_pedido">
+                            <button class="bt py-2 px-3 mb-4">Recuperar último pedido</button>
+                        </form>
+                    <?php } ?>
+            </section>
 
         <?php }else{ ?>
             <section class="titulo d-flex align-items-center justify-content-between mb-4">
@@ -105,6 +117,12 @@
                         </section>
                         <button class="bt py-2 mb-4">Validar pedido</button>
                     </form>
+                    <?php
+                        if(isset($_SESSION['usuario'])){?>
+                            <form action="<?= url."?controller=pedido&action=recuperarPedido" ?>" method="post" class="d-flex recuperar_pedido">
+                                <button class="bt py-2 mb-4">Recuperar último pedido</button>
+                            </form>
+                        <?php } ?>
                 </section>
 
             </section>

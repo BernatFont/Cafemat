@@ -93,6 +93,10 @@
         }
 
         public function cerrarCuenta(){
+
+            if(isset($_COOKIE['recuperarPedido'])){
+                setcookie('recuperarPedido', '', time() - 600);
+            }
             session_start();
 
             session_unset();
