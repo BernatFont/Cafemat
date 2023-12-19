@@ -10,7 +10,7 @@ include_once 'config/dataBase.php';
                 $conn = dataBase::connect();
                 //Consulta para obtener todos los productos
 
-                $sql = 'SELECT producto.producto_id, producto.img, producto.nombre, producto.precio, categoria.nombre AS categoria_nombre
+                $sql = 'SELECT producto.producto_id, producto.img, producto.nombre, producto.precio, categoria.nombre AS categoria
                 FROM producto
                 INNER JOIN categoria ON producto.categoria_id = categoria.categoria_id'; 
 

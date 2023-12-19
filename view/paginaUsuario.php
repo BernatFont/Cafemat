@@ -19,21 +19,21 @@
                     <?php if(isset($usuario_modificado)){ ?>
                             <div class="alert alert-success"><?= $usuario_modificado ?></div>
                     <?php } ?>
-                    <input type="hidden" value="<?= $usuario->usuario_id ?>" name="id">
+                    <input type="hidden" value="<?= $usuario->getUsuario_id() ?>" name="id">
                     <label for="nombre">Nombre</label>
-                    <input type="text" name="nombre" value="<?= $usuario->nombre ?>" class="form-control mb-3">
+                    <input type="text" name="nombre" value="<?= $usuario->getNombre() ?>" class="form-control mb-3">
                     <label for="apellido">Apellido</label>
-                    <input type="text" name="apellido" value="<?= $usuario->apellido ?>" class="form-control mb-3">
+                    <input type="text" name="apellido" value="<?= $usuario->getApellido() ?>" class="form-control mb-3">
                     <label for="correo">Correo</label>
-                    <input type="text" name="correo" value="<?= $usuario->correo ?>" class="form-control mb-3">
+                    <input type="text" name="correo" value="<?= $usuario->getCorreo() ?>" class="form-control mb-3">
                     <label for="usuario">Usuario</label>
-                    <input type="text" name="usuario" value="<?= $usuario->nombre_usuario ?>" class="form-control mb-3">
+                    <input type="text" name="usuario" value="<?= $usuario->getNombre_usuario() ?>" class="form-control mb-3">
                     <label for="Contraseña">Contraseña</label>
-                    <input type="text" name="contra" value="<?= $usuario->contraseña ?>" class="form-control mb-3">
+                    <input type="text" name="contra" value="<?= $usuario->getContraseña() ?>" class="form-control mb-3">
                     <button class="mt-3 py-2 bt" name='modificar_usuario'>Modificar usuario</button>
                 </form>
                 <div class="d-flex flex-column">
-                    <?php if($usuario->nombre == user_admin){?>
+                    <?php if($usuario->getNombre_usuario() == user_admin){?>
                         <a href="<?= url."?controller=producto&action=panelControlAdmin"?>" class="bt mt-3 py-2">Panel control</a>
                     <?php } ?>
                     <form action="<?= url."?controller=usuario&action=cerrarCuenta"?>" method="post">
@@ -67,7 +67,7 @@
                                 <?php 
                                     foreach($pedidos_usuario as $pedido){?>
                                         <tr>
-                                            <td><?= $pedido->fecha ?></td>
+                                            <td><?= $pedido->fecha_inicio ?></td>
                                             <td><?= $pedido->hora ?></td>
                                             <td><?= $pedido->cantidad_bultos ?></td>
                                             <td><?= number_format($pedido->coste,2).'€' ?></td>
@@ -82,8 +82,8 @@
                                 <?php } ?>
                             </table>
                         </div>
-                    <?php } ?>
-
+                    <?php } 
+                    ?>
             </section>
         </section>
         

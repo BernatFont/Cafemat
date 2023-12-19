@@ -11,11 +11,11 @@
     <section>
         <form action="<?= url.'?controller=producto&action=panelControlAdmin' ?>" method='post' class="form-group p-5">
             <label for="IMG">URL de la IMG</label>
-            <input type="text" name="img" class="form-control" placeholder="img/bocadillo1.png">
+            <input type="text" name="img" class="form-control" placeholder="img/bocadillo1.png" required>
             <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" class="form-control" placeholder="Bocadillo de lomo"> 
+            <input type="text" name="nombre" class="form-control" placeholder="Bocadillo de lomo" required> 
             <label for="precio">Precio</label>
-            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" class="form-control" placeholder="5.50">
+            <input type="text" pattern="^\d+(\.\d+)?$" name="precio" class="form-control" placeholder="5.50" required>
             <label for="categoria">Categoria</label>
             <select name="categoria" class="form-select">
                 <?php

@@ -15,7 +15,7 @@
                 <p class="slogan m-3">Sabores que construyen momentos inolvidables</p>
                 <a href="<?= url."?controller=producto&action=carta"?>" class="align-self-end">
                     <button class="bt_frase_preparar">
-                        <p class="frase_preparar"><img src="icon/right-arrow.png" alt="" class="right_row"> Prepara tu pedido</p>
+                        <p class="frase_preparar"><img src="icon/right-arrow.png" alt="flecha a la derecha azul" class="right_row"> Prepara tu pedido</p>
                     </button>
                 </a>
             </div>
@@ -25,7 +25,10 @@
         <section class="row sec_1 mx-3">
             <div class="d-flex justify-content-evenly p-5 mt-3  ">
                 <form action="<?= url."?controller=producto&action=carta"?>" method='post'>
-                    <input type="hidden" value='<?= $usuario?>' name='usuario'>
+                <?php
+                if(isset($user)){?>
+                    <input type="hidden" value='<?= $user->getUsuario_id()?>' name='usuario'>
+                <?php } ?>
                     <button class="sec_1_bt" id="boton_sec1">
                         <img src="icon/fork.png" alt="icono de un tenedor y una cuchara cruzados" class="sec1_bt_icon">
                         <img src="icon/fork_orange.png" alt="icono de un tenedor y una cuchara cruzados" class="sec1_bt_icon2">
@@ -33,7 +36,10 @@
                     </button>
                 </form>
                 <form action="<?= url."?controller=producto&action=pedido"?>" method='post'>
-                    <input type="hidden" value='<?= $usuario?>' name='usuario'>
+                <?php
+                if(isset($user)){?>
+                    <input type="hidden" value='<?= $user->getUsuario_id()?>' name='usuario'>
+                <?php } ?>
                     <button class="sec_1_bt" id="boton2_sec1">
                         <img src="icon/cart.png" alt="icono de una bolsa de pedidos" class="sec1_bt_icon2_1">
                         <img src="icon/paper-bag-orange.png" alt="icono de una bolsa de pedidos" class="sec1_bt_icon2_2">

@@ -95,6 +95,7 @@ table tr td{
 }
 
 .nombre_producto{
+    max-width: 220px;
     font-size: 20px;
     padding-left: 16px;
     font-family: 'TTRegular',sans-serif;

@@ -61,19 +61,19 @@
                         foreach ($_SESSION["carrito"] as $pedido) {?>
                                 <tr class="fila_producto">
                                     <td class="col_1">
-                                        <div class="imagen_producto"><img src="<?= $pedido->getProducto()->getImg() ?>" alt="Imagen del producto" class="producto_imagen"></div>
+                                        <div class="imagen_producto my-3"><img src="<?= $pedido->getProducto()->getImg() ?>" alt="Imagen del producto" class="producto_imagen"></div>
                                     </td>
                                     <td>
-                                        <div class="nombre_producto d-flex align-items-center"><span><?= strtoupper($pedido->getProducto()->getNombre()) ?></span></div>
+                                        <div class="my-3 nombre_producto d-flex align-items-center"><span><?= strtoupper($pedido->getProducto()->getNombre()) ?></span></div>
                                     </td>
                                     <td class="text-end align-middle">
                                         <?= $pedido->getProducto()->getPrecio().'€'?>
                                     </td>
                                     <td class="text-center align-middle">
                                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post" class="cantidad">
-                                            <button name="add" value="<?= $pos ?>"><img src="icon/plus.png" alt=""></button>
-                                            <input type="text" value="<?= $pedido->getCantidad() ?>">
                                             <button name="remove" value="<?= $pos ?>"><img src="icon/minus.png" alt=""></button>
+                                            <input type="text" value="<?= $pedido->getCantidad() ?>">
+                                            <button name="add" value="<?= $pos ?>"><img src="icon/plus.png" alt=""></button>
                                         </form>
                                     </td>
                                     <td class="text-end align-middle"><?= $pedido->precioTotalProducto($pedido->getProducto()->getPrecio()).'€'?></td>

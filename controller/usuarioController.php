@@ -2,6 +2,7 @@
 
     include_once 'config/dataBase.php';
     include_once 'model/Usuario.php';
+    include_once 'model/Admin.php';
 
     class usuarioController{
 
@@ -26,9 +27,8 @@
                     Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra);
                     $usuario_modificado = 'Usuario modificado correctamente';
                 }
-                
-                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
-                $pedidos_usuario = Usuario::getPedidosUsuario($_SESSION['usuario']);
+                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
+                $pedidos_usuario = Usuario::getPedidosUsuario($_SESSION['usuario']->getNombre_usuario());
 
                 include_once 'view/paginaUsuario.php';
             }

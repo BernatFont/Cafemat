@@ -14,10 +14,10 @@ include_once 'utils/CalculadoraPrecios.php';
                 $usuario = $_SESSION['usuario'];
 
                 /* CREA EL PEDIDO Y RETORNA SU ID PARA USARLO EN LA SIGUIENTE FUNCION */
-                $pedido_id = Pedido::crearPedido($pedido,$usuario);
+                $pedido_id = Pedido::crearPedido($pedido,$usuario->getNombre_usuario());
                 /* USAMOS EL ID ANTERIOR PARA AÑADIR TODOS LOS PRODUCTOS SELECCIONADOS EN EL PEDIDO */
                 /* SE AÑADEN EN LA TABLA 'Pedido_Producto' DE MySQL */
-                Pedido::crearPedidoProducto($pedido,$usuario,$pedido_id);
+                Pedido::crearPedidoProducto($pedido,$usuario->getNombre_usuario(),$pedido_id);
 
                 setcookie('recuperarPedido', serialize($pedido), time() + 600);
 
@@ -39,8 +39,8 @@ include_once 'utils/CalculadoraPrecios.php';
 
             if(isset($_POST['pedido_id'])){
                 $pedido_id = $_POST['pedido_id'];
-                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']);
-                $usuario_id = $usuario->usuario_id;
+                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
+                $usuario_id = $usuario->getUsuario_id();
     
                 $productos = Pedido::getProductosByPedio($pedido_id);
     

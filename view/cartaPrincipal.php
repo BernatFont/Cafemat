@@ -33,7 +33,7 @@
                     <div class="seccion_productos d-flex justify-content-center flex-wrap mt-5">
 
                     <?php foreach($categoria as $producto){ ?>
-                        <div class="producto d-flex justify-content-between p-2 m-4">
+                        <div class="producto d-flex justify-content-between pe-2 pt-1 m-4">
                         <div>
                             <img src="<?= $producto->getImg(); ?>" alt="imagen del producto" class="imagen_producto">
                         </div>

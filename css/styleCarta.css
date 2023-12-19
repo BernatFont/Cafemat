@@ -19,6 +19,7 @@
 :root{
     --primary:#ff671f;
     --secondary:#120949;
+    --letters:#272727;
 }
 
 .no_margin{
@@ -72,17 +73,20 @@
 }
 
 .nombre_producto{
+    color: var(--letters);
     font-size: 14px;
     font-family: 'TTDemiBold',sans-serif;
     text-align: right;
 }
 
 .entero{
+    color: var(--letters);
     font-size: 25px;
     font-family: 'TTBold',sans-serif;
 }
 
 .decimal{
+    color: var(--letters);
     font-size: 16.8px;
     font-family: 'TTBold',sans-serif;
 }

@@ -72,6 +72,7 @@ include_once 'config/dataBase.php';
                 $conn = dataBase::connect();
 
                 $usuario = Usuario::getUsuarioByUsername($usuario);
+                $usuario_id = $usuario->getUsuario_id();
                 $fecha = date("Y-m-d");
                 $hora = date("H:i:s");
                 $cantidad_bultos = 0;
@@ -81,13 +82,11 @@ include_once 'config/dataBase.php';
                 $coste = CalculadoraPrecios::calcularTotalPedido($pedido);
                 $estado = 'pendiente';
 
-                $sql = "INSERT INTO pedido VALUES ('','$usuario->usuario_id','$fecha','$hora','$cantidad_bultos','$coste','$estado')";
+                $sql = "INSERT INTO pedido VALUES ('','$usuario_id','$fecha','$hora','$cantidad_bultos','$coste','$estado')";
                 $conn->query($sql);
 
                 $sql_pedido_id = "SELECT pedido_id FROM pedido WHERE 
-                        usuario_id = '$usuario->usuario_id' AND
-                        fecha = '$fecha' AND
-                        hora = '$hora' AND
+                        usuario_id = '$usuario_id' AND
                         cantidad_bultos = '$cantidad_bultos' AND
                         coste = '$coste' AND
                         estado = '$estado'";
@@ -103,7 +102,7 @@ include_once 'config/dataBase.php';
                 $usuario = Usuario::getUsuarioByUsername($usuario);
 
                 foreach($pedido as $producto){
-                        $usuario_id = $usuario->usuario_id;
+                        $usuario_id = $usuario->getUsuario_id();
                         $producto_id = $producto->getProducto()->getProducto_id(); 
                         $cantidad = $producto->getCantidad();
                         $precio_unidad = number_format($producto->getProducto()->getPrecio(),2);
@@ -119,10 +118,7 @@ include_once 'config/dataBase.php';
         public static function getProductosByPedio($pedido_id){
                 $conn = dataBase::connect();
 
-                $sql = "SELECT pedido_producto.*, producto.nombre AS nombre_producto, producto.img AS img_producto
-                        FROM pedido_producto 
-                        INNER JOIN producto ON pedido_producto.producto_id = producto.producto_id
-                        WHERE pedido_producto.pedido_id = '$pedido_id'";
+                $sql = "SELECT pedido_producto.*, producto.nombre as nombre, producto.img as img FROM pedido_producto INNER JOIN producto ON pedido_producto.producto_id = producto.producto_id WHERE pedido_producto.pedido_id = '$pedido_id'";
 
                 // $sql = "SELECT pedido_producto.*, producto.nombre AS nombre_producto, producto.img AS img_producto
                 // FROM pedido_producto 
@@ -134,10 +130,35 @@ include_once 'config/dataBase.php';
 
                 //Almaceno el resultado en una array
                 $listaProductos = [];
-                while($producto = $result->fetch_object()){
+                while($producto = $result->fetch_object('Producto')){
                         $listaProductos[] = $producto;
                 }
                 return $listaProductos;
+        }
+
+        public static function getPedidos(){
+                $conn = dataBase::connect();
+                
+                $sql = "SELECT * FROM pedido ORDER BY fecha_inicio DESC";
+                $result = $conn->query($sql);
+
+                $conn->close();
+
+                //Almaceno el resultado en una array
+                $listaPedidos = [];
+                while($producto = $result->fetch_object()){
+                        $listaPedidos[] = $producto;
+                }
+                return $listaPedidos;
+        }
+
+        public static function enviarPedido($id){
+                $conn = dataBase::connect();
+
+                $sql = "UPDATE pedido SET estado = 'entregado' WHERE pedido_id = '$id'";
+                $conn->query($sql);
+
+                $conn->close();
         }
     }
 

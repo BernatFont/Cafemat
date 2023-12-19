@@ -24,8 +24,8 @@
                 <?php
                     foreach($productos as $producto){?>
                         <tr>
-                            <td class="img_detalles col_1_detalles"><img src="<?= $producto->img_producto ?>" alt="Imagen del producto" ></td>
-                            <td class="nombre_detalles col_2_detalles align-middle"><?= strtoupper($producto->nombre_producto) ?></td>
+                            <td class="img_detalles col_1_detalles"><img src="<?= $producto->getImg() ?>" alt="Imagen del producto" ></td>
+                            <td class="nombre_detalles col_2_detalles align-middle"><?= strtoupper($producto->getNombre()) ?></td>
                             <td class="align-middle text-center"><?= $producto->cantidad ?></td>
                             <td class="align-middle text-center"><?= number_format($producto->precio_unidad,2).'€' ?></td>
                             <td class="align-middle text-center"><?= number_format($producto->precio_total,2).'€' ?></td>
