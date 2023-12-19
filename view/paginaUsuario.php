@@ -30,6 +30,12 @@
                     <input type="text" name="usuario" value="<?= $usuario->getNombre_usuario() ?>" class="form-control mb-3">
                     <label for="Contraseña">Contraseña</label>
                     <input type="text" name="contra" value="<?= $usuario->getContraseña() ?>" class="form-control mb-3">
+                    <label for="nivelAcceso">Nive de permisos</label>
+                    <?php if($usuario->getNombre_usuario() == user_admin){?>
+                        <input type="text" name="nivelAcceso" value="<?= $usuario->getNivelAcceso() ?>" class="form-control mb-3">
+                    <?php }else{ ?>
+                        <input type="text" name="nivelAcceso" value="60"  readonly="readonly" class="form-control mb-3">
+                    <?php } ?>
                     <button class="mt-3 py-2 bt" name='modificar_usuario'>Modificar usuario</button>
                 </form>
                 <div class="d-flex flex-column">
@@ -82,7 +88,7 @@
                                 <?php } ?>
                             </table>
                         </div>
-                    <?php } 
+                    <?php }
                     ?>
             </section>
         </section>

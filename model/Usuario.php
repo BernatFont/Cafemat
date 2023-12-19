@@ -1,10 +1,7 @@
 <?php
-
 include_once 'config/dataBase.php';
-include_once 'model/Admin.php';
 
-
-    class Usuario{
+class Usuario{
 
         protected $usuario_id;
         protected $nombre;

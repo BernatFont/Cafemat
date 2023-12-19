@@ -1,6 +1,6 @@
 <?php
 include_once 'config/dataBase.php';
-include_once 'model/Usuario.php';
+
 class Admin extends Usuario{
     private $nivelAcceso;
 
