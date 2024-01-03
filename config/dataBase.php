@@ -1,5 +1,5 @@
 <?php
-
+    /* CLASE PARA LA CONEXION CON LA BASE DE DATOS */
     class dataBase{
 
         public static function connect($host = 'localhost', $user = 'root', $password = '', $db = 'obramat'){

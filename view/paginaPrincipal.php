@@ -95,7 +95,7 @@
                     foreach($productos as $producto){?>
                         <div class="producto_destacado">
                             <div class="d-flex justify-content-center">
-                                <img src="<?= $producto->getImg() ?>" alt="">
+                                <img src="<?= $producto->getImg() ?>" alt="imagen del producto">
                             </div>
                             <div class="mb-4 producto_destacado_bottom d-flex flex-column">
                                 <p class="my-3"><?= strtoupper($producto->getNombre()) ?></p>
@@ -117,7 +117,7 @@
                                 <a href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=producto&action=carta#almuerzo" class="align-self-end">
                                     <button class="bt_compra">
                                         <span>+</span>
-                                        <img src="icon/paper-bag-white.png" alt="" class="icono_compra">
+                                        <img src="icon/paper-bag-white.png" alt="icono bolsa papel para hacer pedido" class="icono_compra">
                                     </button>
                                 </a>
                             </div>
@@ -131,9 +131,9 @@
         <section class="compromisos row">
             <h3 class="mt-4 text-center">Nuestros compromisos</h3>
             <div class="d-flex justify-content-evenly my-4">
-                <img src="icon/los_mejores_precios.png" alt="">
-                <img src="icon/maxima_rapidez.png" alt="">
-                <img src="icon/calidad_profesional.png" alt="">
+                <img src="icon/los_mejores_precios.png" alt="icono de los mejores precios">
+                <img src="icon/maxima_rapidez.png" alt="icono de maxima rapidez">
+                <img src="icon/calidad_profesional.png" alt="icono de calidad profesional">
             </div>
 
         </section>

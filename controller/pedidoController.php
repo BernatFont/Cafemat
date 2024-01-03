@@ -9,6 +9,7 @@ include_once 'utils/CalculadoraPrecios.php';
         public function validarPedido(){
             session_start();
 
+            /* Si hay sesion iniciada entra al if */
             if(isset($_SESSION['usuario'])){
                 $pedido = $_SESSION['carrito'];
                 $usuario = $_SESSION['usuario'];
@@ -18,9 +19,10 @@ include_once 'utils/CalculadoraPrecios.php';
                 /* USAMOS EL ID ANTERIOR PARA AÑADIR TODOS LOS PRODUCTOS SELECCIONADOS EN EL PEDIDO */
                 /* SE AÑADEN EN LA TABLA 'Pedido_Producto' DE MySQL */
                 Pedido::crearPedidoProducto($pedido,$usuario->getNombre_usuario(),$pedido_id);
-
+                /* Al validar el pedido creamos una cookie con el pedido validado para peder
+                recuperarlo posteriormente */
                 setcookie('recuperarPedido', serialize($pedido), time() + 600);
-
+                //Vaciamos el pedido
                 unset($_SESSION['carrito']);
     
                 header('Location:'.url.'?controller=producto&action=index');
@@ -34,6 +36,7 @@ include_once 'utils/CalculadoraPrecios.php';
             }
         }
 
+        /* FUNCION PARA VER LOS DETALLES DEL PEDIDO SELECCIONADO */
         public function verProductosPedido(){
             session_start();
 
@@ -54,10 +57,11 @@ include_once 'utils/CalculadoraPrecios.php';
             }
         }
 
+        /* FUNCION PARA RECUPERAR EL PEDIDO */
         public function recuperarPedido(){
             session_start();
+            //Si encuentra la cookie la muestra
             if(isset($_COOKIE['recuperarPedido'])){
-                echo 'Pedido encontrado';
                 $_SESSION['carrito'] = unserialize($_COOKIE['recuperarPedido']);
                 $pedido = $_SESSION['carrito'];
                 

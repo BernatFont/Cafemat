@@ -10,19 +10,19 @@
     <section>
         <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 nav_1">
         <div class="container-fluid d-flex justify-content-start">
-            <a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="" class="logo"></a>
+            <a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="icono del logo de cafemat" class="logo"></a>
             <form class="d-flex buscador ms-3" role="search">
-                <img src="icon/lupa.svg" alt="" class="mx-2">
+                <img src="icon/lupa.svg" alt="icono de una lupa" class="mx-2">
                 <input placeholder="¿Que necesitas hoy?">
             </form>
             <form action="<?= url."?controller=usuario&action=inicioSesion" ?>" class="d-flex align-items-center ms-auto" method="post">
-                <button class="icon d-flex align-items-center"><img src="icon/user_icon.svg" alt="">
+                <button class="icon d-flex align-items-center"><img src="icon/user_icon.svg" alt="icono de usuarios">
                 <p class="m-0 ms-2 icon_p">Mi cuenta</p>
             </button>
             </form>
             <form action="<?= url."?controller=producto&action=pedido" ?>"  class="d-flex carrito align-items-center" method="post">
                 <button class="icon d-flex align-items-center">
-                    <img src="icon/paper-bag-white.png" alt="">
+                    <img src="icon/paper-bag-white.png" alt="icono de una bolsa para hecer pedidos">
                     <p class="m-0 ms-2 icon_p">Pedido</p>
                 </button>
             </form>
@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 nav_2">
         <div class="container-fluid">
             <button class="navbar-tog responsive_bt" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span><img src="icon/burguer.svg" alt=""></span>
+            <span><img src="icon/burguer.svg" alt="icono de tres lineas para desplegar el menú"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 navegador">

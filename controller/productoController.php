@@ -23,6 +23,7 @@
                 
                 //Creamos el Usuario/Admin como un objeto
                 $usuario = Usuario::getUsuarioByUsername($_GET['usuario']);
+                //Si el usuario es Admin cramos objeto tipo Admin sino tipo Usuario
                 if($usuario->getNombre_usuario() == user_admin){
                     $user = new Admin();
                     $user->setNivelAcceso(1);

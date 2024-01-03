@@ -68,6 +68,7 @@ include_once 'config/dataBase.php';
                 return $existe;
         }
 
+        /* FUNCION QUE CREA EL PEDIDO */
         public static function crearPedido($pedido,$usuario){
                 $conn = dataBase::connect();
 
@@ -96,6 +97,7 @@ include_once 'config/dataBase.php';
                 return $pedido_id->pedido_id;
         }
 
+        /* FUNCION QUE CREA EL PEDIDO CON TODOS LOS PRODUCTOS EN LA BD */
         public static function crearPedidoProducto($pedido,$usuario,$pedido_id){
                 $conn = dataBase::connect();
 
@@ -115,6 +117,7 @@ include_once 'config/dataBase.php';
                 $conn->close();
         }
 
+        /* FUNCION PARA OBTENER LOS PRODUCTOS DEL PEDIDO PASADO POR PARAMETRO */
         public static function getProductosByPedio($pedido_id){
                 $conn = dataBase::connect();
 
@@ -136,6 +139,7 @@ include_once 'config/dataBase.php';
                 return $listaProductos;
         }
 
+        /* FUNCION PARA OBTENER TODOS LOS PEDIDOS */
         public static function getPedidos(){
                 $conn = dataBase::connect();
                 
@@ -151,7 +155,7 @@ include_once 'config/dataBase.php';
                 }
                 return $listaPedidos;
         }
-
+        /* FUNCION QUE CAMBIA EL ESTADO DEL PEDIDO A "entregado" */
         public static function enviarPedido($id){
                 $conn = dataBase::connect();
 

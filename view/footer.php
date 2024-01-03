@@ -10,7 +10,7 @@
     <div class="container-fluid footer">
         <section class="row pt-3">
             <div class="col-lg-3 col-12 ps-5 pt-3 logo_footer">
-                <a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt=""></a>
+                <a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="icono del logo de cafemat"></a>
             </div>
             <div class="col-4 col-lg-2 link_footer d-flex flex-column">
                 <p class="mt-3">PRODUCTOS</p>
@@ -50,11 +50,11 @@
                 <a href="#">Consejos, trucos y técnicas para la cocina</a>
             </div>
             <div class="col-lg-3 col-12 d-flex justify-content-end redes">
-                <a href="#"><img src="icon/facebook.svg" alt=""></a>
-                <a href="#"><img src="icon/instagram.svg" alt=""></a>
-                <a href="#"><img src="icon/linkedin.svg" alt=""></a>
-                <a href="#"><img src="icon/twitter.svg" alt=""></a>
-                <a href="#"><img src="icon/youtube.svg" alt="" class="me-4"></a>
+                <a href="#"><img src="icon/facebook.svg" alt="icono de facebook"></a>
+                <a href="#"><img src="icon/instagram.svg" alt="icono de instragram"></a>
+                <a href="#"><img src="icon/linkedin.svg" alt="icono de linkedin"></a>
+                <a href="#"><img src="icon/twitter.svg" alt="icono de twitter"></a>
+                <a href="#"><img src="icon/youtube.svg" alt="icono de youtube" class="me-4"></a>
             </div>
         </section>
         <div class="row mt-5 pb-2">

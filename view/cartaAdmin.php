@@ -35,7 +35,7 @@
                 
                              <tr>
                                 <td class="del"><?= $producto->getProducto_id(); ?></td>
-                                <td class="del"><img src="<?= $producto->getImg(); ?>" alt="" class="product_img"></td>
+                                <td class="del"><img src="<?= $producto->getImg(); ?>" alt="imagen del producto" class="product_img"></td>
                                 <td><?=  $producto->getNombre(); ?></td>
                                 <td><?=  $producto->getPrecio().' €'; ?></td>
                                 <td><?=  $producto->getCategoria(); ?></td>
@@ -99,7 +99,7 @@
                                             </form>
                                         </td>
                                     <?php }else{ ?>
-                                        <td><img src="icon/check.png" alt=""></td>
+                                        <td><img src="icon/check.png" alt="icono de un tick"></td>
                                     <?php } ?>
                             </tr> 
                                 

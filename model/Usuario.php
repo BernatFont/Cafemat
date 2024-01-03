@@ -134,6 +134,7 @@ class Usuario{
                 return $this;
         }
 
+        /* FUNCION QUE TE CREA UN USUARIO EN LA BD */
         public static function crearUsuario($nombre='-',$apellido='-',$correo='-',$user,$password){
             $conn = dataBase::connect();
 
@@ -142,13 +143,14 @@ class Usuario{
             $conn->close();
         }
 
+        /* FUNCION QUE ME DICE SI EXISTE EL USUARIO */
         public static function usuarioExiste($usuario){
             $conn = dataBase::connect();
             
             $sql = "SELECT * FROM usuario WHERE nombre_usuario = '$usuario'";
             $result = $conn->query($sql);
 
-            if($result->num_rows == 1){
+            if($result->num_rows >= 1){
                 /* el usuario introducido existe */
                 return true;
             }else{
@@ -156,6 +158,7 @@ class Usuario{
             }
         }
 
+        /* FUNCION QUE ME DICE SI LA CONTRASEÑA DEL USUARIO PASADO POR PARAMETRO ES CORRECTA */
         public static function contraCorrecta($usuario,$contra){
             $conn = dataBase::connect();
 
@@ -170,6 +173,7 @@ class Usuario{
             }
         }
 
+        /* FUNCION PARA OBTENER EL OBJETO DEL USUARIO PASADO POR PARAMETRO */
         public static function getUsuarioByUsername($username){
             $conn = dataBase::connect();
             //Preparamos consulta
@@ -199,6 +203,7 @@ class Usuario{
             return $usuario;
         }
 
+        /* FUNCION PARA OBTENER LOS PEDIDOS DEL USUARIO PASADO POR PARAMETRO */
         public static function getPedidosUsuario($username){
             $conn = dataBase::connect();
 
@@ -206,7 +211,7 @@ class Usuario{
             $result = $conn->query($sql_user_id);
             $usuario_id = $result->fetch_object();
             $usuario_id = $usuario_id->usuario_id;
-            $sql = "SELECT * FROM pedido WHERE usuario_id = '$usuario_id'";
+            $sql = "SELECT * FROM pedido WHERE usuario_id = '$usuario_id' ORDER BY fecha_inicio DESC";
             $result = $conn->query($sql);
 
             //Almaceno el resultado de la consulta en una array
@@ -220,6 +225,7 @@ class Usuario{
 
         }
 
+        /* FUNCION QUE MODIFICA EL USUARIO */
         public static function modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra){
             $conn = dataBase::connect();
 

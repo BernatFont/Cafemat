@@ -2,7 +2,7 @@
 include_once 'config/dataBase.php';
 
 class Admin extends Usuario{
-    private $nivelAcceso;
+    private $nivelAcceso = 1;
 
     public function __construct(){
         parent::__construct();

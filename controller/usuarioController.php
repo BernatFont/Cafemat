@@ -10,35 +10,36 @@
             include_once 'view/header.php';
 
             session_start();
-
+            //si no existe sesion de usuario, entra al if para ir al inicio de sesion
             if(empty($_SESSION['usuario'])){
                 include_once 'view/iniciarSesion.php';
             }else{
-                /* si en el panel de usuario le damos al boton de 'modificar usuario',
-                entra en el if */
-                if(isset($_POST['modificar_usuario'])){
-                    $id = $_POST['id'];
-                    $nombre = $_POST['nombre'];
-                    $apellido = $_POST['apellido'];
-                    $correo = $_POST['correo'];
-                    $usuario = $_POST['usuario'];
-                    $contra = $_POST['contra'];
+                    /* si en el panel de usuario le damos al boton de 'modificar usuario',
+                    entra en el if */
+                    if(isset($_POST['modificar_usuario'])){
+                        $id = $_POST['id'];
+                        $nombre = $_POST['nombre'];
+                        $apellido = $_POST['apellido'];
+                        $correo = $_POST['correo'];
+                        $usuario = $_POST['usuario'];
+                        $contra = $_POST['contra'];
+                        // modificamos el usuario
+                        Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra);
+                        $usuario_modificado = 'Usuario modificado correctamente';
+                    }
+                    //si existe la sesion obtenemos el usuario y sus pedidos
+                    if(isset($_SESSION['usuario'])){
+                        $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
+                        $_SESSION['usuario'] = $usuario;
+                        $pedidos_usuario = Usuario::getPedidosUsuario($_SESSION['usuario']->getNombre_usuario());
+                    }
 
-                    Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra);
-                    $usuario_modificado = 'Usuario modificado correctamente';
-                }
-                if(isset($_SESSION['usuario'])){
-                    $usuario = $_SESSION['usuario'];
-                    //Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
-                    $pedidos_usuario = Usuario::getPedidosUsuario($_SESSION['usuario']->getNombre_usuario());
-                }
-
-                include_once 'view/paginaUsuario.php';
+                    include_once 'view/paginaUsuario.php';
             }
 
             include_once 'view/footer.php';
         }
-
+        /* FUNCION PARA VALIDAR SI LA SESION Y LA CONTRASEÑA EXISTEN */
         public function validarSesion(){
             $usuario = $_POST['usuario'];
             $password = $_POST['password'];
@@ -71,6 +72,7 @@
             include_once 'view/footer.php';
         }
 
+        /* FUNCION PARA CREAR USUARIO */
         public function crearUsuario(){
             
             $usuario = $_POST['usuario'];
@@ -95,6 +97,7 @@
             }
         }
 
+        /* FUNCION PARA CERRAR CUENTA (ELIMINA LA COOKIE DE RECUPERAR PEDIDO) */
         public function cerrarCuenta(){
 
             if(isset($_COOKIE['recuperarPedido'])){

@@ -36,7 +36,7 @@
                 <h2>Mi pedido</h2>
                 <section>
                     <form action="<?= url."?controller=producto&action=pedido"?>" method="post">
-                        <div class="div_bin d-flex align-items-center justify-content-center"><button class="paper_bin" name="eliminar_pedido"><img src="icon/paper-been.svg" alt=""></button></div>
+                        <div class="div_bin d-flex align-items-center justify-content-center"><button class="paper_bin" name="eliminar_pedido"><img src="icon/paper-been.svg" alt="icono de una papelera"></button></div>
                     </form>
                 </section>
             </section>
@@ -71,16 +71,16 @@
                                     </td>
                                     <td class="text-center align-middle">
                                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post" class="cantidad">
-                                            <button name="remove" value="<?= $pos ?>"><img src="icon/minus.png" alt=""></button>
+                                            <button name="remove" value="<?= $pos ?>"><img src="icon/minus.png" alt="icono del menos para restar productos"></button>
                                             <input type="text" value="<?= $pedido->getCantidad() ?>">
-                                            <button name="add" value="<?= $pos ?>"><img src="icon/plus.png" alt=""></button>
+                                            <button name="add" value="<?= $pos ?>"><img src="icon/plus.png" alt="icono del mas para sumar productos"></button>
                                         </form>
                                     </td>
                                     <td class="text-end align-middle"><?= $pedido->precioTotalProducto($pedido->getProducto()->getPrecio()).'€'?></td>
                                     <td class="text-center align-middle">
                                         <form action="<?= url."?controller=producto&action=pedido" ?>" method="post">
                                             <input type="hidden" name="borrar" value="<?= $pos ?>">
-                                            <button class="bt_eliminarProducto"><img src="icon/close.png" alt=""></button>
+                                            <button class="bt_eliminarProducto"><img src="icon/close.png" alt="icono para eliminar el producto del pedido"></button>
                                         </form>
                                     </td>
                                 </tr>

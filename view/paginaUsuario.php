@@ -32,7 +32,7 @@
                     <input type="text" name="contra" value="<?= $usuario->getContraseña() ?>" class="form-control mb-3">
                     <label for="nivelAcceso">Nive de permisos</label>
                     <?php if($usuario->getNombre_usuario() == user_admin){?>
-                        <input type="text" name="nivelAcceso" value="<?= $usuario->getNivelAcceso() ?>" class="form-control mb-3">
+                        <input type="text" name="nivelAcceso" value="<?= $usuario->getNivelAcceso() ?>" readonly="readonly" class="form-control mb-3">
                     <?php }else{ ?>
                         <input type="text" name="nivelAcceso" value="60"  readonly="readonly" class="form-control mb-3">
                     <?php } ?>
