@@ -143,7 +143,7 @@ include_once 'config/dataBase.php';
         public static function getPedidos(){
                 $conn = dataBase::connect();
                 
-                $sql = "SELECT * FROM pedido ORDER BY fecha_inicio DESC";
+                $sql = "SELECT pedido.*, usuario.nombre_usuario as usuario FROM pedido JOIN usuario ON pedido.usuario_id = usuario.usuario_id ORDER BY fecha_inicio DESC";
                 $result = $conn->query($sql);
 
                 $conn->close();

@@ -71,11 +71,12 @@
                 <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th scope="col">USUARIO</th>
                         <th scope="col">FECHA INICIO</th>
                         <th scope="col">HORA</th>
                         <th scope="col" class="text-center">BULTOS</th>
                         <th scope="col">PRECIO</th>
-                        <th scope="col">ESTADO</th>
+                        <th scope="col" class="del">ESTADO</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -85,11 +86,12 @@
                         foreach ($pedidos as $pedido) {?>
                 
                              <tr>
+                                <td><?= $pedido->usuario; ?></td>
                                 <td><?= $pedido->fecha_inicio; ?></td>
                                 <td><?=  $pedido->hora; ?></td>
                                 <td class="text-center"><?=  $pedido->cantidad_bultos; ?></td>
                                 <td><?=  number_format($pedido->coste,2).' €'; ?></td>
-                                <td><?=  $pedido->estado; ?></td>
+                                <td class="del"><?=  $pedido->estado; ?></td>
                                 <?php
                                     if($pedido->estado == 'pendiente'){?>
                                         <td>
