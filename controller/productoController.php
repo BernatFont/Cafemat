@@ -152,55 +152,64 @@
 
         //Pagina usuario del Administrador
         public function panelControlAdmin(){
-
-            if (get_class($_SESSION['usuario']) == 'Admin'){
-                /* IF PARA EDITAR EL PRODUCTO CON LOS DATOS ENVIADOS DE LA VISTA editarProducto */
-                if(isset($_POST['editar_producto'])){
-                    $id = $_POST['id'];
-                    $img = $_POST['img'];
-                    $nombre = $_POST['nombre'];
-                    $precio = number_format($_POST['precio'],2);
-                    $categoria = $_POST['categoria'];
+            session_start();
+            if (isset($_SESSION['usuario'])){
+                //Si la clase es de tipo Admin, muestra su panel
+                if (get_class($_SESSION['usuario']) == 'Admin'){
+                    /* IF PARA EDITAR EL PRODUCTO CON LOS DATOS ENVIADOS DE LA VISTA editarProducto */
+                    if(isset($_POST['editar_producto'])){
+                        $id = $_POST['id'];
+                        $img = $_POST['img'];
+                        $nombre = $_POST['nombre'];
+                        $precio = number_format($_POST['precio'],2);
+                        $categoria = $_POST['categoria'];
+                        
+                        //Hace el update con los nuevos datos del producto
+                        ProductoDAO::updateProducto($id, $img, $nombre, $precio, $categoria);
+                    }
+        
+                    /* IF QUE CREA EL PRODUCTO */
+                    if(isset($_POST['crear_producto'])){
+                        $img = $_POST['img'];
+                        $nombre = $_POST['nombre'];
+                        $precio = number_format($_POST['precio'],2);
+                        $categoria = $_POST['categoria'];
+        
+                        //Funcion que inserta el producto a la BD
+                        ProductoDAO::createProducto($img,$nombre,$precio,$categoria);
+                    }
+        
+                    /*SI LE DAMOS AL BOTON DE ELIMINAR UN PRODUCTO, SE RECIVE
+                    POR POST Y SE ELIMINA DENTRO DE ESTE IF */
+                    if(isset($_POST['eliminar_producto'])){
+                        $id = $_POST['id'];
+        
+                        ProductoDAO::deleteProducto($id);
+                    }
+        
+                    /*IF QUE PONEL EL PEDIDO DEL ESTADO "pendiente" A "enviado",
+                    AL DARLE AL BOTON DE ENVIAR DEL PEDIDO */
+                    if(isset($_POST['enviar_pedido'])){
+                        
+                        Pedido::enviarPedido($_POST['id']);
+                    }
                     
-                    //Hace el update con los nuevos datos del producto
-                    ProductoDAO::updateProducto($id, $img, $nombre, $precio, $categoria);
+                    //Obtenemos todos los productos para mostrarlos en la view
+                    $productos = ProductoDAO::getProductos();
+                    //Obtenemos todos los pedidos para mostrarlos en la view
+                    $pedidos = Pedido::getPedidos();
+        
+                    include_once 'view/header.php';
+        
+                    include_once 'view/cartaAdmin.php';
+        
+                    include_once 'view/footer.php';
                 }
-    
-                /* IF QUE CREA EL PRODUCTO */
-                if(isset($_POST['crear_producto'])){
-                    $img = $_POST['img'];
-                    $nombre = $_POST['nombre'];
-                    $precio = number_format($_POST['precio'],2);
-                    $categoria = $_POST['categoria'];
-    
-                    //Funcion que inserta el producto a la BD
-                    ProductoDAO::createProducto($img,$nombre,$precio,$categoria);
-                }
-    
-                /*SI LE DAMOS AL BOTON DE ELIMINAR UN PRODUCTO, SE RECIVE
-                POR POST Y SE ELIMINA DENTRO DE ESTE IF */
-                if(isset($_POST['eliminar_producto'])){
-                    $id = $_POST['id'];
-    
-                    ProductoDAO::deleteProducto($id);
-                }
-    
-                /*IF QUE PONEL EL PEDIDO DEL ESTADO "pendiente" A "enviado",
-                AL DARLE AL BOTON DE ENVIAR DEL PEDIDO */
-                if(isset($_POST['enviar_pedido'])){
-                    
-                    Pedido::enviarPedido($_POST['id']);
-                }
-                
-                //Obtenemos todos los productos para mostrarlos en la view
-                $productos = ProductoDAO::getProductos();
-                //Obtenemos todos los pedidos para mostrarlos en la view
-                $pedidos = Pedido::getPedidos();
-    
+            }else{
                 include_once 'view/header.php';
-    
-                include_once 'view/cartaAdmin.php';
-    
+        
+                include_once 'view/iniciarSesion.php';
+        
                 include_once 'view/footer.php';
             }
         }
