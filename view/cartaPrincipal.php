@@ -20,7 +20,7 @@
                 <div class="mt-5" id="<?= $contenido_categoria[$i]->getNombre() ?>">
                     <div>
                         <div class="row">
-                            <img src="<?=$contenido_categoria[$i]->getImg()?>" alt="imagen de la seccion" class="col-6 col-md-6 col-lg-3 p-0">
+                            <img src="<?=$contenido_categoria[$i]->getImg()?>" alt="imagen de la seccion: <?= $contenido_categoria[$i]->getNombre() ?>" class="col-6 col-md-6 col-lg-3 p-0">
                             <div class="titulo_seccion col-6 col-md-6 col-lg-9"><p class="ObjetBold_50"><?=$contenido_categoria[$i]->getNombre() ?></p></div>
                         </div>
                         <div>
@@ -35,7 +35,7 @@
                     <?php foreach($categoria as $producto){ ?>
                         <div class="producto d-flex justify-content-between pe-2 pt-1 m-4">
                         <div>
-                            <img src="<?= $producto->getImg(); ?>" alt="imagen del producto" class="imagen_producto">
+                            <img src="<?= $producto->getImg(); ?>" alt="imagen del producto: <?= $producto->getNombre() ?>" class="imagen_producto">
                         </div>
                         <div class="d-flex flex-column align-items-end">
                             <p class="nombre_producto"><?= strtoupper($producto->getNombre()); ?></p>

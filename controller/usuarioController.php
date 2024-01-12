@@ -23,9 +23,21 @@
                         $correo = $_POST['correo'];
                         $usuario = $_POST['usuario'];
                         $contra = $_POST['contra'];
-                        // modificamos el usuario
-                        Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra);
-                        $usuario_modificado = 'Usuario modificado correctamente';
+                        if (!Usuario::usuarioExiste($usuario)){
+                            //Modificamos el usuario entero
+                            Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$usuario,$contra);
+                            $_SESSION['usuario']->setNombre_usuario($usuario);
+                            $usuario_modificado = 'Usuario modificado correctamente';
+                        }else{
+                            //Modifico todo menos el usuario por que ya existe
+                            Usuario::modificarUsuario($id,$nombre,$apellido,$correo,$_SESSION['usuario']->getNombre_usuario(),$contra);
+                            $usuario_modificado = 'El usuario ya existe, prueba con otro.';
+                        }
+                        $_SESSION['usuario']->setUsuario_id($id);
+                        $_SESSION['usuario']->setNombre($nombre);
+                        $_SESSION['usuario']->setApellido($apellido);
+                        $_SESSION['usuario']->setCorreo($correo);
+                        $_SESSION['usuario']->setContraseña($contra);
                     }
                     //si existe la sesion obtenemos el usuario y sus pedidos
                     if(isset($_SESSION['usuario'])){
