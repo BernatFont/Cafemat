@@ -30,6 +30,8 @@
                     <input type="text" name="usuario" value="<?= $usuario->getNombre_usuario() ?>" class="form-control mb-3">
                     <label for="Contraseña">Contraseña</label>
                     <input type="text" name="contra" value="<?= $usuario->getContraseña() ?>" class="form-control mb-3">
+                    <label for="Puntos">Puntos</label>
+                    <input type="text" name="puntos" value="<?= $usuario->getPuntos() ?>" readonly="readonly" class="form-control mb-3">
                     <label for="nivelAcceso">Nive de permisos</label>
                     <?php if($usuario->getNombre_usuario() == user_admin){?>
                         <input type="text" name="nivelAcceso" value="<?= $usuario->getNivelAcceso() ?>" readonly="readonly" class="form-control mb-3">

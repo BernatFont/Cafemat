@@ -9,6 +9,7 @@ class Usuario{
         protected $correo;
         protected $nombre_usuario;
         protected $contraseña;
+        protected $puntos;
 
         public function __construct() {
           
@@ -134,11 +135,31 @@ class Usuario{
                 return $this;
         }
 
+        /**
+         * Get the value of puntos
+         */ 
+        public function getPuntos()
+        {
+                return $this->puntos;
+        }
+
+        /**
+         * Set the value of puntos
+         *
+         * @return  self
+         */ 
+        public function setPuntos($puntos)
+        {
+                $this->puntos = $puntos;
+
+                return $this;
+        }
+
         /* FUNCION QUE TE CREA UN USUARIO EN LA BD */
         public static function crearUsuario($nombre='-',$apellido='-',$correo='-',$user,$password){
             $conn = dataBase::connect();
 
-            $sql = "INSERT INTO usuario VALUES ('','$nombre','$apellido','$correo','$user','$password')";
+            $sql = "INSERT INTO usuario VALUES ('','$nombre','$apellido','$correo','$user','$password',0)";
             $conn->query($sql);
             $conn->close();
         }
@@ -233,7 +254,17 @@ class Usuario{
             $conn->query($sql);
         }
 
-       
+        public static function setPuntosUser($puntos){
+            $conn = dataBase::connect();
+            session_start();
+            $username = $_SESSION['usuario']->getNombre_usuario();
+            $usuario = Usuario::getUsuarioByUsername($username);
+            $puntos += $usuario->getPuntos();
+            $sql = "UPDATE usuario SET puntos = '$puntos' WHERE nombre_usuario = '$username'";
+            $conn->query($sql);
+            $conn->close();                
+        }
+
     }
 
 ?>

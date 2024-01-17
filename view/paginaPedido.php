@@ -6,6 +6,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/stylePedido.css">
+    <link rel="stylesheet" href="library/sweetalert/sweetalert2.min.css">
     <title>Pedido del cliente | Cafemat</title>
 </head>
 <body>
@@ -91,7 +92,8 @@
                 </section>
                 
                 <section class="col-12 col-lg-3">
-                    <form action="<?= url."?controller=pedido&action=validarPedido" ?>" method="post" class="d-flex flex-column">
+                <!-- <?= url."?controller=pedido&action=validarPedido" ?> -->
+                    <form action="" class="d-flex flex-column">
                         <section class="metodo_pago d-flex flex-column px-3 mb-3">
                             <h3 class="my-3 pb-3">Método de pago</h3>
                             <label for="pago_targeta" class="p-3 d-flex align-items-center">
@@ -112,10 +114,10 @@
                             </span>
                             <span class="px-3 py-2 d-flex justify-content-between">
                                 <span>Total</span>
-                                <span><?= number_format(CalculadoraPrecios::calcularTotalPedido($_SESSION["carrito"]),2) ?> €</span>
+                                <span id="precio_total"><?= number_format(CalculadoraPrecios::calcularTotalPedido($_SESSION["carrito"]),2) ?>€</span>
                             </span>
                         </section>
-                        <button class="bt py-2 mb-4">Validar pedido</button>
+                        <button class="bt py-2 mb-4" id="validar_pedido">Validar pedido</button>
                     </form>
                     <?php
                         if(isset($_SESSION['usuario'])){?>
@@ -129,6 +131,10 @@
         </section>
         <?php } ?>
     </main>
-        
+
+    <script src="library/sweetalert/sweetalert2.min.js"></script>
+    <script src="library/sweetalert/cleave.min.js"></script>
+    <script src="library/sweetalert/addons/cleave-phone.i18n.js"></script>
+    <script src="js/scriptPedido.js"></script>
 </body>
 </html>

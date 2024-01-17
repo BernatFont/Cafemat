@@ -162,7 +162,7 @@ table tr td{
     background: #e6e5e5;
 }
 
-.metodo_pago label img, .metodo_pago label input{
+.metodo_pago label img{
     height: 20px;
     width: 20px;
 }
@@ -170,6 +170,11 @@ table tr td{
 .metodo_pago label span{
     font-size: 14px;
     font-family: 'TTRegular',sans-serif;
+}
+
+input[type='radio']{
+    width: 20px;
+    height: 20px;
 }
 
 input[type='radio']:checked{

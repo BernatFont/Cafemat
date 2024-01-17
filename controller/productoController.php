@@ -36,6 +36,7 @@
                 $user->setCorreo($usuario->getCorreo());
                 $user->setNombre_usuario($usuario->getNombre_usuario());
                 $user->setContraseña($usuario->getContraseña());
+                $user->setPuntos($usuario->getPuntos());
 
                 //Ponemos el objeto de Usuario/Admin en la sesion
                 $_SESSION['usuario'] = $user;
