@@ -30,6 +30,14 @@ buttonValidarPedido.addEventListener("click", async (event) => {
         tipCost = (tip * parseFloat(precioTotal))/100;
         tipCost = Math.round(tipCost*100)/100;
         precioFinal = parseFloat(precioTotal) + tipCost;
+        precioFinal = Math.round(precioFinal*100)/100
+        tipCost = tipCost.toFixed(2);
+        precioFinal = precioFinal.toFixed(2)
+        if (tip == "1"){
+            tipCost = 0;
+            precioFinal = parseFloat(precioTotal);
+            precioFinal = precioFinal.toFixed(2);
+        }
         const confirm = await Swal.fire({
             title: '¿Estás seguro?',
             text: 'Por favor, confirma que deseas realizar el pedido con la propina seleccionada.',
@@ -47,7 +55,7 @@ buttonValidarPedido.addEventListener("click", async (event) => {
                 //Cuando se cierre la ventana echa por swetalert, ejecutara el siguiente codigo
                 didClose: () => {
                     // Construir la URL correctamente (paso la propina por GET)
-                    const queryString = `?controller=pedido&action=validarPedido&tip=${tip}`;
+                    const queryString = `?controller=pedido&action=validarPedido&tip=${tipCost}`;
                     // Vamos a la URL deseada
                     window.location.href = url + queryString;
                 }

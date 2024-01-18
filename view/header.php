@@ -10,7 +10,7 @@
     <section>
         <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 nav_1">
         <div class="container-fluid d-flex justify-content-start">
-            <a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="icono del logo de cafemat" class="logo"></a>
+            <h1><a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="icono del logo de cafemat" class="logo"></a></h1>
             <form class="d-flex buscador ms-3" role="search">
                 <img src="icon/lupa.svg" alt="icono de una lupa" class="mx-2">
                 <input placeholder="¿Que necesitas hoy?">
@@ -53,6 +53,9 @@
                 </li>
                 <li class="nav-item py-1 campo">
                     <a class="nav-link active" href="<?= url."?controller=producto&action=carta"?>">Carta</a>
+                </li>
+                <li class="nav-item py-1 campo">
+                    <a class="nav-link active" href="<?= url."?controller=API&action=api"?>">Reseñas</a>
                 </li>
             </ul>
         </div>
