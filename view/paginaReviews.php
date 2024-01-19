@@ -8,18 +8,8 @@
     <link rel="stylesheet" href="css/styleReview.css">
     <title>Reseñas | Cafemat</title>
 </head>
-<body>
-    <?php 
-        //var_dump($lista);
-        foreach($lista as $l){
-            echo $l->getReview_id().'<br>';
-            echo $l->getUser().'<br>';
-            echo $l->getRating().'<br>';
-            echo $l->getComment().'<br>';
-            echo $l->getDate().'<br>';
-        }
-     ?>
 
+<body>
      <script src="js/scriptReview.js"></script>
 </body>
 </html>

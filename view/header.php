@@ -55,7 +55,7 @@
                     <a class="nav-link active" href="<?= url."?controller=producto&action=carta"?>">Carta</a>
                 </li>
                 <li class="nav-item py-1 campo">
-                    <a class="nav-link active" href="<?= url."?controller=API&action=api"?>">Reseñas</a>
+                    <a class="nav-link active" href="<?= url."?controller=review&action=reviews"?>">Reseñas</a>
                 </li>
             </ul>
         </div>
