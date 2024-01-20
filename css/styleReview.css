@@ -1,0 +1,46 @@
+:root{
+    --primary:#ff671f;
+    --secondary:#120949;
+}
+
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content:left;
+  }
+  
+  .rating input {
+    display: none;
+  }
+  
+  .rating label {
+    float: right;
+    cursor: pointer;
+    color: #ccc;
+    transition: color 0.3s;
+  }
+  
+  .rating label:before {
+    content: '\2605';
+    font-size: 30px;
+  }
+  
+  .rating input:checked ~ label,
+  .rating label:hover,
+  .rating label:hover ~ label {
+    color: var(--primary);
+    transition: color 0.3s;
+  }
+
+  .reviewDiv{
+    display: flex;
+    justify-content: space-evenly;
+    border: 2px solid #dcdcdc;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .star {
+    font-size: 28px; /* Tamaño de la estrella */
+    color: var(--primary);
+}

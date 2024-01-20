@@ -4,7 +4,7 @@ include_once 'model/Review.php';
 
 class APIController {
 
-    public function api() {
+    public function apiShowReviews() {
         $reviews = Review::getReviews();
 
         $reviewsAsociativo = [];
@@ -20,11 +20,19 @@ class APIController {
 
         $reviewsAsociativo = json_encode($reviewsAsociativo, JSON_UNESCAPED_UNICODE);
 
-        // Imprimir directamente la respuesta JSON
+        // Establecer las cabeceras adecuadas para una respuesta JSON
+        header('Content-Type: application/json');
+        
+        /* Imprimir directamente la respuesta JSON para que al
+        hacer el fetch vea el texto plano en formato JSON y lo pueda cojer */
         echo $reviewsAsociativo;
 
         // Finalizar la ejecución del script después de enviar la respuesta JSON
         exit();
+    }
+
+    public function apiInsertReview(){
+
     }
 }
 ?>
