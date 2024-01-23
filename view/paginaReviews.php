@@ -6,27 +6,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/styleReview.css">
+    <link rel="stylesheet" href="library/sweetalert/sweetalert2.min.css">
     <title>Reseñas | Cafemat</title>
 </head>
 
 <body>
-    <section id="container_reviews">
+    <?php
+        if (isset($_SESSION['usuario'])){ ?>
+            <div class="createReviewContainer">
+                <button id="createReview" class="bt"><img class="reviewIcon"src="icon/review.png" alt="logo para dejar tu reseña"></button>
+            </div>
+    <?php } ?>
+    <section id="container_reviews" class=""></section>
 
-    </section>
-    
-    <div class="rating">
-        <input value="1" name="rating" id="star1" type="radio">
-        <label for="star1"></label>
-        <input value="2" name="rating" id="star2" type="radio">
-        <label for="star2"></label>
-        <input value="3" name="rating" id="star3" type="radio">
-        <label for="star3"></label>
-        <input value="4" name="rating" id="star4" type="radio">
-        <label for="star4"></label>
-        <input value="5" name="rating" id="star5" type="radio">
-        <label for="star5"></label>
-    </div>
-
+    <script src="library/sweetalert/sweetalert2.min.js"></script>
+    <script src="library/sweetalert/cleave.min.js"></script>
+    <script src="library/sweetalert/addons/cleave-phone.i18n.js"></script>
     <script src="js/scriptReview.js"></script>
 </body>
 </html>

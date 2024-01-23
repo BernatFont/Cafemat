@@ -32,6 +32,25 @@ class APIController {
     }
 
     public function apiInsertReview(){
+        $conn = dataBase::connect();
+        session_start();
+
+        $jsonReview = json_decode(file_get_contents('php://input'), true);
+
+        // Verificar si las claves están presentes en el array
+        if (isset($jsonReview['comment']) && isset($jsonReview['rating']) && isset($jsonReview['date'])) {
+            $comment = $jsonReview['comment'];
+            $rating = $jsonReview['rating'];
+            $date = $jsonReview['date'];
+            $user = $_SESSION['usuario']->getUsuario_id();
+            //Insertamos la reseña en la base de datos
+            $sql = "INSERT INTO review VALUES ('','$user','$rating','$comment','$date')";
+            $conn->query($sql);
+            $conn->close();
+            echo "Comment: ".$comment." Rating: ".$rating." Date: ".$date." Usuario: ".$user;
+        } else {
+            echo 'Error al obtener datos';
+        }
 
     }
 }

@@ -88,6 +88,7 @@
 }
 
 .footer{
+    position: relative; /*Lo pongo por que asi puedo desaparecer el boton de dejar reseña debajo del footer*/
     background-color: #272727;
 }
 

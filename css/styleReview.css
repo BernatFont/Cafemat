@@ -3,6 +3,30 @@
     --secondary:#120949;
 }
 
+#createReview{
+  position: fixed;
+  border-radius: 50%;
+  padding: 12px;
+  left: 95%;
+  top: 65%;
+  background-color: var(--secondary);
+  z-index: 0; /* Para que desaparezca debajo del footer*/
+}
+
+.bt::before{
+  border-radius: 50%;
+}
+
+#reviewTextArea{
+  width: 450px;
+  height: 150px;
+  border: 1px solid #dcdcdc;
+}
+
+.reviewIcon{
+  height: 36px;
+}
+
 .rating {
     display: flex;
     flex-direction: row-reverse;
@@ -32,12 +56,26 @@
     transition: color 0.3s;
   }
 
-  .reviewDiv{
+  #container_reviews{
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .reviewCard{
+    display: flex;
+    flex-direction: column;
     border: 2px solid #dcdcdc;
     border-radius: 4px;
-    margin-bottom: 12px;
+    margin: 24px;
+    padding: 8px 26px;
+    width: 500px;
+  }
+
+  .reviewTop{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #dcdcdc;
   }
 
   .star {
