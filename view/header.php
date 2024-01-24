@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/headerFooter.css">
 </head>
 <body>
-    <section>
+    <section class="header">
         <nav class="navbar navbar-expand-lg bg-body-tertiary p-0 nav_1">
         <div class="container-fluid d-flex justify-content-start">
             <h1><a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="icono del logo de cafemat" class="logo"></a></h1>

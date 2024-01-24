@@ -25,6 +25,7 @@ createReview.addEventListener("click", async () => {
             </div>
         `,
         showCancelButton: true,
+        confirmButtonText: "Confirmar"
     });
     if (text) {
         /* Obtengo fecha actual en el formato TIMSTAMP */
@@ -50,7 +51,9 @@ createReview.addEventListener("click", async () => {
         if (review == '' || ratingValue == null) {
             Swal.fire({
                 title: "Rellena todos los datos",
-                icon: "error"
+                icon: "error", 
+                showConfirmButton: false,
+                timer: 2000,
               });
         }else{
             reviewToSend = {
@@ -95,6 +98,7 @@ function getReviews(){
                 let boldUser = document.createElement("strong");
                 boldUser.textContent = reviewUser;
                 user.appendChild(boldUser);
+                user.classList.add("me-3");
     
                 //Mostramos la fecha en el formato deseado: "22 ene 2024"
                 let reviewDate = r.date;

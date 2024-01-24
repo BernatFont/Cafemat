@@ -1,20 +1,33 @@
+@font-face {
+  font-family: 'TTBold';
+  src: url('../fonts/TTCommonsBold.otf') format('opentype');
+}
+
 :root{
-    --primary:#ff671f;
-    --secondary:#120949;
+  --primary:#ff671f;
+  --secondary:#120949;
+}
+
+#titulo{
+  width: 92%;
+  border-bottom: 1px solid var(--primary);
+  margin-bottom: 12px;
+}
+
+.TTBold_32{
+  font-size: 32px;
+  font-family: 'TTBold',sans-serif;
 }
 
 #createReview{
   position: fixed;
-  border-radius: 50%;
+  clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 0 100%, 25% 50%, 0 0);
   padding: 12px;
-  left: 95%;
-  top: 65%;
+  width: 100px;
+  left: 94%;
+  top: 18%; 
   background-color: var(--secondary);
   z-index: 0; /* Para que desaparezca debajo del footer*/
-}
-
-.bt::before{
-  border-radius: 50%;
 }
 
 #reviewTextArea{
@@ -24,7 +37,7 @@
 }
 
 .reviewIcon{
-  height: 36px;
+  height: 32px;
 }
 
 .rating {
@@ -59,7 +72,8 @@
   #container_reviews{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: left;
+    width: 92%;
   }
 
   .reviewCard{
@@ -67,9 +81,9 @@
     flex-direction: column;
     border: 2px solid #dcdcdc;
     border-radius: 4px;
-    margin: 24px;
+    margin: 12px 0;
     padding: 8px 26px;
-    width: 500px;
+    width: 100%;
   }
 
   .reviewTop{
@@ -78,7 +92,32 @@
     border-bottom: 2px solid #dcdcdc;
   }
 
+  .reviewTopLeft{
+    display: flex;
+  }
+
   .star {
     font-size: 28px; /* Tamaño de la estrella */
     color: var(--primary);
+}
+
+@media (max-width: 1200px){
+  #createReview{
+    left: 92%;
+  }
+}
+@media (max-width: 1000px){
+  #createReview{
+    left: 90%;
+  }
+}
+@media (max-width: 800px){
+  #createReview{
+    left: 88%;
+  }
+}
+@media (max-width: 600px){
+  #createReview{
+    left: 86%;
+  }
 }
