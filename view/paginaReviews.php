@@ -14,16 +14,19 @@
     <?php
         if (isset($_SESSION['usuario'])){ ?>
             <div class="createReviewContainer">
-                <button id="createReview" class="bt"><img class="reviewIcon"src="icon/review.png" alt="logo para dejar tu reseña"></button>
+                <button id="createReview" class="bt reviewButton"><img class="reviewIcon"src="icon/review.png" alt="logo para dejar tu reseña"></button>
+            </div>
+            <div class="createReviewContainer">
+                <button id="ratingFilter" class="bt reviewButton"><img class="reviewIcon"src="icon/star.png" alt="logo de una estrella"></button>
             </div>
             <?php } ?>
-    <div class="container-fluid px-md-5">
+    <div class="container-fluid px-5">
         <div id="titulo" class="mt-4">
             <h2 class="TTBold_32">RESEÑAS</h2>
         </div>
     </div>
 
-    <section id="container_reviews" class="px-md-5"></section>
+    <section id="container_reviews" class="px-5"></section>
             
     <script src="library/sweetalert/sweetalert2.min.js"></script>
     <script src="library/sweetalert/cleave.min.js"></script>

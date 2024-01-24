@@ -19,7 +19,7 @@
   font-family: 'TTBold',sans-serif;
 }
 
-#createReview{
+.reviewButton{
   position: fixed;
   clip-path: polygon(100% 0%, 100% 53%, 100% 100%, 0 100%, 25% 50%, 0 0);
   padding: 12px;
@@ -28,6 +28,10 @@
   top: 18%; 
   background-color: var(--secondary);
   z-index: 0; /* Para que desaparezca debajo del footer*/
+}
+
+.createReviewContainer:nth-of-type(2) .reviewButton{
+  top: 30%;
 }
 
 #reviewTextArea{
@@ -102,22 +106,22 @@
 }
 
 @media (max-width: 1200px){
-  #createReview{
+ .reviewButton{
     left: 92%;
   }
 }
 @media (max-width: 1000px){
-  #createReview{
+ .reviewButton{
     left: 90%;
   }
 }
 @media (max-width: 800px){
-  #createReview{
+ .reviewButton{
     left: 88%;
   }
 }
 @media (max-width: 600px){
-  #createReview{
+ .reviewButton{
     left: 86%;
   }
 }
