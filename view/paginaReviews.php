@@ -16,10 +16,13 @@
             <div class="createReviewContainer">
                 <button id="createReview" class="bt reviewButton"><img class="reviewIcon"src="icon/review.png" alt="logo para dejar tu reseña"></button>
             </div>
-            <div class="createReviewContainer">
-                <button id="ratingFilter" class="bt reviewButton"><img class="reviewIcon"src="icon/star.png" alt="logo de una estrella"></button>
-            </div>
             <?php } ?>
+    <div class="createReviewContainer">
+        <button id="ratingFilter" class="bt reviewButton"><img class="reviewIcon"src="icon/star.png" alt="logo de una estrella"></button>
+    </div>
+    <div class="createReviewContainer">
+        <button id="orderFilter" class="bt reviewButton"><img src="icon/filter.png" alt="icono de filtro"></button>
+    </div>
     <div class="container-fluid px-5">
         <div id="titulo" class="mt-4">
             <h2 class="TTBold_32">RESEÑAS</h2>

@@ -9,6 +9,7 @@ const createReview = document.getElementById("createReview");
 createReview.addEventListener("click", async () => {
     const { value: text } = await Swal.fire({
         title: "Deja tu reseña",
+        /* CREAMOS UN textarea Y UN DIV DONDE DEJAREMOS NUESTRA RESEÑA Y NUESTRA VALORACIÓN */
         html: `
             <textarea id="reviewTextArea" placeholder="Deja aquí tu reseña..."></textarea>
             <div class="rating">
@@ -81,13 +82,16 @@ createReview.addEventListener("click", async () => {
            
         }
     }
+    //CAMBIO LA IMAGEN DEL orderFilter POR LA ORIGINAL
+    changeOriginalOrderFilter();
 });
 
-
+/* FILTRO DE RESEÑAS SEGÚN VALORACIÓN */
 const ratingFilter = document.getElementById("ratingFilter")
 ratingFilter.addEventListener("click",async () =>{
     const { value: rating } = await Swal.fire({
         title: "Filtra según la valoración deseada",
+        /* CREACION DE LAS ESTRELLAS PARA FILTRAR */
         html: `
             <div class="rating justify-content-center">
                 <input value="5" name="rating" id="star5" type="radio">
@@ -121,9 +125,39 @@ ratingFilter.addEventListener("click",async () =>{
             getReviews(ratingValue);
         }
     }
+    //CAMBIO LA IMAGEN DEL orderFilter POR LA ORIGINAL
+    changeOriginalOrderFilter();
 })
 
+/* FILTRO DE RESEÑAS, VISTA DE LAS MISMAS ASCENDENTEMENTO O DESCENDIENTEMENTE */
+const orderFilter = document.getElementById("orderFilter");
+let isAscending = true; // Variable para rastrear el estado
+orderFilter.addEventListener("click",()=>{
+    // Crea un elemento de imagen
+    let img = document.createElement("img");
+    img.className = "reviewIcon";
+    img.src = "icon/arrow.png";
+    // Cambia la dirección de la flecha según el estado actual
+    if (isAscending) {
+        img.alt = "logo de una flecha ascendente";
+        img.style.transform = "rotate(180deg)";
+        isAscending = false; // Cambia el estado a descendente
+        order = 'asc';
+    } else {
+        img.alt = "logo de una flecha descendiente";
+        img.style.transform = "rotate(0deg)";
+        isAscending = true; // Cambia el estado a ascendente
+        order = 'desc';
+    }
 
+    // Reemplaza el contenido del elemento orderFilter con la imagen
+    orderFilter.innerHTML = '';
+    // Agrega la imagen como hijo del botón
+    orderFilter.appendChild(img);
+    /*VACIO EL CONTENEDOR DE LAS REVIEWS */
+    containerReviews.innerHTML = "";
+    getReviews(order);
+})
 
 
 /*FUNCION DONDE OBTENEMOS LAS REVIEWS CON LA API Y LAS MOSTRAMOS EN LA PAGINA "paginaReviews.php" */
@@ -132,13 +166,25 @@ function getReviews(filter=0){
         .then(response => response.json())
         .then(reviews => {
             console.log(reviews);
-            if(filter != 0){
+            // Filtra el array según el rating seleccionado
+            if(filter != 0 && filter != 'desc' && filter != 'asc'){
                 reviews = reviews.filter(review=>review.rating == filter);
+            // Ordenar el array por la propiedad 'rating' de forma ascendente (convertir 'rating' a número)    
+            }else if(filter == 'desc'){
+                reviews = reviews.sort((a, b) => {
+                    return parseInt(a.rating) - parseInt(b.rating);
+                });
+            }else if(filter == 'asc'){
+                reviews = reviews.sort((a, b) => {
+                    return parseInt(b.rating) - parseInt(a.rating);
+                });
             }
+            /* CREAMOS CADA RESEÑA */
             for(r of reviews){
+                /* div DONDE SE ALMACENA LA RESEÑA */
                 let reviewCard = document.createElement("div");
                 reviewCard.classList.add("reviewCard");
-    
+                /* OBTENEMOS EL USUARIO Y LO PONEMOS EN UN p Y EN NEGRITA */
                 let reviewUser = r.user;
                 let user = document.createElement("p");
                 let boldUser = document.createElement("strong");
@@ -153,7 +199,7 @@ function getReviews(filter=0){
                 const formatoFecha = new Intl.DateTimeFormat('es-ES', opcionesFormato).format(fecha);
                 let date = document.createElement("p");
                 date.textContent = formatoFecha;
-    
+                /* CREAMOS EL CONTENEDOR DONDE ESTARAN LAS ESTRELLAS DE LA VALORACIÓN */
                 let reviewRating = r.rating;
                 let rating = document.createElement("div");
                 rating.classList.add("rating");
@@ -166,26 +212,37 @@ function getReviews(filter=0){
                     //Vamos añadiendo las estrellas al contenedor 'rating'
                     rating.appendChild(star);
                 }
-    
+                /* OBTENEMOS EL COMENTARIO DE LA RESEÑA */
                 let reviewComment = r.comment;
                 let comment = document.createElement("p");
                 comment.textContent = reviewComment;
                 comment.classList.add("mt-3");
-    
+                /* HACEMOS LA CONSTRUCION DE LA RESEÑA PARA PODER MAQUETARLA COMODAMENTE */
                 let reviewTop = document.createElement("div");
                 reviewTop.classList.add("reviewTop");
                 let reviewTopLeft = document.createElement("div");
                 reviewTopLeft.classList.add("reviewTopLeft");
-    
+                
                 reviewTopLeft.appendChild(user);
                 reviewTopLeft.appendChild(date);
                 reviewTop.appendChild(reviewTopLeft);
                 reviewTop.appendChild(rating);
                 reviewCard.appendChild(reviewTop);
-    
                 reviewCard.appendChild(comment);
+                /* UNA VEZ CONSTRUIDA CREAMOS LA DEPENDENCIA DE LA RESEÑA AL CONTENEDOR
+                DONDE VAN TODAS LAS RESEÑAS */
                 containerReviews.appendChild(reviewCard);
             }
         })
         .catch(error => console.error('Error en la solicitud fetch:', error));
+}
+
+//FUNCION PARA EL CAMBIO DE LA IMAGEN DEL orderFilter POR LA ORIGINAL
+function changeOriginalOrderFilter(){
+    let img = document.createElement("img");
+    orderFilter.innerHTML = '';
+    img.className = "reviewIcon";
+    img.src = "icon/filter.png";
+    img.alt = "logo de filtro";
+    orderFilter.appendChild(img);
 }
