@@ -14,6 +14,10 @@ buttonValidarPedido.addEventListener("click", async (event) => {
     };
     //Obtenemos el precio total sin propina del pedido
     const precioTotal = document.getElementById("precio_total").innerText;
+    /* Desactivar scroll lateral y establecer el ancho del body al 100% 
+    para no ver un espavio en blanco*/
+    document.body.style.overflow = 'hidden';
+    document.body.style.width = '100%';
     //Ventana donde pondremos la propina que queremos dejar
     const { value: tip, dismiss } = await Swal.fire({
         title: "Propina",
@@ -78,6 +82,8 @@ buttonValidarPedido.addEventListener("click", async (event) => {
             timer: 1000,
         });
     }
+    //Volvemos a poner el scroll visible, sino se queda oculto
+    document.body.style.overflow = 'visible';
 });
 
 // VALIDACION DEL PEDIDO CON LAS PROPINAS >>>

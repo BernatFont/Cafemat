@@ -7,6 +7,10 @@ getReviews();
 /* CREAR LA REVIEW */
 const createReview = document.getElementById("createReview");
 createReview.addEventListener("click", async () => {
+    /* Desactivar scroll lateral y establecer el ancho del body al 100% 
+    para no ver un espavio en blanco*/
+    document.body.style.overflow = 'hidden';
+    document.body.style.width = '100%';
     const { value: text } = await Swal.fire({
         title: "Deja tu reseña",
         /* CREAMOS UN textarea Y UN DIV DONDE DEJAREMOS NUESTRA RESEÑA Y NUESTRA VALORACIÓN */
@@ -27,7 +31,10 @@ createReview.addEventListener("click", async () => {
         `,
         showCancelButton: true,
         confirmButtonText: "Confirmar"
+        
     });
+    //Volvemos a poner el scroll visible, sino se queda oculto
+    document.body.style.overflow = 'visible';
     if (text) {
         /* Obtengo fecha actual en el formato TIMSTAMP */
         const fechaActual = new Date();
@@ -82,6 +89,8 @@ createReview.addEventListener("click", async () => {
            
         }
     }
+    // Habilitar el scroll
+    document.body.style.overflow = 'auto';
     //CAMBIO LA IMAGEN DEL orderFilter POR LA ORIGINAL
     changeOriginalOrderFilter();
 });
@@ -89,6 +98,10 @@ createReview.addEventListener("click", async () => {
 /* FILTRO DE RESEÑAS SEGÚN VALORACIÓN */
 const ratingFilter = document.getElementById("ratingFilter")
 ratingFilter.addEventListener("click",async () =>{
+    /* Desactivar scroll lateral y establecer el ancho del body al 100% 
+    para no ver un espavio en blanco*/
+    document.body.style.overflow = 'hidden';
+    document.body.style.width = '100%';
     const { value: rating } = await Swal.fire({
         title: "Filtra según la valoración deseada",
         /* CREACION DE LAS ESTRELLAS PARA FILTRAR */
@@ -109,6 +122,9 @@ ratingFilter.addEventListener("click",async () =>{
         showCancelButton: true,
         confirmButtonText: "Confirmar"
     });
+    //Volvemos a poner el scroll visible, sino se queda oculto
+    document.body.style.overflow = 'visible';
+
     if(rating){
         const rating = document.querySelector('input[name="rating"]:checked');
         // Obtén el valor del rating seleccionado, o establece null si no hay rating seleccionado

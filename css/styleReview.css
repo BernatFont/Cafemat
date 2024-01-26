@@ -36,7 +36,6 @@
 
 .createReviewContainer:nth-of-type(3) .reviewButton{
   top: 42%;
-  height: 56px;
 }
 
 #reviewTextArea{
