@@ -1,4 +1,5 @@
-const url = 'http://bernatdaw2.com/Proyecto_1/Cafemat/';
+/*Obtenemos la ruta almacenada en el sessionStorage cuando entramos a la pagina */
+const url = sessionStorage.getItem('urlPath');
 
 // <<< VALIDACION DEL PEDIDO CON LAS PROPINAS
 const buttonValidarPedido = document.getElementById("validar_pedido");
@@ -64,6 +65,10 @@ buttonValidarPedido.addEventListener("click", async (event) => {
                     window.location.href = url + queryString;
                 }
             });
+        //Construir la URL correctamente (paso la propina por GET)
+            const queryString = `?controller=pedido&action=validarPedido&tip=${tipCost}`;
+        //Vamos a la URL deseada
+        window.location.href = url + queryString;
         //Si no confirma el pedido, se cancela
         } else {
             // Si el usuario no confirma, se cancela la operacion

@@ -1,4 +1,5 @@
-const url = 'http://bernatdaw2.com/Proyecto_1/Cafemat/?';
+/*Obtenemos la ruta almacenada en el sessionStorage cuando entramos a la pagina */
+const url = sessionStorage.getItem('urlPath');
 
 const containerReviews = document.getElementById("container_reviews");
  /*LLAMO A LA FUNCION QUE ME MUESTRA TODAS LAS REVIEWS */
@@ -6,97 +7,100 @@ getReviews();
 
 /* CREAR LA REVIEW */
 const createReview = document.getElementById("createReview");
-createReview.addEventListener("click", async () => {
-    /* Desactivar scroll lateral y establecer el ancho del body al 100% 
-    para no ver un espavio en blanco*/
-    document.body.style.overflow = 'hidden';
-    document.body.style.width = '100%';
-    const { value: text } = await Swal.fire({
-        title: "Deja tu reseña",
-        /* CREAMOS UN textarea Y UN DIV DONDE DEJAREMOS NUESTRA RESEÑA Y NUESTRA VALORACIÓN */
-        html: `
-            <textarea id="reviewTextArea" placeholder="Deja aquí tu reseña..."></textarea>
-            <div class="rating">
-                <input value="5" name="rating" id="star5" type="radio">
-                <label for="star5"></label>
-                <input value="4" name="rating" id="star4" type="radio">
-                <label for="star4"></label>
-                <input value="3" name="rating" id="star3" type="radio">
-                <label for="star3"></label>
-                <input value="2" name="rating" id="star2" type="radio">
-                <label for="star2"></label>
-                <input value="1" name="rating" id="star1" type="radio">
-                <label for="star1"></label>
-            </div>
-        `,
-        showCancelButton: true,
-        confirmButtonText: "Confirmar"
-        
-    });
-    //Volvemos a poner el scroll visible, sino se queda oculto
-    document.body.style.overflow = 'visible';
-    if (text) {
-        /* Obtengo fecha actual en el formato TIMSTAMP */
-        const fechaActual = new Date();
-        const año = fechaActual.getFullYear();
-        const mes = agregarCeroDelante(fechaActual.getMonth() + 1);
-        const dia = agregarCeroDelante(fechaActual.getDate());
-        const horas = agregarCeroDelante(fechaActual.getHours());
-        const minutos = agregarCeroDelante(fechaActual.getMinutes());
-        const segundos = agregarCeroDelante(fechaActual.getSeconds());
-        const date = `${año}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
-        /*La función agregarCeroDelante asegura que los valores tengan un cero delante
-        si son menores que 10 para mantener el formato de dos dígitos*/
-        function agregarCeroDelante(valor) {
-            return valor < 10 ? `0${valor}` : valor;
-        }
-
-        /* Obtengo el numero de estrellas selecionado y el texto de la reseña dejada por el usuario */
-        const rating = document.querySelector('input[name="rating"]:checked');
-        const ratingValue = rating ? rating.value : null;
-        const review = document.getElementById("reviewTextArea").value;
-
-        if (review == '' || ratingValue == null) {
-            Swal.fire({
-                title: "Rellena todos los datos",
-                icon: "error", 
-                showConfirmButton: false,
-                timer: 2000,
-              });
-        }else{
-            reviewToSend = {
-                'comment':review,
-                'rating':ratingValue,
-                'date':date
+/* condicional para que en caso de ser null, no pete y siga ejecutando */
+if(createReview != null){
+    createReview.addEventListener("click", async () => {
+        /* Desactivar scroll lateral y establecer el ancho del body al 100% 
+        para no ver un espavio en blanco*/
+        document.body.style.overflow = 'hidden';
+        document.body.style.width = '100%';
+        const { value: text } = await Swal.fire({
+            title: "Deja tu reseña",
+            /* CREAMOS UN textarea Y UN DIV DONDE DEJAREMOS NUESTRA RESEÑA Y NUESTRA VALORACIÓN */
+            html: `
+                <textarea id="reviewTextArea" placeholder="Deja aquí tu reseña..."></textarea>
+                <div class="rating">
+                    <input value="5" name="rating" id="star5" type="radio">
+                    <label for="star5"></label>
+                    <input value="4" name="rating" id="star4" type="radio">
+                    <label for="star4"></label>
+                    <input value="3" name="rating" id="star3" type="radio">
+                    <label for="star3"></label>
+                    <input value="2" name="rating" id="star2" type="radio">
+                    <label for="star2"></label>
+                    <input value="1" name="rating" id="star1" type="radio">
+                    <label for="star1"></label>
+                </div>
+            `,
+            showCancelButton: true,
+            confirmButtonText: "Confirmar"
+            
+        });
+        //Volvemos a poner el scroll visible, sino se queda oculto
+        document.body.style.overflow = 'visible';
+        if (text) {
+            /* Obtengo fecha actual en el formato TIMSTAMP */
+            const fechaActual = new Date();
+            const año = fechaActual.getFullYear();
+            const mes = agregarCeroDelante(fechaActual.getMonth() + 1);
+            const dia = agregarCeroDelante(fechaActual.getDate());
+            const horas = agregarCeroDelante(fechaActual.getHours());
+            const minutos = agregarCeroDelante(fechaActual.getMinutes());
+            const segundos = agregarCeroDelante(fechaActual.getSeconds());
+            const date = `${año}-${mes}-${dia} ${horas}:${minutos}:${segundos}`;
+            /*La función agregarCeroDelante asegura que los valores tengan un cero delante
+            si son menores que 10 para mantener el formato de dos dígitos*/
+            function agregarCeroDelante(valor) {
+                return valor < 10 ? `0${valor}` : valor;
             }
-            fetch(url+'controller=API&action=apiInsertReview',{
-                method: 'POST',
-                body: JSON.stringify(reviewToSend),
-                headers:{
-                    'Content-Type': 'application/json; charset=UTF-8'
-                }
-            }).then( 
-                data => {
-                    console.log(data.text())
-                    /*VACIO EL CONTENEDOR DE LAS REVIEWS */
-                    containerReviews.innerHTML = "";
-                    /*LLAMO A LA FUNCION DE MOSTRAR LAS REVIEWS PARA VERLAS + LA NUEVA (SIN RECARGAR) 
-                    TENGO QUE HACER ESTO UNA VEZ ACABADO EL FETCH, EN EL .then, YA QUE SINO EJECUTA ANTES
-                    LA VISTA DE LA PAGINA QUE EL INSERT DE LA API, Y NO SE VE LA NUEVA REVIEW*/
-                    getReviews();
-                        }
-                )
-           
-        }
-    }
-    // Habilitar el scroll
-    document.body.style.overflow = 'auto';
-    //CAMBIO LA IMAGEN DEL orderFilter POR LA ORIGINAL
-    changeOriginalOrderFilter();
-});
 
+            /* Obtengo el numero de estrellas selecionado y el texto de la reseña dejada por el usuario */
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const ratingValue = rating ? rating.value : null;
+            const review = document.getElementById("reviewTextArea").value;
+
+            if (review == '' || ratingValue == null) {
+                Swal.fire({
+                    title: "Rellena todos los datos",
+                    icon: "error", 
+                    showConfirmButton: false,
+                    timer: 2000,
+                });
+            }else{
+                reviewToSend = {
+                    'comment':review,
+                    'rating':ratingValue,
+                    'date':date
+                }
+                fetch(url+'controller=API&action=apiInsertReview',{
+                    method: 'POST',
+                    body: JSON.stringify(reviewToSend),
+                    headers:{
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    }
+                }).then( 
+                    data => {
+                        console.log(data.text())
+                        /*VACIO EL CONTENEDOR DE LAS REVIEWS */
+                        containerReviews.innerHTML = "";
+                        /*LLAMO A LA FUNCION DE MOSTRAR LAS REVIEWS PARA VERLAS + LA NUEVA (SIN RECARGAR) 
+                        TENGO QUE HACER ESTO UNA VEZ ACABADO EL FETCH, EN EL .then, YA QUE SINO EJECUTA ANTES
+                        LA VISTA DE LA PAGINA QUE EL INSERT DE LA API, Y NO SE VE LA NUEVA REVIEW*/
+                        getReviews();
+                        }
+                    )
+            // Muestra una notificación con Notie para indicar que has realizado una reseña
+            notie.alert({ type: 'success', text: 'Has realizado una reseña', time: 3 });
+            }
+        }
+        // Habilitar el scroll
+        document.body.style.overflow = 'auto';
+        //CAMBIO LA IMAGEN DEL orderFilter POR LA ORIGINAL
+        changeOriginalOrderFilter();
+    });
+}
 /* FILTRO DE RESEÑAS SEGÚN VALORACIÓN */
-const ratingFilter = document.getElementById("ratingFilter")
+const ratingFilter = document.getElementById("ratingFilter");
 ratingFilter.addEventListener("click",async () =>{
     /* Desactivar scroll lateral y establecer el ancho del body al 100% 
     para no ver un espavio en blanco*/
@@ -195,6 +199,8 @@ function getReviews(filter=0){
                     return parseInt(b.rating) - parseInt(a.rating);
                 });
             }
+            /* variable para mostrar seseñas una a una */
+            i=0;
             /* CREAMOS CADA RESEÑA */
             for(r of reviews){
                 /* div DONDE SE ALMACENA LA RESEÑA */
@@ -245,6 +251,10 @@ function getReviews(filter=0){
                 reviewTop.appendChild(rating);
                 reviewCard.appendChild(reviewTop);
                 reviewCard.appendChild(comment);
+                /* Animacion de AOS para que aparezcan con mas flow las reseñas */
+                reviewCard.setAttribute("data-aos", "fade-up");
+                reviewCard.setAttribute("data-aos-delay", 100+i);
+                i+=50;
                 /* UNA VEZ CONSTRUIDA CREAMOS LA DEPENDENCIA DE LA RESEÑA AL CONTENEDOR
                 DONDE VAN TODAS LAS RESEÑAS */
                 containerReviews.appendChild(reviewCard);

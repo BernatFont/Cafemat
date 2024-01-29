@@ -139,5 +139,7 @@
         </section>
 
     </main>
+
+    <script src="js/scriptStorage.js"></script>
 </body>
 </html>

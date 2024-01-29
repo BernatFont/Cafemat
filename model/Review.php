@@ -117,7 +117,7 @@ class Review{
         public static function getReviews(){
             $conn = dataBase::connect();
 
-            $sql = "SELECT review.review_id, usuario.nombre_usuario AS user, review.rating, review.comment, review.date FROM review JOIN usuario ON review.user = usuario.usuario_id";
+            $sql = "SELECT review.review_id, usuario.nombre_usuario AS user, review.rating, review.comment, review.date FROM review JOIN usuario ON review.user = usuario.usuario_id ORDER BY review.date DESC";
             $result = $conn->query($sql);
             $conn->close();
 
