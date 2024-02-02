@@ -41,8 +41,13 @@ include_once 'utils/CalculadoraPrecios.php';
         public function verProductosPedido(){
             session_start();
 
-            if(isset($_POST['pedido_id'])){
-                $pedido_id = $_POST['pedido_id'];
+            if(isset($_POST['pedido_id'])||isset($_GET['pedido_id'])){
+                if(isset($_POST['pedido_id'])){
+                    $pedido_id = $_POST['pedido_id'];
+                }elseif(isset($_GET['pedido_id'])){
+                    $pedido_id = $_GET['pedido_id'];
+                }
+
                 $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
                 $usuario_id = $usuario->getUsuario_id();
     

@@ -1,5 +1,5 @@
-/*Obtenemos la ruta almacenada en el sessionStorage cuando entramos a la pagina */
-const url = sessionStorage.getItem('urlPath');
+/*Obtenemos la ruta almacenada en el localStorage cuando entramos a la pagina */
+const url = localStorage.getItem('urlPath');
 
 const containerReviews = document.getElementById("container_reviews");
  /*LLAMO A LA FUNCION QUE ME MUESTRA TODAS LAS REVIEWS */

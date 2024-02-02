@@ -1,7 +1,17 @@
-/*Obtenemos la ruta almacenada en el sessionStorage cuando entramos a la pagina */
-const url = sessionStorage.getItem('urlPath');
+/*Obtenemos la ruta almacenada en el localStorage cuando entramos a la pagina */
+const url = localStorage.getItem('urlPath');
 
-// <<< VALIDACION DEL PEDIDO CON LAS PROPINAS
+/*Obtenemos el usuario actual con sus puntos */
+const usuarioYpuntos = sessionStorage.getItem('usuarioYpuntos');
+/* Lo convertimos a JSON ya que lo recivimos en formato JSON pero stringueado */
+const arrUsuarioYpuntos = JSON.parse(usuarioYpuntos)
+console.log(usuarioYpuntos);
+/* Ponemos los valores del array en estas dos variables */
+const [usuario, puntos] = arrUsuarioYpuntos;
+console.log(usuario);
+console.log(puntos);
+
+// <<< VALIDACION DEL PEDIDO CON LAS PROPINAS, PUNTOS DE USUARIO Y QR
 const buttonValidarPedido = document.getElementById("validar_pedido");
 buttonValidarPedido.addEventListener("click", async (event) => {
     // Evitar que el formulario se envíe y recargue la página
@@ -13,6 +23,7 @@ buttonValidarPedido.addEventListener("click", async (event) => {
         "10": "10%",
         "1": "Sin propina"
     };
+
     //Obtenemos el precio total sin propina del pedido
     const precioTotal = document.getElementById("precio_total").innerText;
     /* Desactivar scroll lateral y establecer el ancho del body al 100% 
@@ -25,6 +36,9 @@ buttonValidarPedido.addEventListener("click", async (event) => {
         input: "radio",
         inputOptions,
         inputValue: "3", // Establecer la opción "3%" como seleccionada por defecto
+        html:`
+        <label>Puntos disponibles: ${puntos}</label>
+        `,
         showCancelButton: true, // Mostrar el botón de cancelar
         cancelButtonText: 'Cancelar', // Texto para el botón de cancelar
         confirmButtonText: "Siguiente"
@@ -46,29 +60,55 @@ buttonValidarPedido.addEventListener("click", async (event) => {
         const confirm = await Swal.fire({
             title: '¿Estás seguro?',
             text: 'Por favor, confirma que deseas realizar el pedido con la propina seleccionada.',
-            html: `<label>Precio pedido: ${precioTotal}   Propina: ${tipCost}€</label><br><br><h3><b> ${precioFinal}€ </b></h3>`,
+            html: `
+            <label>Precio pedido: ${precioTotal}   Propina: ${tipCost}€</label><br><br><h3><b> ${precioFinal}€ </b></h3>
+            `,
             showCancelButton: true,
             confirmButtonText: 'Confirmar pedido'
         });
         //Si confirmamos el pedido, lo creara, enviando la propina por GET
         if (confirm.isConfirmed){
-            Swal.fire({
+            const QR = await Swal.fire({
                 icon: "success",
                 title: "Pedido realizado!",
-                showConfirmButton: false,
-                timer: 2000,
+                showConfirmButton: true,
+                confirmButtonText: "Mostrar QR del pedido",
+                showCancelButton: true,
+                cancelButtonText: "Cancelar",
                 //Cuando se cierre la ventana echa por swetalert, ejecutara el siguiente codigo
-                didClose: () => {
+                didClose: async () => {
+                    if (QR.isConfirmed) {
+                        /* Desactivar scroll lateral y establecer el ancho del body al 100% 
+                        para no ver un espavio en blanco*/
+                        document.body.style.overflow = 'hidden';
+                        document.body.style.width = '100%';
+
+                        const QRcontainer = document.createElement("div");
+                        QRcontainer.id = "qrcontainer";
+                        document.body.appendChild(QRcontainer);
+        
+                        const theQR = new QRCode(QRcontainer);
+                        theQR.makeCode(url+'controller=pedido&action=verProductosPedido&pedido_id=a');
+        
+                        await Swal.fire({
+                            title: 'QR del pedido',
+                            html: QRcontainer,
+                            showCancelButton: false,
+                            showConfirmButton: true,
+                            didRender: () => {
+                                // Estilos de centrado para el contenedor QRcontainer
+                                QRcontainer.style.display = "flex";
+                                QRcontainer.style.justifyContent = "center";
+                                QRcontainer.style.alignItems = "center";
+                            },
+                        });
+                    }
                     // Construir la URL correctamente (paso la propina por GET)
-                    const queryString = `?controller=pedido&action=validarPedido&tip=${tipCost}`;
+                    const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}`;
                     // Vamos a la URL deseada
                     window.location.href = url + queryString;
                 }
-            });
-        //Construir la URL correctamente (paso la propina por GET)
-            const queryString = `?controller=pedido&action=validarPedido&tip=${tipCost}`;
-        //Vamos a la URL deseada
-        window.location.href = url + queryString;
+            });  
         //Si no confirma el pedido, se cancela
         } else {
             // Si el usuario no confirma, se cancela la operacion
@@ -90,5 +130,3 @@ buttonValidarPedido.addEventListener("click", async (event) => {
     //Volvemos a poner el scroll visible, sino se queda oculto
     document.body.style.overflow = 'visible';
 });
-
-// VALIDACION DEL PEDIDO CON LAS PROPINAS >>>

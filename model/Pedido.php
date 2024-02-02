@@ -87,6 +87,9 @@ include_once 'config/dataBase.php';
                 $conn->query($sql);
 
                 $puntos = round($coste/10);
+                if ($coste < 10){
+                        $puntos = 1;
+                }
                 Usuario::setPuntosUser($puntos);
 
                 $sql_pedido_id = "SELECT pedido_id FROM pedido WHERE 

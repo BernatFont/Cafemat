@@ -62,36 +62,41 @@
         public function pedido(){
             session_start();
 
-            //Si le damos a la X, eliminamos el producto al que le hemos dado
-            //$_POST['borrar'] = posicion donde se encuentra el producto dentro del array de la sesion
-            if(isset($_POST['borrar'])){
-                unset($_SESSION["carrito"][$_POST['borrar']]);
-                //Reindexamos el array por que sino causa conflicto
-                $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
-            //Añadimos uno al product que le hemos dado al mas
-            }elseif(isset($_POST['add'])){
-                $prod = $_SESSION["carrito"][$_POST['add']];
-                $prod->setCantidad($prod->getCantidad()+1);
-            //Quitamos uno al product que le hemos dado al menos
-            }elseif(isset($_POST['remove'])){
-                $prod = $_SESSION["carrito"][$_POST['remove']];
-
-                if($prod->getCantidad() == 1){
-                    unset($_SESSION["carrito"][$_POST['remove']]);
+            if (isset($_SESSION['usuario'])) {
+                //Si le damos a la X, eliminamos el producto al que le hemos dado
+                //$_POST['borrar'] = posicion donde se encuentra el producto dentro del array de la sesion
+                if(isset($_POST['borrar'])){
+                    unset($_SESSION["carrito"][$_POST['borrar']]);
+                    //Reindexamos el array por que sino causa conflicto
                     $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
-
-                }else{
-                    $prod->setCantidad($prod->getCantidad()-1);
+                //Añadimos uno al product que le hemos dado al mas
+                }elseif(isset($_POST['add'])){
+                    $prod = $_SESSION["carrito"][$_POST['add']];
+                    $prod->setCantidad($prod->getCantidad()+1);
+                //Quitamos uno al product que le hemos dado al menos
+                }elseif(isset($_POST['remove'])){
+                    $prod = $_SESSION["carrito"][$_POST['remove']];
+    
+                    if($prod->getCantidad() == 1){
+                        unset($_SESSION["carrito"][$_POST['remove']]);
+                        $_SESSION["carrito"] = array_values($_SESSION["carrito"]);
+    
+                    }else{
+                        $prod->setCantidad($prod->getCantidad()-1);
+                    }
+                }elseif(isset($_POST['eliminar_pedido'])){
+                    unset($_SESSION['carrito']);
                 }
-            }elseif(isset($_POST['eliminar_pedido'])){
-                unset($_SESSION['carrito']);
+    
+                include_once 'view/header.php';
+                
+                include_once 'view/paginaPedido.php';
+                
+                include_once 'view/footer.php';
+            }else{
+                $mensaje = 'Inicia sesión para acceder a pedido';
+                header("Location:".url."?controller=usuario&action=inicioSesion&mensaje=".$mensaje);
             }
-
-            include_once 'view/header.php';
-            
-            include_once 'view/paginaPedido.php';
-            
-            include_once 'view/footer.php';
         }
 
         //Funcion que agrega un producto al carrito en caso de que exista

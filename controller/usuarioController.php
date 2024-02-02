@@ -12,6 +12,9 @@
             session_start();
             //si no existe sesion de usuario, entra al if para ir al inicio de sesion
             if(empty($_SESSION['usuario'])){
+                if (isset($_GET['mensaje'])) {
+                    $mensaje = $_GET['mensaje'];
+                }
                 include_once 'view/iniciarSesion.php';
             }else{
                     /* si en el panel de usuario le damos al boton de 'modificar usuario',
@@ -122,6 +125,40 @@
             session_destroy();
 
             header('Location:'.url.'?controller=producto&action=index');
+        }
+
+        //FUNCION PARA OBTENER EL USUARIO ACTUAL DESDE JS CON UN FETCH
+        public function usuarioActualYpuntos(){
+            session_start();
+
+            if (isset($_SESSION['usuario'])){
+                $usuarioYpuntos = [$_SESSION['usuario']->getNombre_usuario(),$_SESSION['usuario']->getPuntos()];
+                $usuarioConPuntos = json_encode($usuarioYpuntos, JSON_UNESCAPED_UNICODE);
+            }else{
+                $usuarioConPuntos = "null";
+            }
+            header('Content-Type: application/json');
+            
+            echo $usuarioConPuntos;
+
+            exit();
+        }
+        /* FUNCION PARA OBTENER LOS PUNTOS DEL USUARIO PASADO POR GET CON JS */
+        public function getPuentosUsuario(){
+            $conn = dataBase::connect();
+
+            $usuario = $_GET['user'];
+            // Eliminar las comillas del nombre de usuario que me pone js
+            $usuario = str_replace('"', '', $usuario);
+
+            $sql = "SELECT puntos FROM usuario WHERE nombre_usuario = '$usuario'";
+            $result = $conn->query($sql);
+            $result = $result->fetch_object();
+            $puntos = json_encode($result->puntos, JSON_UNESCAPED_UNICODE);
+            header('Content-Type: application/json');
+
+            echo $puntos;
+            exit;
         }
 
     }
