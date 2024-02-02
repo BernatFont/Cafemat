@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="library/sweetalert/sweetalert2.min.css">
     <title>Cafemat</title>
 </head>
 <body>
@@ -127,7 +128,6 @@
             </div>
         </section>
         
-
         <section class="compromisos row">
             <h3 class="mt-4 text-center">Nuestros compromisos</h3>
             <div class="d-flex justify-content-evenly my-4">
@@ -135,11 +135,14 @@
                 <img src="icon/maxima_rapidez.png" alt="icono de maxima rapidez">
                 <img src="icon/calidad_profesional.png" alt="icono de calidad profesional">
             </div>
-
         </section>
-
     </main>
 
+    <script src="library/sweetalert/sweetalert2.min.js"></script>
+    <script src="library/sweetalert/cleave.min.js"></script>
+    <script src="library/sweetalert/addons/cleave-phone.i18n.js"></script>
+    <script src="library/QRCode/qrcode.min.js"></script>
     <script src="js/scriptStorage.js"></script>
+    <script src="js/scriptPrincipalPage.js"></script>
 </body>
 </html>

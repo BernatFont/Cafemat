@@ -75,40 +75,18 @@ buttonValidarPedido.addEventListener("click", async (event) => {
                 confirmButtonText: "Mostrar QR del pedido",
                 showCancelButton: true,
                 cancelButtonText: "Cancelar",
-                //Cuando se cierre la ventana echa por swetalert, ejecutara el siguiente codigo
-                didClose: async () => {
-                    if (QR.isConfirmed) {
-                        /* Desactivar scroll lateral y establecer el ancho del body al 100% 
-                        para no ver un espavio en blanco*/
-                        document.body.style.overflow = 'hidden';
-                        document.body.style.width = '100%';
-
-                        const QRcontainer = document.createElement("div");
-                        QRcontainer.id = "qrcontainer";
-                        document.body.appendChild(QRcontainer);
-        
-                        const theQR = new QRCode(QRcontainer);
-                        theQR.makeCode(url+'controller=pedido&action=verProductosPedido&pedido_id=a');
-        
-                        await Swal.fire({
-                            title: 'QR del pedido',
-                            html: QRcontainer,
-                            showCancelButton: false,
-                            showConfirmButton: true,
-                            didRender: () => {
-                                // Estilos de centrado para el contenedor QRcontainer
-                                QRcontainer.style.display = "flex";
-                                QRcontainer.style.justifyContent = "center";
-                                QRcontainer.style.alignItems = "center";
-                            },
-                        });
-                    }
-                    // Construir la URL correctamente (paso la propina por GET)
-                    const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}`;
-                    // Vamos a la URL deseada
-                    window.location.href = url + queryString;
-                }
-            });  
+            });
+            if (QR.isConfirmed){
+                // Construir la URL correctamente (paso la propina por GET)
+                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&QR=true`;
+                // Vamos a la URL deseada
+                window.location.href = url + queryString;
+            }else{
+                // Construir la URL correctamente (paso la propina por GET)
+                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}`;
+                // Vamos a la URL deseada
+                window.location.href = url + queryString;
+            }
         //Si no confirma el pedido, se cancela
         } else {
             // Si el usuario no confirma, se cancela la operacion

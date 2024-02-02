@@ -135,7 +135,6 @@
     <script src="library/sweetalert/sweetalert2.min.js"></script>
     <script src="library/sweetalert/cleave.min.js"></script>
     <script src="library/sweetalert/addons/cleave-phone.i18n.js"></script>
-    <script src="library/QRCode/qrcode.min.js"></script>
     <script src="js/scriptPedido.js"></script>
 </body>
 </html>

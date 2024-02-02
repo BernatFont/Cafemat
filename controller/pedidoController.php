@@ -26,7 +26,12 @@ include_once 'utils/CalculadoraPrecios.php';
                 //Vaciamos el pedido
                 unset($_SESSION['carrito']);
     
-                header('Location:'.url.'?controller=producto&action=index');
+                if(isset($_GET['QR'])){
+                    $QR = $_GET['QR'];
+                    header('Location:'.url.'?controller=producto&action=index&QR='.$pedido_id);
+                }else{
+                    header('Location:'.url.'?controller=producto&action=index');
+                }
             }else{
                 $mensaje = "Para validar el pedido, inicia sesión.";
                 include_once 'view/header.php';

@@ -23,7 +23,3 @@ async function obtenerUsuarioActual() {
         return null;
     }
 }
-
-
-
-
