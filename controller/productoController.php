@@ -129,23 +129,23 @@
             //Obtenemos todos los productos
             $productos = ProductoDAO::getProductos();
             //Obtenemos el numero de categorias existentes
-            $num_categorias = Categoria::getNumCategorias();
+            $IDs_categorias = Categoria::getIdCategorias();
             $num_productos = [];
             $categorias = [];
             $contenido_categoria = [];
 
-            for ($i=1; $i <= $num_categorias; $i++) { 
+            for ($i=0; $i <= count($IDs_categorias)-1; $i++) { 
                 //Retorna el numero de productos según su categoria
-                $numProdCat = ProductoDAO::countProductByCategoria($i);
+                $numProdCat = ProductoDAO::countProductByCategoria($IDs_categorias[$i]);
                 array_push($num_productos,$numProdCat);
 
                 //Almacenamos el contenido/caracteristicas de cada categoria en el arreglo
                 //Por ejemplo la ruta de la img de la seccion de la categoria
-                $contenidoCat = Categoria::getContenidoCategoria($i);
+                $contenidoCat = Categoria::getContenidoCategoria($IDs_categorias[$i]);
                 array_push($contenido_categoria,$contenidoCat);
                 
                 //Retorna todos los productos de la categoria pasada por parametro
-                $productosCat = ProductoDAO::getProductByCategoria($i);
+                $productosCat = ProductoDAO::getProductByCategoria($IDs_categorias[$i]);
                 array_push($categorias,$productosCat);
             }
 

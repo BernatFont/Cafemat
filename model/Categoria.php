@@ -117,15 +117,18 @@ include_once 'config/dataBase.php';
         }
 
         /* FUNCION QUE RETORNA EL NUMERO DE CATEGORIAS EXISTENTES */
-        public static function getNumCategorias(){
+        public static function getIdCategorias(){
             $conn = dataBase::connect();
 
-            $sql = "SELECT * FROM categoria";
+            $sql = "SELECT categoria_id FROM categoria";
             $result = $conn->query($sql);
             $conn->close();
-            //Almaceno el resultado en una variable
-            $num_categoria = $result->num_rows;
-            return $num_categoria;
+
+            while($categoria_id = $result->fetch_object()){
+                    //Almaceno el resultado en una variable
+                    $IDs_categoria[] = $categoria_id->categoria_id;
+            }
+            return $IDs_categoria;
         }
     }
 
