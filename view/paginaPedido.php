@@ -33,14 +33,14 @@
             </section>
 
         <?php }else{ ?>
-            <section class="titulo d-flex align-items-center justify-content-between mb-4">
-                <h2>Mi pedido</h2>
-                <section>
-                    <form action="<?= url."?controller=producto&action=pedido"?>" method="post">
-                        <div class="div_bin d-flex align-items-center justify-content-center"><button class="paper_bin" name="eliminar_pedido"><img src="icon/paper-been.svg" alt="icono de una papelera"></button></div>
-                    </form>
-                </section>
-            </section>
+        <section class="titulo d-flex align-items-center justify-content-between mb-4">
+            <h2>Mi pedido</h2>
+            <div>
+                <form action="<?= url."?controller=producto&action=pedido"?>" method="post">
+                    <div class="div_bin d-flex align-items-center justify-content-center"><button class="paper_bin" name="eliminar_pedido"><img src="icon/paper-been.svg" alt="icono de una papelera"></button></div>
+                </form>
+            </div>
+        </section>
         <section class="container-fluid">
             <section class="row">
                 <section class="col-12 col-lg-9">

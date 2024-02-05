@@ -28,7 +28,6 @@
 }
 
 #titulo{
-    width: 100%;
     border-bottom: 1px solid var(--primary);
 }
 
@@ -47,6 +46,24 @@
     font-family: 'ObjetBold',sans-serif;
     color: white;
 }
+
+.bt_filter{
+    background-color: #ffffff00;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+}
+
+.bt_filter:hover{
+    background-color: #11094936;
+}
+
+.bt_filter img{
+    width: 24px;
+    height: 24px;
+}
+
+
 
 .titulo_seccion{
     background-color: var(--primary);
