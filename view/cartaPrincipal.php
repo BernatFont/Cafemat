@@ -67,6 +67,7 @@
                         </div>
                     <?php } ?>
                     </div>
+                </div>
                 <?php
                 $i++;
             }

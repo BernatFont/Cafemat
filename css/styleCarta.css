@@ -152,7 +152,10 @@
         font-size: 35px;
     }
 }
-
+/* clase que se usa para el filtro de categorias */
+.noneCat{
+    display: none;
+}
 
 /* CARTA ADMIN */
 
