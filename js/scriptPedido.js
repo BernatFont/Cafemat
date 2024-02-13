@@ -57,15 +57,73 @@ buttonValidarPedido.addEventListener("click", async (event) => {
             precioFinal = parseFloat(precioTotal);
             precioFinal = precioFinal.toFixed(2);
         }
+
+        /* Creamos variable auxiliar para controlar el precio */
+        const precioFinalAux = precioFinal;
+
+        /* Creamos el div principal de la ventana se SweetAlert,
+        donde se vera el precio final con los puntos usados y la propina*/
+        const containerDiv = document.createElement('div');
+
+        // Creamos label "Precio pedido" and "Propina"
+        const labelPrecioPropina = document.createElement('label');
+        labelPrecioPropina.innerHTML = `Precio pedido: ${precioTotal} Propina: ${tipCost}€<br><br>`;
+        containerDiv.appendChild(labelPrecioPropina);
+
+        // Creamos h3 para poner el precio final "precioFinal" (elemento reactivo)
+        const h3PrecioFinal = document.createElement('h3');
+        h3PrecioFinal.id = 'precioFinal';
+        h3PrecioFinal.innerHTML = `<b>${precioFinal}€</b>`;
+        containerDiv.appendChild(h3PrecioFinal);
+
+        // Creamos label para la palabra "Usar" 
+        const labelUsar = document.createElement('label');
+        labelUsar.innerHTML = 'Usar ';
+        containerDiv.appendChild(labelUsar);
+
+        //Creamos input con el que haremos la reactividad del precio
+        const inputPuntosSeleccionados = document.createElement('input');
+        inputPuntosSeleccionados.type = 'number';
+        inputPuntosSeleccionados.id = 'puntosSeleccionados';
+        inputPuntosSeleccionados.className = 'puntosUsuario mx-2';
+        inputPuntosSeleccionados.value = '0';
+        inputPuntosSeleccionados.min = '0';
+        inputPuntosSeleccionados.max = puntos;
+        containerDiv.appendChild(inputPuntosSeleccionados);
+
+        /* EVENTO PARA CREAR REACTIVIDAD EN EL PRECIO FINAL DEL PEDIDO
+        SEG'UN LA CANTIDAD DE PUNTOS USADOS */
+        inputPuntosSeleccionados.addEventListener('input', (e) => {
+            const nuevosPuntosSeleccionados = parseFloat(e.target.value) / 10;
+            //reestablecemos el precio final, para no restar lo restado anteriormente
+            precioFinal = precioFinalAux;
+            precioFinal -= nuevosPuntosSeleccionados;
+            h3PrecioFinal.innerHTML = `<b>${precioFinal.toFixed(2)}€</b>`;
+            console.log(precioFinal);
+            console.log(nuevosPuntosSeleccionados);
+            console.log(e.target.value);
+        });
+
+        // Creamos label para la palabra "puntos" 
+        const labelPuntos = document.createElement('label');
+        labelPuntos.innerHTML = ' puntos<br>';
+        containerDiv.appendChild(labelPuntos);
+
+        // Creamos label para "infoPuntos"
+        const labelInfoPuntos = document.createElement('label');
+        labelInfoPuntos.className = 'infoPuntos';
+        labelInfoPuntos.innerHTML = 'Cada 10 puntos tienes un descuento de 1€';
+        containerDiv.appendChild(labelInfoPuntos);
+
+        /* VENTANA SE SWEETALERT PAR VER EL PRECIO FINAL CON LA PROPINA Y LOS PUNTOS USADOS */
         const confirm = await Swal.fire({
             title: '¿Estás seguro?',
             text: 'Por favor, confirma que deseas realizar el pedido con la propina seleccionada.',
-            html: `
-            <label>Precio pedido: ${precioTotal}   Propina: ${tipCost}€</label><br><br><h3><b> ${precioFinal}€ </b></h3>
-            `,
+            html: containerDiv,
             showCancelButton: true,
             confirmButtonText: 'Confirmar pedido'
         });
+
         //Si confirmamos el pedido, lo creara, enviando la propina por GET
         if (confirm.isConfirmed){
             const QR = await Swal.fire({

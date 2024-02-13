@@ -215,6 +215,17 @@ input[type='radio']:checked{
     color: #ffffffbd;
 }
 
+.puntosUsuario{
+    border: none;
+    text-align: center;
+    width: 40px;
+}
+
+.infoPuntos{
+    font-size: 12px;
+    color: #555555;
+}
+
 @media (max-width: 800px){
     .col_1,.imagen_producto{
         display: none;
