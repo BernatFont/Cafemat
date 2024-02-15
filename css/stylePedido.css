@@ -140,7 +140,7 @@ table tr td{
 }
 
 .cantidad input{
-    width: 90px;
+    width: 80px;
     padding: 8px 16px;
     border-radius: 4px;
     border:1px solid rgba(0,0,0,.24);
@@ -290,4 +290,13 @@ input[type='radio']:checked{
     .col_2_detall{
         visibility: visible;
     }
+}
+
+@media (max-width: 500px){
+	.precio_unidad{
+		display:none;
+	}
+	.cantidad input{
+		width: 50px;
+	}
 }

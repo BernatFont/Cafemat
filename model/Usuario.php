@@ -265,6 +265,20 @@ class Usuario{
             $conn->close();                
         }
 
+        public static function quitarPuntosUsados($puntos,$usuario){
+            $conn = dataBase::connect();
+            
+            $sql = "SELECT puntos FROM usuario WHERE nombre_usuario = '$usuario'";
+            $result = $conn->query($sql);
+            $result = $result->fetch_object();
+
+            $puntos = $result->puntos-$puntos;
+            
+            $sql = "UPDATE usuario SET puntos = '$puntos' WHERE nombre_usuario = '$usuario'";
+            $conn->query($sql);
+            $conn->close();
+        }
+
     }
 
 ?>

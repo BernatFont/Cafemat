@@ -69,3 +69,12 @@ td{
 .bt_cerrar{
     background-color: #6a6a6a;
 }
+
+@media (max-width: 600px){
+	.del{
+		display:none;
+	}
+	.datos form{
+    	width: 300px;
+	}
+}

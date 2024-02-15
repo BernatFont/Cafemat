@@ -129,3 +129,16 @@
     left: 86%;
   }
 }
+@media (max-width: 500px){
+ .reviewButton{
+    left: 82%;
+  }
+	 .reviewTop{
+    flex-direction: column;
+  }
+
+  .reviewTopLeft{
+	flex-direction: column;
+  }
+}
+

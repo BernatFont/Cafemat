@@ -152,6 +152,23 @@
         font-size: 35px;
     }
 }
+
+@media (max-width: 550px){
+	.imagen_producto{
+		height: 100px;
+	}
+}
+
+@media (max-width: 450px){
+	.bt_pedido{
+		position: absolute;
+		left: 82%;
+		top: 75%;
+	}
+	.sin_iva{
+		display: none;
+	}
+}
 /* clase que se usa para el filtro de categorias */
 .noneCat{
     display: none;

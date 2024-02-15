@@ -2,6 +2,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 console.log('QR: '+urlParams.get('QR'));
 
+
 if (urlParams.get('QR')){
     /* Desactivar scroll lateral y establecer el ancho del body al 100% 
     para no ver un espavio en blanco*/
@@ -28,5 +29,8 @@ if (urlParams.get('QR')){
             QRcontainer.style.justifyContent = "center";
             QRcontainer.style.alignItems = "center";
         },
+    }).then(() => {
+        console.log('reload');
+        window.location.href = url+'controller=usuario&action=inicioSesion';
     });
 }

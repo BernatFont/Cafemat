@@ -4,7 +4,7 @@ const url = 'http://bernatdaw2.com/Proyecto_1/Cafemat/?';
 localStorage.setItem('urlPath', url);
 console.log(url);
 
-/* Llamamos a la funcion para obtener el usuario */
+/* Llamamos a la funcion para obtener el usuario y los puntos */
 obtenerUsuarioActual();
 
 /* FUNCION ASINCRONA PARA OBTENER EL USUARIO ACTUAL */

@@ -12,7 +12,7 @@
     <main class="container-fluid">
 
         <section class="banner row">
-            <div class="banner1 d-flex col-6 col-sm-6 col-md-8 ">
+            <div class="banner1 d-flex col-12 col-sm-6 col-md-8 ">
                 <p class="slogan m-3">Sabores que construyen momentos inolvidables</p>
                 <a href="<?= url."?controller=producto&action=carta"?>" class="align-self-end">
                     <button class="bt_frase_preparar">
@@ -20,7 +20,7 @@
                     </button>
                 </a>
             </div>
-            <div class="banner2 col-6 col-sm-6 col-md-4"></div>
+            <div class="banner2 col-12 col-sm-6 col-md-4"></div>
         </section>
 
         <section class="row sec_1 mx-3">
@@ -115,7 +115,7 @@
                                     ?>
                                     <span class="entero_sinIVA"><?= $array_sin_IVA[0]; ?><span class="decimal_sinIVA">.<?= $array_sin_IVA[1]; ?> € sin IVA</span></span>
                                 </span>
-                                <a href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=producto&action=carta#almuerzo" class="align-self-end">
+                                <a href=<?= url."?controller=producto&action=carta#bebida" ?> class="align-self-end">
                                     <button class="bt_compra">
                                         <span>+</span>
                                         <img src="icon/paper-bag-white.png" alt="icono bolsa papel para hacer pedido" class="icono_compra">

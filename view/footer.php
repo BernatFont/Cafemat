@@ -12,7 +12,7 @@
             <div class="col-lg-3 col-12 ps-5 pt-3 logo_footer">
                 <a href="<?= url."?controller=producto&action=index "?>"><img src="icon/logo.svg" alt="icono del logo de cafemat"></a>
             </div>
-            <div class="col-4 col-lg-2 link_footer d-flex flex-column">
+            <div class="col-6 col-lg-2 link_footer d-flex flex-column">
                 <p class="mt-3">PRODUCTOS</p>
                 <a href="#">Ingredientes de primera</a>
                 <a href="#">Para comer</a>
@@ -28,7 +28,7 @@
                 <a href="#">Trabaja con nosotros</a>
                 <a href="#">Canal de informacion</a>
             </div>
-            <div class="col-4 col-lg-2 link_footer d-flex flex-column">
+            <div class="col-6 col-lg-2 link_footer d-flex flex-column">
                 <p class="mt-3">PRODUCTOS</p>
                 <a href="#">Cocina</a>
                 <a href="#">Productos naturales</a>
@@ -44,7 +44,7 @@
                 <a href="#">Nuestras recetas</a>
                 <a href="#">Preguntas freqüentes</a>
             </div>
-            <div class="col-4 col-lg-2 link_footer d-flex flex-column">
+            <div class="col-12 col-lg-2 link_footer d-flex flex-column">
                 <p class="mt-3">ASESORAMIENTO PROFESIONAL</p>
                 <a href="#">Glosario</a>
                 <a href="#">Consejos, trucos y técnicas para la cocina</a>

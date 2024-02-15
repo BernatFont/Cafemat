@@ -10,7 +10,7 @@
 </head>
 <body>
     <main class="mt-4 mb-5 d-flex justify-content-center">
-        <section class="d-flex flex-column">
+        <section class="d-flex flex-column inicio_sesion_container">
             <div>
                 <h2 class="mb-5">¿Tienes ya una cuenta CAFEMAT?</h2>
                 <?php if(isset($mensaje)){?>
@@ -26,7 +26,7 @@
             </div>
             <div class="mt-5 pt-4 d-flex flex-column text-center ir_registro">
                 <h3 class="p-2 ">¿Aún no tienes una Cuenta?</h3>
-                <a href="http://bernatdaw2.com/Proyecto_1/Cafemat/?controller=usuario&action=registro" class="bt py-1">Crea tu cuenta</a>
+                <a href=<?= url."?controller=usuario&action=registro"?> class="bt py-1">Crea tu cuenta</a>
             </div>
         </section>
     </main>

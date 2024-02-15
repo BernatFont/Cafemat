@@ -66,20 +66,20 @@
                             <table class="table table-striped">
                                 <tr>
                                     <th>Fecha</th>
-                                    <th>Hora</th>
+                                    <th class="del">Hora</th>
                                     <th>Bultos</th>
                                     <th>Coste</th>
-                                    <th>Estado</th>
+                                    <th class="del">Estado</th>
                                     <th></th>
                                 </tr>
                                 <?php 
                                     foreach($pedidos_usuario as $pedido){?>
                                         <tr>
                                             <td><?= $pedido->fecha_inicio ?></td>
-                                            <td><?= $pedido->hora ?></td>
+                                            <td class="del"><?= $pedido->hora ?></td>
                                             <td><?= $pedido->cantidad_bultos ?></td>
                                             <td><?= number_format($pedido->coste,2).'€' ?></td>
-                                            <td><?= $pedido->estado ?></td>
+                                            <td class="del"><?= $pedido->estado ?></td>
                                             <td>
                                                 <form action="<?= url."?controller=pedido&action=verProductosPedido"?>" method="post">
                                                     <input type="hidden" value="<?= $pedido->pedido_id ?>" name="pedido_id">

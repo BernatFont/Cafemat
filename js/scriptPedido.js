@@ -81,6 +81,18 @@ buttonValidarPedido.addEventListener("click", async (event) => {
         labelUsar.innerHTML = 'Usar ';
         containerDiv.appendChild(labelUsar);
 
+        //calculamos los puntos maximos que se pueden usar
+        let puntosMaximos = precioFinalAux/0.1;
+        puntosMaximos = puntosMaximos.toFixed(2);
+        puntosMaximos = Math.floor(puntosMaximos);
+        puntosMaximos = puntosMaximos.toString();
+        let puntosParaUsar = puntos;
+        if(puntosMaximos < puntos){
+            console.log('Limite de puntos');
+            puntosParaUsar = puntosMaximos;
+            precioFinal = precioFinalAux-(0.1*puntosParaUsar);
+        }
+
         //Creamos input con el que haremos la reactividad del precio
         const inputPuntosSeleccionados = document.createElement('input');
         inputPuntosSeleccionados.type = 'number';
@@ -88,20 +100,21 @@ buttonValidarPedido.addEventListener("click", async (event) => {
         inputPuntosSeleccionados.className = 'puntosUsuario mx-2';
         inputPuntosSeleccionados.value = '0';
         inputPuntosSeleccionados.min = '0';
-        inputPuntosSeleccionados.max = puntos;
+        inputPuntosSeleccionados.max = puntosParaUsar;
         containerDiv.appendChild(inputPuntosSeleccionados);
 
         /* EVENTO PARA CREAR REACTIVIDAD EN EL PRECIO FINAL DEL PEDIDO
         SEG'UN LA CANTIDAD DE PUNTOS USADOS */
+        let nuevosPuntosSeleccionados;
         inputPuntosSeleccionados.addEventListener('input', (e) => {
-            const nuevosPuntosSeleccionados = parseFloat(e.target.value) / 10;
+            nuevosPuntosSeleccionados = parseFloat(e.target.value) / 10;
             //reestablecemos el precio final, para no restar lo restado anteriormente
             precioFinal = precioFinalAux;
             precioFinal -= nuevosPuntosSeleccionados;
             h3PrecioFinal.innerHTML = `<b>${precioFinal.toFixed(2)}€</b>`;
-            console.log(precioFinal);
-            console.log(nuevosPuntosSeleccionados);
-            console.log(e.target.value);
+            console.log('Precio final: '+precioFinal);
+            console.log('Cantidad restada: '+nuevosPuntosSeleccionados);
+            console.log('Puntos usados: '+e.target.value);
         });
 
         // Creamos label para la palabra "puntos" 
@@ -136,12 +149,12 @@ buttonValidarPedido.addEventListener("click", async (event) => {
             });
             if (QR.isConfirmed){
                 // Construir la URL correctamente (paso la propina por GET)
-                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&QR=true`;
+                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&puntos=${nuevosPuntosSeleccionados*10}&QR=true`;
                 // Vamos a la URL deseada
                 window.location.href = url + queryString;
             }else{
                 // Construir la URL correctamente (paso la propina por GET)
-                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}`;
+                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&puntos=${nuevosPuntosSeleccionados*10}`;
                 // Vamos a la URL deseada
                 window.location.href = url + queryString;
             }

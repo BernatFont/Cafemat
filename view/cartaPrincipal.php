@@ -48,7 +48,7 @@
 
                                 <span class="entero"><?= $array_precio[0]; ?><span class="decimal">.<?= $array_precio[1]; ?> € IVA incluido</span></span>
                                 
-                                <p>
+                                <p class="sin_iva">
                                     <?php
                                         $precio_sin_IVA = number_format($precio - (($precio * 10)/100),2);
                                         $array_sin_IVA = explode(".", $precio_sin_IVA);

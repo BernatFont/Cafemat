@@ -48,7 +48,7 @@
                         <tr>
                             <th class="col_1">Productos</th>
                             <th class="col_2">Productos</th>
-                            <th class="text-end">Precio unidad</th>
+                            <th class="text-end precio_unidad">Precio unidad</th>
                             <th class="text-center cantidad">Cantidad</th>
                             <th class="text-end">Total</th>
                             <th></th>
@@ -67,7 +67,7 @@
                                     <td>
                                         <div class="my-3 nombre_producto d-flex align-items-center"><span><?= strtoupper($pedido->getProducto()->getNombre()) ?></span></div>
                                     </td>
-                                    <td class="text-end align-middle">
+                                    <td class="text-end align-middle precio_unidad">
                                         <?= $pedido->getProducto()->getPrecio().'€'?>
                                     </td>
                                     <td class="text-center align-middle">

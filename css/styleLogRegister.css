@@ -55,7 +55,7 @@ h3{
     padding: 16px 8px 16px 8px;
 }
 
-.register_container{
+.register_container, .inicio_sesion_container{
     width: 500px;
 }
 
@@ -67,4 +67,10 @@ h3{
 
 .redirigir_inicio span{
     text-decoration: underline;
+}
+
+@media (max-width: 600px){
+	.register_container, .inicio_sesion_container{
+        width: 300px;
+	}
 }

@@ -14,6 +14,7 @@ include_once 'utils/CalculadoraPrecios.php';
                 $pedido = $_SESSION['carrito'];
                 $usuario = $_SESSION['usuario'];
                 $tip = $_GET['tip'];
+                $puntos = $_GET['puntos'];
 
                 /* CREA EL PEDIDO Y RETORNA SU ID PARA USARLO EN LA SIGUIENTE FUNCION */
                 $pedido_id = Pedido::crearPedido($pedido,$usuario->getNombre_usuario(),$tip);
@@ -22,6 +23,7 @@ include_once 'utils/CalculadoraPrecios.php';
                 Pedido::crearPedidoProducto($pedido,$usuario->getNombre_usuario(),$pedido_id);
                 /* Al validar el pedido creamos una cookie con el pedido validado para peder
                 recuperarlo posteriormente */
+                Usuario::quitarPuntosUsados($puntos,$usuario->getNombre_usuario());
                 setcookie('recuperarPedido', serialize($pedido), time() + 600);
                 //Vaciamos el pedido
                 unset($_SESSION['carrito']);

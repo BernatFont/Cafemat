@@ -138,6 +138,12 @@
     }
 }
 
+@media (max-width: 580px){
+    .buscador input{
+        width: 10rem;
+    }
+}
+
 @media (max-width: 992px){
     .redes{
         margin-top: 30px;
