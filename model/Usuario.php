@@ -254,12 +254,18 @@ class Usuario{
             $conn->query($sql);
         }
 
-        public static function setPuntosUser($puntos){
+        public static function setPuntosUser($coste){
             $conn = dataBase::connect();
             session_start();
             $username = $_SESSION['usuario']->getNombre_usuario();
-            $usuario = Usuario::getUsuarioByUsername($username);
-            $puntos += $usuario->getPuntos();
+            $puntosExtra = (int)($coste/10);
+
+            $sql = "SELECT puntos FROM usuario WHERE nombre_usuario = '$username'";
+            $result = $conn->query($sql);
+            $result = $result->fetch_object();
+
+            $puntos = $result->puntos+$puntosExtra;
+
             $sql = "UPDATE usuario SET puntos = '$puntos' WHERE nombre_usuario = '$username'";
             $conn->query($sql);
             $conn->close();                

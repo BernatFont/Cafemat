@@ -105,7 +105,7 @@ buttonValidarPedido.addEventListener("click", async (event) => {
 
         /* EVENTO PARA CREAR REACTIVIDAD EN EL PRECIO FINAL DEL PEDIDO
         SEG'UN LA CANTIDAD DE PUNTOS USADOS */
-        let nuevosPuntosSeleccionados;
+        let nuevosPuntosSeleccionados = 0;
         inputPuntosSeleccionados.addEventListener('input', (e) => {
             nuevosPuntosSeleccionados = parseFloat(e.target.value) / 10;
             //reestablecemos el precio final, para no restar lo restado anteriormente
@@ -149,12 +149,12 @@ buttonValidarPedido.addEventListener("click", async (event) => {
             });
             if (QR.isConfirmed){
                 // Construir la URL correctamente (paso la propina por GET)
-                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&puntos=${nuevosPuntosSeleccionados*10}&QR=true`;
+                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&puntos=${(nuevosPuntosSeleccionados)}&QR=true`;
                 // Vamos a la URL deseada
                 window.location.href = url + queryString;
             }else{
                 // Construir la URL correctamente (paso la propina por GET)
-                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&puntos=${nuevosPuntosSeleccionados*10}`;
+                const queryString = `controller=pedido&action=validarPedido&tip=${tipCost}&puntos=${nuevosPuntosSeleccionados}`;
                 // Vamos a la URL deseada
                 window.location.href = url + queryString;
             }

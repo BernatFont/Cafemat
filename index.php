@@ -1,4 +1,7 @@
 <?php
+/*ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);*/
 
     /*INCLUDES PARA QUE EL index.php SEPA QUE EXISTEN ESTOS CONTROLLERS Y LOS BUSQUE
     Y ASI ENCONTRAR LAS FUNCIONES DONDE SE EJECUTAN TODAS LAS OPERACIONES DE LA PAGINA */

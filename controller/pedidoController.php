@@ -17,13 +17,16 @@ include_once 'utils/CalculadoraPrecios.php';
                 $puntos = $_GET['puntos'];
 
                 /* CREA EL PEDIDO Y RETORNA SU ID PARA USARLO EN LA SIGUIENTE FUNCION */
-                $pedido_id = Pedido::crearPedido($pedido,$usuario->getNombre_usuario(),$tip);
+                $pedido_id = Pedido::crearPedido($pedido,$usuario->getNombre_usuario(),$tip,$puntos);
                 /* USAMOS EL ID ANTERIOR PARA AÑADIR TODOS LOS PRODUCTOS SELECCIONADOS EN EL PEDIDO */
                 /* SE AÑADEN EN LA TABLA 'Pedido_Producto' DE MySQL */
                 Pedido::crearPedidoProducto($pedido,$usuario->getNombre_usuario(),$pedido_id);
+                Usuario::quitarPuntosUsados($puntos*10,$usuario->getNombre_usuario());
+                /* Obtenemos el coste del pedido para calcular los puntos que ha ganado el usuario */
+                $coste = CalculadoraPrecios::calcularTotalPedido($pedido)+$tip;
+                Usuario::setPuntosUser($coste);
                 /* Al validar el pedido creamos una cookie con el pedido validado para peder
                 recuperarlo posteriormente */
-                Usuario::quitarPuntosUsados($puntos,$usuario->getNombre_usuario());
                 setcookie('recuperarPedido', serialize($pedido), time() + 600);
                 //Vaciamos el pedido
                 unset($_SESSION['carrito']);

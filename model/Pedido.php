@@ -69,7 +69,7 @@ include_once 'config/dataBase.php';
         }
 
         /* FUNCION QUE CREA EL PEDIDO */
-        public static function crearPedido($pedido,$usuario,$tip){
+        public static function crearPedido($pedido,$usuario,$tip,$puntos){
                 $conn = dataBase::connect();
 
                 $usuario = Usuario::getUsuarioByUsername($usuario);
@@ -81,16 +81,19 @@ include_once 'config/dataBase.php';
                         $cantidad_bultos += $fila->getCantidad();
                 }
                 $coste = CalculadoraPrecios::calcularTotalPedido($pedido);
+		//Restamos el vaalor en € de los puntos (0.1 por cada punto)
+                $coste -= $puntos;
+		//Sumamos la propina
+                $coste += $tip;
                 $estado = 'pendiente';
 
                 $sql = "INSERT INTO pedido VALUES ('','$usuario_id','$fecha','$hora','$cantidad_bultos','$coste',$tip,'$estado')";
                 $conn->query($sql);
-
-                $puntos = round($coste/10);
-                if ($coste < 10){
-                        $puntos = 1;
-                }
-                Usuario::setPuntosUser($puntos);
+                
+                // $puntos *= 10;
+                // if ($coste < 10){
+                //         $puntos = 1;
+                // }
 
                 $sql_pedido_id = "SELECT pedido_id FROM pedido WHERE 
                         usuario_id = '$usuario_id' AND
