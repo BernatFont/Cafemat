@@ -51,23 +51,27 @@ include_once 'utils/CalculadoraPrecios.php';
         public function verProductosPedido(){
             session_start();
 
-            if(isset($_POST['pedido_id'])||isset($_GET['pedido_id'])){
-                if(isset($_POST['pedido_id'])){
-                    $pedido_id = $_POST['pedido_id'];
-                }elseif(isset($_GET['pedido_id'])){
-                    $pedido_id = $_GET['pedido_id'];
+            if (isset($_SESSION['usuario'])){
+                if(isset($_POST['pedido_id'])||isset($_GET['pedido_id'])){
+                    if(isset($_POST['pedido_id'])){
+                        $pedido_id = $_POST['pedido_id'];
+                    }elseif(isset($_GET['pedido_id'])){
+                        $pedido_id = $_GET['pedido_id'];
+                    }
+    
+                    $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
+                    $usuario_id = $usuario->getUsuario_id();
+        
+                    $productos = Pedido::getProductosByPedio($pedido_id);
+        
+                    include_once 'view/header.php';
+                    
+                    include_once 'view/paginaProductosPedido.php';
+                    
+                    include_once 'view/footer.php';
+                }else{
+                    header('Location:'.url.'?controller=usuario&action=inicioSesion');
                 }
-
-                $usuario = Usuario::getUsuarioByUsername($_SESSION['usuario']->getNombre_usuario());
-                $usuario_id = $usuario->getUsuario_id();
-    
-                $productos = Pedido::getProductosByPedio($pedido_id);
-    
-                include_once 'view/header.php';
-                
-                include_once 'view/paginaProductosPedido.php';
-                
-                include_once 'view/footer.php';
             }else{
                 header('Location:'.url.'?controller=usuario&action=inicioSesion');
             }
